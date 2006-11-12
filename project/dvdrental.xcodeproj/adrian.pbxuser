@@ -1,0 +1,201 @@
+// !$*UTF8*$!
+{
+	3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1008}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95CE0B07AC0600D5CEA1 /* customer.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95CF0B07AC0600D5CEA1 /* date.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1840}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D00B07AC0600D5CEA1 /* date.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D10B07AC0600D5CEA1 /* dvd.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D20B07AC0600D5CEA1 /* dvd.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D30B07AC0600D5CEA1 /* item.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 1056}}";
+			sepNavSelRange = "{74, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D40B07AC0600D5CEA1 /* item.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D50B07AC0600D5CEA1 /* rental.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D60B07AC0600D5CEA1 /* rental.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A1B95D80B07AC0600D5CEA1 /* vhs.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1043, 806}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {1043, 806}}";
+		};
+	};
+	3A70AE890B078C8E005F2325 /* DVDRental */ = {
+		activeExec = 0;
+		executables = (
+			3A70AE8C0B078C8E005F2325 /* DVDRental */,
+		);
+	};
+	3A70AE8C0B078C8E005F2325 /* DVDRental */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = DVDRental;
+		sourceDirectories = (
+		);
+	};
+	3AE327030B079111000D25EA /* XCBreakpointsBucket */ = {
+		isa = XCBreakpointsBucket;
+		name = "Project Breakpoints";
+		objects = (
+		);
+	};
+	3AEB35550B078AD600618480 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 3A70AE8C0B078C8E005F2325 /* DVDRental */;
+		activeTarget = 3A70AE890B078C8E005F2325 /* DVDRental */;
+		addToTargets = (
+			3A70AE890B078C8E005F2325 /* DVDRental */,
+		);
+		breakpointsGroup = 3AE327030B079111000D25EA /* XCBreakpointsBucket */;
+		codeSenseManager = 3AEB355A0B078AD600618480 /* Code sense */;
+		executables = (
+			3A70AE8C0B078C8E005F2325 /* DVDRental */,
+		);
+		ignoreBreakpointsInProjectsDict = {
+		};
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					851,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					200,
+					416,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 185052130;
+			PBXWorkspaceStateSaveDate = 185052130;
+		};
+		sourceControlManager = 3AEB35590B078AD600618480 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	3AEB35590B078AD600618480 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	3AEB355A0B078AD600618480 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}
