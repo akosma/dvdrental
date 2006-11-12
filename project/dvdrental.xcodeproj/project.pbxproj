@@ -35,7 +35,7 @@
 		3A1B95D60B07AC0600D5CEA1 /* rental.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = rental.h; path = ../src/business/rental.h; sourceTree = SOURCE_ROOT; };
 		3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = vhs.cpp; path = ../src/business/vhs.cpp; sourceTree = SOURCE_ROOT; };
 		3A1B95D80B07AC0600D5CEA1 /* vhs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vhs.h; path = ../src/business/vhs.h; sourceTree = SOURCE_ROOT; };
-		3A70AE8A0B078C8E005F2325 /* DVDRental.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DVDRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A70AE8A0B078C8E005F2325 /* DVDRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVDRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_mac-2.6.a"; path = "/usr/local/lib/libwx_mac-2.6.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
