@@ -1,7 +1,7 @@
 #ifndef VHSH
 #define VHSH
 
-#include "Item.h"
+#include "item.h"
 
 class VHS : public Item
 {

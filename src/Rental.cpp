@@ -1,4 +1,4 @@
-#include "Rental.h"
+#include "rental.h"
 
 Rental::Rental( )
 {

@@ -1,7 +1,7 @@
 #ifndef RentalH
 #define RentalH
 
-#include "Date.h"
+#include "date.h"
 
 class Rental
 {

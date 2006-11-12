@@ -1,4 +1,4 @@
-#include "VHS.h"
+#include "vhs.h"
 
 int VHS::getRentalPeriod( ) const
 {

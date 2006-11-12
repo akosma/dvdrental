@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-#include "Rental.h"
+#include "rental.h"
 
 class Customer
 {

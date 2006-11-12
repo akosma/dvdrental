@@ -9,7 +9,7 @@
 using std::cout;
 using std::endl;
 
-#include "Date.h"
+#include "date.h"
 
 // default constructor
 Date::Date( )

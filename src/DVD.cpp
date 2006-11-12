@@ -1,4 +1,4 @@
-#include "DVD.h"
+#include "dvd.h"
 
 int DVD::getRentalPeriod( ) const
 {
