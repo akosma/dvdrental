@@ -172,7 +172,6 @@
       </project>
       <FILELIST>
         <FILE FILENAME="DVDRental.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="DVDRental" FORMNAME="" DESIGNCLASS=""/>
-        <FILE FILENAME="..\deploy\Tests.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Tests" FORMNAME="" DESIGNCLASS=""/>
         <FILE FILENAME="..\src\business\vhs.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="vhs" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\vhs.h"/>
         <FILE FILENAME="..\src\business\customer.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="customer" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\customer.h"/>
         <FILE FILENAME="..\src\business\date.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="date" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\date.h"/>
@@ -180,6 +179,7 @@
         <FILE FILENAME="..\src\business\item.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="item" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\item.h"/>
         <FILE FILENAME="..\src\business\rental.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="rental" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\rental.h"/>
         <FILE FILENAME="..\src\business\library.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="library" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\business\library.h"/>
+        <FILE FILENAME="..\deploy\tests.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="tests" FORMNAME="" DESIGNCLASS=""/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
