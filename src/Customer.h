@@ -2,7 +2,10 @@
 #define CustomerH
 
 #include <string>
-using std::string;
+#include <vector>
+using namespace std;
+
+#include "Rental.h"
 
 class Customer
 {
@@ -28,6 +31,7 @@ private:
     string _firstName;
     string _address;
     string _phone;
+    vector<Rental *> _rentals;
 };
 
 #endif

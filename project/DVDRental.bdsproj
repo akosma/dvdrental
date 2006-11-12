@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <PersonalityInfo>
-    <Option>
-      <Option Name="Personality">CPlusPlusBuilder.Personality</Option>
-      <Option Name="ProjectType">CppConsoleApplication</Option>
-      <Option Name="Version">1.0</Option>
-      <Option Name="GUID">{3A0B753D-8253-4448-B998-18A5BDAE1B07}</Option>
-    </Option>
-  </PersonalityInfo>
-  <CPlusPlusBuilder.Personality>
-    <Source>
-      <Source Name="MainSource">DVDRental.bpf</Source>
-    </Source>
-    <BCBPROJECT>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppConsoleApplication</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{3A0B753D-8253-4448-B998-18A5BDAE1B07}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<Source>
+			<Source Name="MainSource">DVDRental.bpf</Source>
+		</Source>
+		<BCBPROJECT>
       <project version="10.0">
         <property category="build.config" name="active" value="0"/>
         <property category="build.config" name="count" value="1"/>
@@ -37,6 +37,10 @@
         <property category="build.platform" name="win32.default" value="win32b"/>
         <property category="build.platform" name="win32.enabled" value="1"/>
         <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
         <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
@@ -82,11 +86,12 @@
           <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\src"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\Msc\CP\Projects\DVDRental\deploy"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\deploy"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="$(BDS)\include"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="$(BDS)\include\dinkumware"/>
-          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\..\..\..\..\..\..\..\cppunit-1.12.0\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\Msc\CP\Projects\DVDRental\deploy"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="..\deploy"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="$(BDS)\include\vcl"/>
           <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
           <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="0"/>
@@ -167,6 +172,7 @@
         <FILE FILENAME="..\src\Item.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Item" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\Item.h"/>
         <FILE FILENAME="..\src\DVD.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="DVD" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\DVD.h"/>
         <FILE FILENAME="..\src\VHS.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="VHS" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\VHS.h"/>
+        <FILE FILENAME="..\src\Library.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Library" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\src\Library.h"/>
       </FILELIST>
       <IDEOPTIONS>
         <VersionInfo>
@@ -223,6 +229,6 @@
         </Linker>
       </IDEOPTIONS>
     </BCBPROJECT>
-    <buildevents/>
-  </CPlusPlusBuilder.Personality>
+		<buildevents/>
+	</CPlusPlusBuilder.Personality>
 </BorlandProject>
