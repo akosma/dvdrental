@@ -1,3 +1,9 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *  Declaration for the DVD class.
+ */
+
 #ifndef DVDH
 #define DVDH
 

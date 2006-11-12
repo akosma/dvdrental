@@ -1,3 +1,9 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *
+ */
+
 #include "rental.h"
 
 Rental::Rental( )

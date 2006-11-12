@@ -1,3 +1,10 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *  This file declares the Customer class which represents an entity that
+ *  can hire recordings
+ */
+
 #ifndef CustomerH
 #define CustomerH
 
@@ -26,11 +33,13 @@ public:
     void setPhone( const string &phone );
 
 private:
-    int    _id;
+    int    _id;             // Unique ID for this customer
     string _lastName;
     string _firstName;
     string _address;
     string _phone;
+
+//! List of the rentals that this customer has
     vector<Rental *> _rentals;
 };
 

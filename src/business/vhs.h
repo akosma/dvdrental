@@ -1,3 +1,9 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *  Declaration for the VHS class
+ */
+
 #ifndef VHSH
 #define VHSH
 

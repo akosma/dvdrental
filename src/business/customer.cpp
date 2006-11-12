@@ -1,3 +1,10 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *  This file contains the Customer class which represents an entity that
+ *  can hire recordings
+ */
+
 #include "customer.h"
 
 Customer::Customer( )

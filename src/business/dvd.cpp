@@ -1,3 +1,9 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *
+ */
+
 #include "dvd.h"
 
 int DVD::getRentalPeriod( ) const

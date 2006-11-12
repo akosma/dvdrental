@@ -1,3 +1,9 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *
+ */
+
 #include <cassert>
 
 #include "item.h"

@@ -1,3 +1,10 @@
+/*!
+ *  Group 2 DVDRental Project
+ *
+ *  Declarartion for the Item class. This is the base class for the DVD
+ *  and VHS classes. 
+ */
+
 #ifndef ItemH
 #define ItemH
 
