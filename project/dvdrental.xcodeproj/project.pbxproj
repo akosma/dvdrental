@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A14ECAF0B07C6BE007B6212 /* customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */; };
+		3A14ECB00B07C6BE007B6212 /* date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95CF0B07AC0600D5CEA1 /* date.cpp */; };
+		3A14ECB10B07C6BF007B6212 /* dvd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D10B07AC0600D5CEA1 /* dvd.cpp */; };
+		3A14ECB20B07C6BF007B6212 /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D30B07AC0600D5CEA1 /* item.cpp */; };
+		3A14ECB30B07C6C0007B6212 /* rental.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D50B07AC0600D5CEA1 /* rental.cpp */; };
+		3A14ECB40B07C6C1007B6212 /* vhs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */; };
+		3A14ECED0B07C87B007B6212 /* librarytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A14ECA80B07C679007B6212 /* librarytest.cpp */; };
 		3A1B95CA0B07ABF600D5CEA1 /* dvdrental.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95C60B07ABF600D5CEA1 /* dvdrental.cpp */; };
 		3A1B95CB0B07ABF600D5CEA1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95C80B07ABF600D5CEA1 /* main.cpp */; };
 		3A1B95D90B07AC0600D5CEA1 /* customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */; };
@@ -16,9 +23,19 @@
 		3A1B95DD0B07AC0600D5CEA1 /* rental.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D50B07AC0600D5CEA1 /* rental.cpp */; };
 		3A1B95DE0B07AC0600D5CEA1 /* vhs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */; };
 		3A70AE950B078D22005F2325 /* libwx_mac-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */; };
+		3A8AB9640B07C97C00D95203 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AB9630B07C97C00D95203 /* main.cpp */; };
+		3A8AB9680B07C99300D95203 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A14EC9F0B07C629007B6212 /* libstdc++.a */; };
+		3A8AB9690B07C99300D95203 /* libcppunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A14ECA50B07C64E007B6212 /* libcppunit.a */; };
+		3A8AB96F0B07C9B000D95203 /* library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AB96D0B07C9B000D95203 /* library.cpp */; };
+		3A8AB9700B07C9B400D95203 /* library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AB96D0B07C9B000D95203 /* library.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A14EC9F0B07C629007B6212 /* libstdc++.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libstdc++.a"; path = "/usr/lib/libstdc++.a"; sourceTree = "<absolute>"; };
+		3A14ECA50B07C64E007B6212 /* libcppunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcppunit.a; path = /usr/local/lib/libcppunit.a; sourceTree = "<absolute>"; };
+		3A14ECA70B07C679007B6212 /* librarytest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = librarytest.h; path = ../src/test/librarytest.h; sourceTree = SOURCE_ROOT; };
+		3A14ECA80B07C679007B6212 /* librarytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = librarytest.cpp; path = ../src/test/librarytest.cpp; sourceTree = SOURCE_ROOT; };
+		3A14ECAD0B07C6A8007B6212 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1B95C60B07ABF600D5CEA1 /* dvdrental.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = dvdrental.cpp; path = ../src/ui/dvdrental.cpp; sourceTree = SOURCE_ROOT; };
 		3A1B95C70B07ABF600D5CEA1 /* dvdrental.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = dvdrental.h; path = ../src/ui/dvdrental.h; sourceTree = SOURCE_ROOT; };
 		3A1B95C80B07ABF600D5CEA1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/ui/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -37,9 +54,21 @@
 		3A1B95D80B07AC0600D5CEA1 /* vhs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vhs.h; path = ../src/business/vhs.h; sourceTree = SOURCE_ROOT; };
 		3A70AE8A0B078C8E005F2325 /* DVDRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVDRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_mac-2.6.a"; path = "/usr/local/lib/libwx_mac-2.6.a"; sourceTree = "<absolute>"; };
+		3A8AB9630B07C97C00D95203 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/test/main.cpp; sourceTree = SOURCE_ROOT; };
+		3A8AB96D0B07C9B000D95203 /* library.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = library.cpp; path = ../src/business/library.cpp; sourceTree = SOURCE_ROOT; };
+		3A8AB96E0B07C9B000D95203 /* library.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = library.h; path = ../src/business/library.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3A14ECAB0B07C6A8007B6212 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8AB9680B07C99300D95203 /* libstdc++.a in Frameworks */,
+				3A8AB9690B07C99300D95203 /* libcppunit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3A70AE880B078C8E005F2325 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,9 +80,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A14EC9A0B07C5E6007B6212 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3A8AB9630B07C97C00D95203 /* main.cpp */,
+				3A14ECA70B07C679007B6212 /* librarytest.h */,
+				3A14ECA80B07C679007B6212 /* librarytest.cpp */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
 		3A1B95CC0B07ABF800D5CEA1 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				3A8AB96D0B07C9B000D95203 /* library.cpp */,
+				3A8AB96E0B07C9B000D95203 /* library.h */,
 				3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */,
 				3A1B95CE0B07AC0600D5CEA1 /* customer.h */,
 				3A1B95CF0B07AC0600D5CEA1 /* date.cpp */,
@@ -85,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				3A70AE8A0B078C8E005F2325 /* DVDRental.app */,
+				3A14ECAD0B07C6A8007B6212 /* tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +134,8 @@
 		3AE327380B079227000D25EA /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				3A14ECA50B07C64E007B6212 /* libcppunit.a */,
+				3A14EC9F0B07C629007B6212 /* libstdc++.a */,
 				3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */,
 			);
 			name = Libraries;
@@ -100,6 +144,7 @@
 		3AEB35530B078AD600618480 = {
 			isa = PBXGroup;
 			children = (
+				3A14EC9A0B07C5E6007B6212 /* Test */,
 				3A1B95CC0B07ABF800D5CEA1 /* Business */,
 				3AE327380B079227000D25EA /* Libraries */,
 				3A70AE7F0B078C15005F2325 /* UI */,
@@ -110,6 +155,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3A14ECAC0B07C6A8007B6212 /* tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A14ECB70B07C6D1007B6212 /* Build configuration list for PBXNativeTarget "tests" */;
+			buildPhases = (
+				3A14ECAA0B07C6A8007B6212 /* Sources */,
+				3A14ECAB0B07C6A8007B6212 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tests;
+			productName = tests;
+			productReference = 3A14ECAD0B07C6A8007B6212 /* tests */;
+			productType = "com.apple.product-type.tool";
+		};
 		3A70AE890B078C8E005F2325 /* DVDRental */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A70AE8E0B078C8E005F2325 /* Build configuration list for PBXNativeTarget "DVDRental" */;
@@ -139,6 +200,7 @@
 			projectDirPath = "";
 			targets = (
 				3A70AE890B078C8E005F2325 /* DVDRental */,
+				3A14ECAC0B07C6A8007B6212 /* tests */,
 			);
 		};
 /* End PBXProject section */
@@ -154,6 +216,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3A14ECAA0B07C6A8007B6212 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A14ECAF0B07C6BE007B6212 /* customer.cpp in Sources */,
+				3A14ECB00B07C6BE007B6212 /* date.cpp in Sources */,
+				3A14ECB10B07C6BF007B6212 /* dvd.cpp in Sources */,
+				3A14ECB20B07C6BF007B6212 /* item.cpp in Sources */,
+				3A14ECB30B07C6C0007B6212 /* rental.cpp in Sources */,
+				3A14ECB40B07C6C1007B6212 /* vhs.cpp in Sources */,
+				3A14ECED0B07C87B007B6212 /* librarytest.cpp in Sources */,
+				3A8AB9640B07C97C00D95203 /* main.cpp in Sources */,
+				3A8AB96F0B07C9B000D95203 /* library.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3A70AE870B078C8E005F2325 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,12 +244,45 @@
 				3A1B95DC0B07AC0600D5CEA1 /* item.cpp in Sources */,
 				3A1B95DD0B07AC0600D5CEA1 /* rental.cpp in Sources */,
 				3A1B95DE0B07AC0600D5CEA1 /* vhs.cpp in Sources */,
+				3A8AB9700B07C9B400D95203 /* library.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		3A14ECB80B07C6D1007B6212 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = tests;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		3A14ECB90B07C6D1007B6212 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = /usr/local/include/;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = tests;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		3A70AE8F0B078C8E005F2325 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -271,6 +382,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3A14ECB70B07C6D1007B6212 /* Build configuration list for PBXNativeTarget "tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A14ECB80B07C6D1007B6212 /* Debug */,
+				3A14ECB90B07C6D1007B6212 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3A70AE8E0B078C8E005F2325 /* Build configuration list for PBXNativeTarget "DVDRental" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
