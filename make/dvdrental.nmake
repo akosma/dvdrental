@@ -9,7 +9,7 @@ CFG=debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE
-!MESSAGE NMAKE /f "BirthdayCard.mak" CFG="debug"
+!MESSAGE NMAKE /f "DVDRental.mak" CFG="debug"
 !MESSAGE
 !MESSAGE Possible choices for configuration are:
 !MESSAGE
@@ -33,34 +33,33 @@ NULL=nul
 
 !IF  "$(CFG)" == "release"
 
-OUTDIR=.\Release
-INTDIR=.\Release
+OUTDIR=.\DVDRental_Release
+INTDIR=.\DVDRental_Release
 # Begin Custom Macros
-OutDir=.\Release
+OutDir=.\DVDRental_Release
 # End Custom Macros
 
-ALL : "$(OUTDIR)\BirthdayCard.exe"
+ALL : "$(OUTDIR)\DVDRental.exe"
 
 
 CLEAN :
-	-@erase "$(INTDIR)\birthdaycard.obj"
-	-@erase "$(INTDIR)\dataaccesslayer.obj"
+	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
+	-@erase "$(INTDIR)\dvd.obj"
+	-@erase "$(INTDIR)\dvdrental.obj"
+	-@erase "$(INTDIR)\item.obj"
+	-@erase "$(INTDIR)\library.obj"
 	-@erase "$(INTDIR)\main.obj"
-	-@erase "$(INTDIR)\controller.obj"
-	-@erase "$(INTDIR)\persistable.obj"
-	-@erase "$(INTDIR)\person.obj"
-	-@erase "$(INTDIR)\carddialog.obj"
-	-@erase "$(INTDIR)\datedialog.obj"
-	-@erase "$(INTDIR)\todayeventsdialog.obj"
-	-@erase "$(INTDIR)\vc60.idb"
-	-@erase "$(OUTDIR)\BirthdayCard.exe"
+	-@erase "$(INTDIR)\rental.obj"
+	-@erase "$(INTDIR)\vhs.obj"
+	-@erase "$(OUTDIR)\DVDRental.exe"
+	-@erase "$(OUTDIR)\vc70.idb"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/O2 /I "C:\wxWidgets-2.6.3\lib\mswd" /I "C:\sqlite-3.3.8" /I "C:\wxWidgets-2.6.3\include" /D "WIN32" /D "__WXMSW__" /D "_WINDOWS" /D "NOPCH" /FD /EHsc /MD /GR /Fo"Release/" /Fd"Release/vc70.pdb" /W4 /nologo /c
+CPP_PROJ=/O2 /I "C:\wxWidgets-2.6.3\lib\mswd" /I "C:\wxWidgets-2.6.3\include" /D "WIN32" /D "__WXMSW__" /D "_WINDOWS" /D "NOPCH" /FD /EHsc /MD /GR /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W4 /nologo /c
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -96,24 +95,23 @@ MTL=midl.exe
 MTL_PROJ=/nologo /D "NDEBUG" /mktyplib203 /win32
 RSC=rc.exe
 BSC32=bscmake.exe
-BSC32_FLAGS=/nologo /o"$(OUTDIR)\BirthdayCard.bsc"
+BSC32_FLAGS=/nologo /o"$(OUTDIR)\DVDRental.bsc"
 BSC32_SBRS= \
 
 LINK32=link.exe
-LINK32_FLAGS=/OUT:"Release\BirthdayCard.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\wxWidgets-2.6.3\lib\\" /LIBPATH:"C:\sqlite-3.3.8" /SUBSYSTEM:WINDOWS /MACHINE:X86 wxmsw.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib sqlite3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+LINK32_FLAGS=/OUT:"$(OUTDIR)\DVDRental.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\wxWidgets-2.6.3\lib\\" /SUBSYSTEM:WINDOWS /MACHINE:X86 wxmsw.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
-	"$(INTDIR)\person.obj" \
+	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
-	"$(INTDIR)\persistable.obj" \
-	"$(INTDIR)\dataaccesslayer.obj" \
+	"$(INTDIR)\dvd.obj" \
+	"$(INTDIR)\dvdrental.obj" \
+	"$(INTDIR)\item.obj" \
+	"$(INTDIR)\library.obj" \
 	"$(INTDIR)\main.obj" \
-	"$(INTDIR)\controller.obj" \
-	"$(INTDIR)\birthdaycard.obj" \
-	"$(INTDIR)\carddialog.obj" \
-	"$(INTDIR)\datedialog.obj" \
-	"$(INTDIR)\todayeventsdialog.obj"
+	"$(INTDIR)\rental.obj" \
+	"$(INTDIR)\vhs.obj" \
 
-"$(OUTDIR)\BirthdayCard.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+"$(OUTDIR)\DVDRental.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -129,37 +127,36 @@ LINK32_OBJS= \
 
 !ELSEIF  "$(CFG)" == "debug"
 
-OUTDIR=.\Debug
-INTDIR=.\Debug
+OUTDIR=.\DVDRental_Debug
+INTDIR=.\DVDRental_Debug
 # Begin Custom Macros
-OutDir=.\Debug
+OutDir=.\DVDRental_Debug
 # End Custom Macros
 
-ALL : "$(OUTDIR)\BirthdayCard.exe"
+ALL : "$(OUTDIR)\DVDRental.exe"
 
 
 CLEAN :
-	-@erase "$(INTDIR)\birthdaycard.obj"
-	-@erase "$(INTDIR)\dataaccesslayer.obj"
+	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
+	-@erase "$(INTDIR)\dvd.obj"
+	-@erase "$(INTDIR)\dvdrental.obj"
+	-@erase "$(INTDIR)\item.obj"
+	-@erase "$(INTDIR)\library.obj"
 	-@erase "$(INTDIR)\main.obj"
-	-@erase "$(INTDIR)\controller.obj"
-	-@erase "$(INTDIR)\persistable.obj"
-	-@erase "$(INTDIR)\person.obj"
-	-@erase "$(INTDIR)\carddialog.obj"
-	-@erase "$(INTDIR)\datedialog.obj"
-	-@erase "$(INTDIR)\todayeventsdialog.obj"
-	-@erase "$(INTDIR)\vc60.idb"
-	-@erase "$(INTDIR)\vc60.pdb"
-	-@erase "$(OUTDIR)\BirthdayCard.exe"
-	-@erase "$(OUTDIR)\BirthdayCard.ilk"
-	-@erase "$(OUTDIR)\BirthdayCard.pdb"
+	-@erase "$(INTDIR)\rental.obj"
+	-@erase "$(INTDIR)\vhs.obj"
+	-@erase "$(INTDIR)\vc70.idb"
+	-@erase "$(INTDIR)\vc70.pdb"
+	-@erase "$(OUTDIR)\DVDRental.exe"
+	-@erase "$(OUTDIR)\DVDRental.ilk"
+	-@erase "$(OUTDIR)\DVDRental.pdb"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/Od /I "C:\wxWidgets-2.6.3\lib\mswd" /I "C:\sqlite-3.3.8" /I "C:\wxWidgets-2.6.3\include" /D "WIN32" /D "_DEBUG" /D "__WXMSW__" /D "__WXDEBUG__" /D "_WINDOWS" /D "NOPCH" /FD /EHsc /RTC1 /MDd /GS /GR /Fo"Debug/" /Fd"Debug/vc70.pdb" /W4 /nologo /c /Zi
+CPP_PROJ=/Od /I "C:\wxWidgets-2.6.3\lib\mswd" /I "C:\wxWidgets-2.6.3\include" /D "WIN32" /D "_DEBUG" /D "__WXMSW__" /D "__WXDEBUG__" /D "_WINDOWS" /D "NOPCH" /FD /EHsc /RTC1 /MDd /GS /GR /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W4 /nologo /c /Zi
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -195,24 +192,23 @@ MTL=midl.exe
 MTL_PROJ=/nologo /D "_DEBUG" /mktyplib203 /win32
 RSC=rc.exe
 BSC32=bscmake.exe
-BSC32_FLAGS=/nologo /o"$(OUTDIR)\BirthdayCard.bsc"
+BSC32_FLAGS=/nologo /o"$(OUTDIR)\DVDRental.bsc"
 BSC32_SBRS= \
 
 LINK32=link.exe
-LINK32_FLAGS=/OUT:"Debug\BirthdayCard.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\wxWidgets-2.6.3\lib\\" /LIBPATH:"C:\sqlite-3.3.8" /DEBUG /PDB:"Debug/BirthdayCard.pdb" /SUBSYSTEM:WINDOWS /MACHINE:X86 wxmswd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib sqlite3.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+LINK32_FLAGS=/OUT:"$(OUTDIR)\DVDRental.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\wxWidgets-2.6.3\lib\\" /DEBUG /PDB:"$(OUTDIR)/DVDRental.pdb" /SUBSYSTEM:WINDOWS /MACHINE:X86 wxmswd.lib winmm.lib comctl32.lib rpcrt4.lib wsock32.lib odbc32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
-	"$(INTDIR)\person.obj" \
+	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
-	"$(INTDIR)\persistable.obj" \
-	"$(INTDIR)\dataaccesslayer.obj" \
+	"$(INTDIR)\dvd.obj" \
+	"$(INTDIR)\dvdrental.obj" \
+	"$(INTDIR)\item.obj" \
+	"$(INTDIR)\library.obj" \
 	"$(INTDIR)\main.obj" \
-	"$(INTDIR)\controller.obj" \
-	"$(INTDIR)\birthdaycard.obj" \
-	"$(INTDIR)\carddialog.obj" \
-	"$(INTDIR)\datedialog.obj" \
-	"$(INTDIR)\todayeventsdialog.obj"
+	"$(INTDIR)\rental.obj" \
+	"$(INTDIR)\vhs.obj" \
 
-"$(OUTDIR)\BirthdayCard.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+"$(OUTDIR)\DVDRental.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -221,21 +217,10 @@ LINK32_OBJS= \
 
 
 !IF "$(CFG)" == "release" || "$(CFG)" == "debug"
-SOURCE=..\src\ui\birthdaycard.cpp
 
-"$(INTDIR)\birthdaycard.obj" : $(SOURCE) "$(INTDIR)"
-	$(CPP) $(CPP_PROJ) $(SOURCE)
+SOURCE=..\src\ui\dvdrental.cpp
 
-
-SOURCE=..\src\data\dataaccesslayer.cpp
-
-"$(INTDIR)\dataaccesslayer.obj" : $(SOURCE) "$(INTDIR)"
-	$(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-SOURCE=..\src\business\date.cpp
-
-"$(INTDIR)\date.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\dvdrental.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
@@ -245,41 +230,46 @@ SOURCE=..\src\ui\main.cpp
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\ui\controller.cpp
+SOURCE=..\src\business\customer.cpp
 
-"$(INTDIR)\controller.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\customer.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\ui\carddialog.cpp
+SOURCE=..\src\business\date.cpp
 
-"$(INTDIR)\carddialog.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\date.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\ui\datedialog.cpp
+SOURCE=..\src\business\dvd.cpp
 
-"$(INTDIR)\datedialog.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\dvd.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\ui\todayeventsdialog.cpp
+SOURCE=..\src\business\item.cpp
 
-"$(INTDIR)\todayeventsdialog.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\item.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\business\persistable.cpp
+SOURCE=..\src\business\library.cpp
 
-"$(INTDIR)\persistable.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\library.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\business\person.cpp
+SOURCE=..\src\business\rental.cpp
 
-"$(INTDIR)\person.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\rental.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
+
+SOURCE=..\src\business\vhs.cpp
+
+"$(INTDIR)\vhs.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
 !ENDIF

@@ -18,5 +18,6 @@ int main()
     CppUnit::TextUi::TestRunner runner;
     runner.addTest(CppUnit::TestFactoryRegistry::getRegistry().makeTest());
     bool wasSucessful = runner.run();
+    getchar();
     return wasSucessful ? EXIT_SUCCESS : EXIT_FAILURE;
 }

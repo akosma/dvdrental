@@ -6,21 +6,12 @@ REM It also depends on the sqlite3.exe command-line application in your PATH
 
 REM Change these variables to your preferred location
 SET ZIP=C:\7-zip\7za.exe
-SET ZIP_FILE=..\bin\BirthdayCard-1.0-win-bin.zip
-
-REM =======================================
-
-REM Generate random numbers and create the demo database
-cd ../src/sql
-cscript date_generator.vbs
-sqlite3 BirthdayCard.db < people.sql
-sqlite3 BirthdayCard.db < dates.sql
-cd ../../
-move .\src\sql\BirthdayCard.db .\bin\BirthdayCard.db
+SET ZIP_FILE=..\..\bin\DVDRental-1.0-win-bin.zip
 
 REM =======================================
 
 REM Generate documentation using Doxygen
+cd ..
 doxygen
 
 REM Erase HTML files, only keep CHM file
@@ -36,27 +27,27 @@ call windows.bat
 REM =======================================
 
 REM Create the distributable zip file
+
+cd DVDRental_Release
 DELETE %ZIP_FILE%
-cd Release
-%ZIP% a -tzip %ZIP_FILE% BirthdayCard.exe
-%ZIP% a -tzip %ZIP_FILE% unittests.exe
+%ZIP% a -tzip %ZIP_FILE% DVDRental.exe
+
+cd ..\Tests_Release
+%ZIP% a -tzip %ZIP_FILE% tests.exe
 %ZIP% a -tzip %ZIP_FILE% cppunit_dll.dll
-%ZIP% a -tzip %ZIP_FILE% C:\WINDOWS\SYSTEM32\sqlite3.dll
-%ZIP% a -tzip %ZIP_FILE% ..\..\bin\BirthdayCard.db
 
 REM =======================================
 
 REM Execute unit tests
-unittests.exe
+echo y | tests.exe
+cd ..
 
 REM =======================================
 
 REM Do some cleanup
-cd ..
-rmdir /Q /S Debug
-rmdir /Q /S Release
+rmdir /Q /S DVDRental_Debug
+rmdir /Q /S DVDRental_Release
+rmdir /Q /S Tests_Debug
+rmdir /Q /S Tests_Release
 
-cd ..
-del bin\BirthdayCard.db
-
-cd deploy
+cd ..\deploy

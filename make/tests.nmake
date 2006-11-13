@@ -9,7 +9,7 @@ CFG=debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE
-!MESSAGE NMAKE /f "unittests.mak" CFG="debug"
+!MESSAGE NMAKE /f "tests.mak" CFG="debug"
 !MESSAGE
 !MESSAGE Possible choices for configuration are:
 !MESSAGE
@@ -32,32 +32,31 @@ NULL=nul
 
 !IF  "$(CFG)" == "release"
 
-OUTDIR=.\Release
-INTDIR=.\Release
+OUTDIR=.\Tests_Release
+INTDIR=.\Tests_Release
 # Begin Custom Macros
-OutDir=.\Release
+OutDir=.\Tests_Release
 # End Custom Macros
 
-ALL : "$(OUTDIR)\unittests.exe"
+ALL : "$(OUTDIR)\tests.exe"
 
 
 CLEAN :
-	-@erase "$(INTDIR)\dataaccesslayer.obj"
-	-@erase "$(INTDIR)\dataaccesslayertest.obj"
+	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
-	-@erase "$(INTDIR)\datetest.obj"
-	-@erase "$(INTDIR)\persistable.obj"
-	-@erase "$(INTDIR)\person.obj"
-	-@erase "$(INTDIR)\persontest.obj"
-	-@erase "$(INTDIR)\unittests.obj"
-	-@erase "$(INTDIR)\vc60.idb"
-	-@erase "$(OUTDIR)\unittests.exe"
+	-@erase "$(INTDIR)\dvd.obj"
+	-@erase "$(INTDIR)\item.obj"
+	-@erase "$(INTDIR)\library.obj"
+	-@erase "$(INTDIR)\rental.obj"
+	-@erase "$(INTDIR)\vhs.obj"
+	-@erase "$(OUTDIR)\tests.exe"
+	-@erase "$(OUTDIR)\vc70.idb"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/O2 /I "C:\sqlite-3.3.8" /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /FD /EHsc /MD /GS /Fo"Release/" /Fd"Release/vc70.pdb" /W3 /nologo /c /Wp64 /Zi /TP
+CPP_PROJ=/O2 /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /FD /EHsc /MD /GS /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /Zi /TP
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -91,22 +90,23 @@ CPP_PROJ=/O2 /I "C:\sqlite-3.3.8" /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "
 
 RSC=rc.exe
 BSC32=bscmake.exe
-BSC32_FLAGS=/nologo /o"$(OUTDIR)\unittests.bsc"
+BSC32_FLAGS=/nologo /o"$(OUTDIR)\tests.bsc"
 BSC32_SBRS= \
 
 LINK32=link.exe
-LINK32_FLAGS=/OUT:"Release/unittests.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /LIBPATH:"C:\sqlite-3.3.8" /DEBUG /PDB:"Release/unittests.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /MACHINE:X86 sqlite3.lib cppunit_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+LINK32_FLAGS=/OUT:"$(OUTDIR)/tests.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /DEBUG /PDB:"$(OUTDIR)/tests.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /MACHINE:X86 cppunit_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
-	"$(INTDIR)\unittests.obj" \
-	"$(INTDIR)\dataaccesslayertest.obj" \
-	"$(INTDIR)\datetest.obj" \
-	"$(INTDIR)\dataaccesslayer.obj" \
-	"$(INTDIR)\person.obj" \
-	"$(INTDIR)\persontest.obj" \
+	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
-	"$(INTDIR)\persistable.obj"
+	"$(INTDIR)\dvd.obj" \
+	"$(INTDIR)\librarytest.obj" \
+	"$(INTDIR)\item.obj" \
+	"$(INTDIR)\library.obj" \
+	"$(INTDIR)\main.obj" \
+	"$(INTDIR)\rental.obj" \
+	"$(INTDIR)\vhs.obj" \
 
-"$(OUTDIR)\unittests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+"$(OUTDIR)\tests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -120,35 +120,34 @@ LINK32_OBJS= \
 
 !ELSEIF  "$(CFG)" == "debug"
 
-OUTDIR=.\Debug
-INTDIR=.\Debug
+OUTDIR=.\Tests_Debug
+INTDIR=.\Tests_Debug
 # Begin Custom Macros
-OutDir=.\Debug
+OutDir=.\Tests_Debug
 # End Custom Macros
 
-ALL : "$(OUTDIR)\unittests.exe"
+ALL : "$(OUTDIR)\tests.exe"
 
 
 CLEAN :
-	-@erase "$(INTDIR)\dataaccesslayer.obj"
-	-@erase "$(INTDIR)\dataaccesslayertest.obj"
+	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
-	-@erase "$(INTDIR)\datetest.obj"
-	-@erase "$(INTDIR)\persistable.obj"
-	-@erase "$(INTDIR)\person.obj"
-	-@erase "$(INTDIR)\persontest.obj"
-	-@erase "$(INTDIR)\unittests.obj"
-	-@erase "$(INTDIR)\vc60.idb"
-	-@erase "$(INTDIR)\vc60.pdb"
-	-@erase "$(OUTDIR)\unittests.exe"
-	-@erase "$(OUTDIR)\unittests.ilk"
-	-@erase "$(OUTDIR)\unittests.pdb"
+	-@erase "$(INTDIR)\dvd.obj"
+	-@erase "$(INTDIR)\item.obj"
+	-@erase "$(INTDIR)\library.obj"
+	-@erase "$(INTDIR)\rental.obj"
+	-@erase "$(INTDIR)\vhs.obj"
+	-@erase "$(INTDIR)\vc70.idb"
+	-@erase "$(INTDIR)\vc70.pdb"
+	-@erase "$(OUTDIR)\tests.exe"
+	-@erase "$(OUTDIR)\tests.ilk"
+	-@erase "$(OUTDIR)\tests.pdb"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/Od /I "C:\sqlite-3.3.8" /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /nologo /c /Wp64 /ZI /TP
+CPP_PROJ=/Od /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /ZI /TP
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -182,22 +181,23 @@ CPP_PROJ=/Od /I "C:\sqlite-3.3.8" /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "
 
 RSC=rc.exe
 BSC32=bscmake.exe
-BSC32_FLAGS=/nologo /o"$(OUTDIR)\unittests.bsc"
+BSC32_FLAGS=/nologo /o"$(OUTDIR)\tests.bsc"
 BSC32_SBRS= \
 
 LINK32=link.exe
-LINK32_FLAGS=/OUT:"Debug/unittests.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /LIBPATH:"C:\sqlite-3.3.8" /DEBUG /PDB:"Debug/unittests.pdb" /SUBSYSTEM:CONSOLE /MACHINE:X86 sqlite3.lib cppunitd_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
+LINK32_FLAGS=/OUT:"$(OUTDIR)/tests.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /DEBUG /PDB:"$(OUTDIR)/tests.pdb" /SUBSYSTEM:CONSOLE /MACHINE:X86 cppunitd_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
-	"$(INTDIR)\unittests.obj" \
-	"$(INTDIR)\dataaccesslayertest.obj" \
-	"$(INTDIR)\datetest.obj" \
-	"$(INTDIR)\dataaccesslayer.obj" \
-	"$(INTDIR)\person.obj" \
-	"$(INTDIR)\persontest.obj" \
+	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
-	"$(INTDIR)\persistable.obj"
+	"$(INTDIR)\dvd.obj" \
+	"$(INTDIR)\librarytest.obj" \
+	"$(INTDIR)\item.obj" \
+	"$(INTDIR)\library.obj" \
+	"$(INTDIR)\main.obj" \
+	"$(INTDIR)\rental.obj" \
+	"$(INTDIR)\vhs.obj" \
 
-"$(OUTDIR)\unittests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+"$(OUTDIR)\tests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -207,15 +207,9 @@ LINK32_OBJS= \
 
 
 !IF "$(CFG)" == "release" || "$(CFG)" == "debug"
-SOURCE=..\src\data\dataaccesslayer.cpp
+SOURCE=..\src\business\customer.cpp
 
-"$(INTDIR)\dataaccesslayer.obj" : $(SOURCE) "$(INTDIR)"
-	$(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-SOURCE=..\src\tests\dataaccesslayertest.cpp
-
-"$(INTDIR)\dataaccesslayertest.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\customer.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
@@ -225,34 +219,45 @@ SOURCE=..\src\business\date.cpp
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\tests\datetest.cpp
+SOURCE=..\src\business\dvd.cpp
 
-"$(INTDIR)\datetest.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\dvd.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\business\persistable.cpp
+SOURCE=..\src\business\item.cpp
 
-"$(INTDIR)\persistable.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\item.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\business\person.cpp
+SOURCE=..\src\business\library.cpp
 
-"$(INTDIR)\person.obj" : $(SOURCE) "$(INTDIR)"
-	$(CPP) $(CPP_PROJ) $(SOURCE)
-
-SOURCE=..\src\tests\persontest.cpp
-
-"$(INTDIR)\persontest.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\library.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-SOURCE=..\src\tests\unittests.cpp
+SOURCE=..\src\business\rental.cpp
 
-"$(INTDIR)\unittests.obj" : $(SOURCE) "$(INTDIR)"
+"$(INTDIR)\rental.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
+
+SOURCE=..\src\business\vhs.cpp
+
+"$(INTDIR)\vhs.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
+
+
+SOURCE=..\src\test\main.cpp
+
+"$(INTDIR)\main.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
+
+SOURCE=..\src\test\librarytest.cpp
+
+"$(INTDIR)\librarytest.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
 !ENDIF

@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DVDRental", "DVDRental.vcproj", "{9BFE8111-1B7C-4EA3-A48A-9F2AA81E910B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests.vcproj", "{DB28C9C4-1E0C-4251-A691-8F3F5C31A1AF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{9BFE8111-1B7C-4EA3-A48A-9F2AA81E910B}.Debug.ActiveCfg = Debug|Win32
+		{9BFE8111-1B7C-4EA3-A48A-9F2AA81E910B}.Debug.Build.0 = Debug|Win32
+		{9BFE8111-1B7C-4EA3-A48A-9F2AA81E910B}.Release.ActiveCfg = Release|Win32
+		{9BFE8111-1B7C-4EA3-A48A-9F2AA81E910B}.Release.Build.0 = Release|Win32
+		{DB28C9C4-1E0C-4251-A691-8F3F5C31A1AF}.Debug.ActiveCfg = Debug|Win32
+		{DB28C9C4-1E0C-4251-A691-8F3F5C31A1AF}.Debug.Build.0 = Debug|Win32
+		{DB28C9C4-1E0C-4251-A691-8F3F5C31A1AF}.Release.ActiveCfg = Release|Win32
+		{DB28C9C4-1E0C-4251-A691-8F3F5C31A1AF}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
