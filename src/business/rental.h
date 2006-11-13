@@ -8,6 +8,7 @@
 #define RentalH
 
 #include "date.h"
+#include "baseclass.h"
 
 class Rental
 {
@@ -18,6 +19,7 @@ public:
     int  getCustomerId( ) const;
     Date getRentalDate( ) const;
     Date getDueDate( ) const;
+	virtual string getClassName( ); 
     
     void setCustomerId( int customerId );
     void setRentalDate( const Date &rentalDate );

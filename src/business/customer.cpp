@@ -32,6 +32,11 @@ string Customer::getFirstName( ) const
     return _firstName;
 }
 
+string Customer::getClassName( )
+{
+	return "customer.txt";
+}
+
 string Customer::getAddress( ) const
 {
     return _address;

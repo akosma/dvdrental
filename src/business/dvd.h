@@ -8,6 +8,7 @@
 #define DVDH
 
 #include "item.h"
+#include "baseclass.h"
 
 class DVD : public Item
 {
@@ -18,6 +19,7 @@ public:
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
+	virtual string getClassName( ); 
 };
 
 #endif

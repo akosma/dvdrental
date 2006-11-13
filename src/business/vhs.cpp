@@ -30,3 +30,7 @@ const int VHS::getLateFee( ) const
     return 1;
 }
 
+string VHS::getClassName( )
+{
+	return "vhs.txt";
+}

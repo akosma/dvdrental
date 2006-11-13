@@ -13,8 +13,9 @@
 using namespace std;
 
 #include "rental.h"
+#include "baseclass.h"
 
-class Customer
+class Customer : public BaseClass
 {
 public:
     Customer( );
@@ -25,6 +26,7 @@ public:
     string getFirstName( ) const;
     string getAddress( ) const;
     string getPhone( ) const;
+	virtual string getClassName( ); 
 
     void setId( int id );
     void setLastName( const string &lastName );

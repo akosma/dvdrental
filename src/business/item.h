@@ -11,6 +11,8 @@
 #include <string>
 using std::string;
 
+#include "baseclass.h"
+
 class Item
 {
 public:
@@ -22,6 +24,7 @@ public:
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
+	virtual string getClassName( ); 
 
     const int  getId() const;
     const std::string& getTitle() const;

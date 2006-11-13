@@ -60,3 +60,7 @@ void Library::addNewVHS(const std::string& title)
     addNewItem(vhs);
 }
 
+string Library::getClassName( )
+{
+	return "library.txt";
+}

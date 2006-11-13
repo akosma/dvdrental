@@ -12,6 +12,7 @@
 using namespace std;
 
 #include "item.h"
+#include "baseclass.h"
 
 class Library
 {
@@ -25,7 +26,9 @@ public:
     //! getAvailableItems fills the passed in vector with items that are available for rental
     const int getAvailableItems(vector<Item>&) const;
     
-    void addNewDVD(const std::string&);
+	virtual string getClassName( ); 
+
+	void addNewDVD(const std::string&);
     void addNewVHS(const std::string&);
 
 private:
