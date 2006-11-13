@@ -1,0 +1,591 @@
+{\rtf1\mac\ansicpg10000\cocoartf102
+{\fonttbl\f0\fswiss\fcharset77 Arial-BoldMT;\f1\fswiss\fcharset77 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww11200\viewh12800\viewkind0
+\pard
+
+\f0\b\fs28 \cf0 Adrian Kosmaczewski
+\f1\b0  has joined the chat.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:02:29 PM]: Hi Keith!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:02:46 PM]: I was just finishing a comment (DQ2)\
+
+\f0\b Keith Miller
+\f1\b0 [3:03:00 PM]: Hi Adrian - I have just updated my working copy - no chance to do DQ's yet!\
+
+\f0\b Keith Miller
+\f1\b0  has left the chat.\
+
+\f0\b Keith Miller
+\f1\b0  has joined the chat.\
+
+\f0\b Keith Miller
+\f1\b0 [3:03:51 PM]: Haven't yet got it to compile under VS 2003 \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:04:04 PM]: problems?\
+
+\f0\b Keith Miller
+\f1\b0 [3:04:24 PM]: No - just lack of time. Needed to get kids off to bed\
+
+\f0\b Ahmed Madkour
+\f1\b0  has joined the chat.\
+
+\f0\b Keith Miller
+\f1\b0 : Hi Ahmed\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Hi everyone..\
+
+\f0\b Ahmed Madkour
+\f1\b0 : sorry I'm late. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : Did I miss much?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:05:06 PM]: no problem :)\
+
+\f0\b Keith Miller
+\f1\b0 : No\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:05:19 PM]: absolutely not, we've just started 30 sec ago\
+
+\f0\b Ahmed Madkour
+\f1\b0 : great!\
+
+\f0\b Ahmed Madkour
+\f1\b0 : :D\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Alright...\
+
+\f0\b Ahmed Madkour
+\f1\b0 : so what's on the agenda today?\
+
+\f0\b Keith Miller
+\f1\b0 : Are we recording this?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : good idea\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:06:29 PM]: I can't record it for some reason. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:06:33 PM]: Has everyone been able to compile the code? That's an important thing\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:06:46 PM]: No problem, I'll copy-paste the whole thing afterwards if you want\
+
+\f0\b Keith Miller
+\f1\b0 [3:06:56 PM]: Not yet but I expect it won't be long. The tests compiled I just need to do the main exe.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:07:21 PM]: Well yes, wxWidgets is the most complicated\
+
+\f0\b Keith Miller
+\f1\b0 [3:07:55 PM]: Yes - the main exe failed trying to find the wx includes. I haven't set up the project options yet\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:07:58 PM]: Make sure you compile wxWidgets using "Debug" and "Release" in VS.NET 2003 (there are many, many configurations available)\
+
+\f0\b Keith Miller
+\f1\b0 : OK\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:08:46 PM]: You should open the VS project included in the wxWidgets distribution, and compile it with it (don't know for Borland, though)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:09:26 PM]: How about you Ahmed?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:09:28 PM]: I tried that but it didn't work. \
+
+\f0\b Keith Miller
+\f1\b0 [3:09:33 PM]: I'm not bothering with Borland now as I think using CppUnit is more important\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:09:50 PM]: I actually have a couple of questions about the presistence layer. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:09:57 PM]: tell me\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:10:04 PM]: How should it interface with the rest of the objects?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:10:24 PM]: 1. Should you instantiate an instance of the class everytime you want to interact with the class?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:10:59 PM]: or should I have an abstract class with static methods / member funcitons that can be called without instantiation (I've never done that before...but know it's possible)\
+
+\f0\b Keith Miller
+\f1\b0 [3:11:33 PM]: I thought we could just overload the << and >> operators or am I being too simplistic\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:11:41 PM]: static methods will do fine (there's no multithreading involved in our solution so...)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Noo..simple is good..\
+
+\f0\b Ahmed Madkour
+\f1\b0 : simple is very good. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:11:53 PM]: Well, it's twofold, yes :0\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:11:54 PM]: :)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:11:56 PM]: sorry\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:11:56 PM]: Remember..>C++ for me is a whole new mystery. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:13:00 PM]: Sure, no problem :) overloading >> is a great idea; each class (Items, Rentals and Customers) can be "serialized" like this, and they hold the logic for reading themselves back; so, go for it.\
+
+\f0\b Ahmed Madkour
+\f1\b0 : great. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:13:24 PM]: I think we could make each one of those classes overload the operators as we need\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:13:35 PM]: This brings me to the second question I wanted to ask regarding the overloading of << and >>\
+
+\f0\b Keith Miller
+\f1\b0 [3:13:51 PM]: Library and Item are done and tested so this may be a good place to start. I won't be changing them. I can look at Customer and Rental next\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:14:11 PM]: OK\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:14:13 PM]: go on Ahmed\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:14:13 PM]: 1. Is there a way to check for the type of an object when passed or refered to?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:14:30 PM]: #include <typeinfo>, yes\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:14:34 PM]: this way, I can have the presistance class decide which file to use based on the type of object\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok..\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:15:05 PM]: you've got this "RTTI" thing (google for it, and for the type_info class, you can also see it in the librarytest.cpp file in our solution)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:15:09 PM]: So, i'll have the objects be directed to the relevent files based on their type. \
+
+\f0\b Keith Miller
+\f1\b0 [3:15:33 PM]: I think a persistance class is complicating things. Can the business classes we have jsut do their own serialization?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:15:37 PM]: I came across it while reading the documentation of wxWidgets\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:00 PM]: yes, but, that way you introduce a dependency between the individual DVD and VHS classes and the one handling the persistence\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:23 PM]: mmm I would not mix wxWidgets code in the lower business classes, this reduces portability and increases dependencies\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:32 PM]: we can do the following, see this:\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:55 PM]: 1) The Item and Customer classes inherit from a common base class (easy)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:17:57 PM]: 2) The subclasses implement a pure abstract method that returns a string identifying the class (easier than using typeinfo, and with less dependencies)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:18:14 PM]: 3) The persistence / serialization class uses this to identify the file that will be written to /read from\
+
+\f0\b Ahmed Madkour
+\f1\b0 : great idea!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:18:41 PM]: 4) The Customer / Item / etc classes overload the >> operator, so that we are pure polymorphic, with just one dependency\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:30 PM]: Then at the "data" layer, the only class needed is only dependent on "the base class" and just opens files, handles streams and redirect them to the proper file\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:38 PM]: Is all of this clear :))\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:39 PM]: ??\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:44 PM]: what do you think?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:20:15 PM]: i'm not sure I see the dependency on the base class?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:20:37 PM]: well, we need a reference to the base class to call the "getClassName" virtual method\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Ok. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:21:17 PM]: Alright...let me see if i understand correctly. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:21:38 PM]: The classes derrived from the base class will all have an implimantion to the getClassName method. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:21:52 PM]: this method will be public and will therefore be called by the presistance class. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : right?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:02 PM]: exactly\
+
+\f0\b Ahmed Madkour
+\f1\b0 : cool. \
+
+\f0\b Keith Miller
+\f1\b0 [3:22:12 PM]: It looks like a workable solution to me. Are we going to have the library and item data hard coded? Are should they serialize themselves to a file as well?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : I think serialize from a file\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:53 PM]: mmm good question, we could have a "library.txt" file with the list of items (DVDs and VHSs)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:01 PM]: another file for customer.txt\
+
+\f0\b Keith Miller
+\f1\b0 [3:23:01 PM]: So they will need to decend from the same base class as the others\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:07 PM]: yes\
+
+\f0\b Ahmed Madkour
+\f1\b0 : what shall we use a delimter?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : CSV?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:19 PM]: like "AppEntity" or "Object"  :)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:52 PM]: semicolons, commas, that seems OK for me (but watch out for Item titles with semicolons or commas!)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Ok. \
+
+\f0\b Keith Miller
+\f1\b0 [3:24:23 PM]: I would go for fixed length fields. Would that not be easier than trying to scan strrings for delimeters. There is allways one string with ,:" whatever in it.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:24:30 PM]: sure\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok..it's easier this way. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:24:45 PM]: fixed length seems then the choice\
+
+\f0\b Ahmed Madkour
+\f1\b0 : fixed lenght it is :)\
+
+\f0\b Keith Miller
+\f1\b0 [3:25:17 PM]: We just need to decide on some reasolable lengths for the customer and film names\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:25:35 PM]: like in a database design\
+
+\f0\b Ahmed Madkour
+\f1\b0 : 25 chrs?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:25:42 PM]: pretty much the same\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:25:53 PM]: 25 is oK\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:26:02 PM]: let's say maybe 40 for titles\
+
+\f0\b Keith Miller
+\f1\b0 [3:26:14 PM]: We can make sure that 25 is enough can't we :-)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:26:22 PM]: of course! :D\
+
+\f0\b Ahmed Madkour
+\f1\b0 : I guess we can ;o)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:26:44 PM]: I will have the first draft and .h file ready tomorrow for the initial review\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:26:48 PM]: so we have: a common base class for all of Keith's classes, another class that has a reference to that base class, that will serialize everything to the corresponding file\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:26:52 PM]: excellent, thanks!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:08 PM]: update your subversion copy, there's been quite a few changes :)\
+
+\f0\b Keith Miller
+\f1\b0 [3:27:16 PM]: OK Ahmed, did you get on OK with TortoiseSVN?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:27:31 PM]: I installed it...thanks for the help.\
+
+\f0\b Keith Miller
+\f1\b0 [3:27:43 PM]: No problem, all of my classes are there\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:27:43 PM]: It seems quite streight forward..but I have to get comfortable with it. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:48 PM]: I will work on the UI this week, adding controls, haven't done much yet :s\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:28:05 PM]: I have another question actually that could be a little off topic. \
+
+\f0\b Keith Miller
+\f1\b0 [3:28:26 PM]: I'll get it compiling. When Ahmed has posted the .h files I will write some more test cases.\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:28:26 PM]: When using external libraries / frameworks isn't it just a question of including the .h files?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:28:47 PM]: why do we then have to compile wxWidgets?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:28:51 PM]: actually that is only for the compilation part, for the link part you need the libraries or DLLs\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:29:19 PM]: you compile against header files, but you link against binary libraries (either static or dynamic, such as DLLs)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:29:39 PM]: ok..and these are the ones that we compile as in the case of wxWidgets?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:29:46 PM]: exactly\
+
+\f0\b Ahmed Madkour
+\f1\b0 : great! thanks for that. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:30:02 PM]: no prob :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:30:08 PM]: ok...another question...this is on topic actually :o)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:30:19 PM]: the presistence class has to reference the base class?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : I don't see why?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:30:52 PM]: Isn't it just a question of getting the right class, interrogating it for the name, then using the overloaded << and >> to get hte data that will go to files?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:31:08 PM]: because the persistence methods' will call object.getClassName(), and for that, you must #include "baseclass.h" in the persistence class, but nothing else (that's why it's the only dependency)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:31:37 PM]: to interrogate the name, you need the base class\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:31:49 PM]: I see...ok..I just didn't undersand the term "reference" clearly. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:32:00 PM]: otherwise the compiler cannot resolve the method at compile time\
+
+\f0\b Ahmed Madkour
+\f1\b0 : of course. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:32:18 PM]: yes, sorry for that, it's different from "references ~ pointers"\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:32:35 PM]: hmmm...i'll get there one day...I hope!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:33:02 PM]: sure you will :) it's not complicated, and this will open you the door to understanding how open source packages work\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:33:33 PM]: that's why i'm very excited about this...really.  I think it's a rare opportunity to start C++ on the right track!\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:33:46 PM]: Thanks for your patience and help guys!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:34:08 PM]: OK Keith, have you had the opportunity to see what I've added to your code?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:34:18 PM]: no problem Ahmed :)\
+
+\f0\b Keith Miller
+\f1\b0 [3:34:45 PM]: Not yet. I was just looking at it. I'm sure it will all be OK. If I have any questions I'll post in the group folder.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:04 PM]: cool\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:36:01 PM]: for my side I've got to add more controls to the UI, but we are in good track. Could you execute the binaries?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:36:08 PM]: Ok..i'll continue dabbelling with my class and have the first draft tomorrow. \
+
+\f0\b Keith Miller
+\f1\b0 [3:36:22 PM]: Haneen't tries the binaries yet. Will do so next.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:36:53 PM]: excellent\
+
+\f0\b Keith Miller
+\f1\b0 [3:37:12 PM]: Shall we chat again Wednesday, same time to ensure everything is OK for the first assignment hand in?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Yes, i'm for that. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:42 PM]: No problem, for Wednesday everything's OK! In any case, we've got what we need to show up already\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:59 PM]: the headers are there, so no problem; just adding some comments to it will make it more than perfect\
+
+\f0\b Keith Miller
+\f1\b0 [3:38:02 PM]: So, Ahmed, you are going to take my .h fileds and change them for the base class or should I do that?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : you mean files?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : .h files?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:39:09 PM]: I suppose so :)\
+
+\f0\b Keith Miller
+\f1\b0 [3:39:27 PM]: Sorry my typing is not what it should be.....\
+
+\f0\b Ahmed Madkour
+\f1\b0 : hehehe..no worried. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : worries...sorry. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:39:55 PM]: I guess it's best if you change them Keith. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:40:14 PM]: Just so that you handel the file independently. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:40:31 PM]: Any changes that I will need, i'll just post to the group folder\
+
+\f0\b Keith Miller
+\f1\b0 [3:40:48 PM]: OK, I'll do that and update SubVersion. I'll get them done for tomorrow evening. I still need to do my assignment for this week!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:49 PM]: Ahmed, you can use a static method for writing and another for reading in your persistence class\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:53 PM]: that'll be OK\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:40:58 PM]: or is that not nessecary with subversion?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:41:48 PM]: You can use Subversion; save your class in the src/data folder, right-click on the file and select the "TortoiseSVN / Add..." menu\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:18 PM]: then, you right click on the folder (any folder with the green mark) and right-click and select "SVN Commit"\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:49 PM]: You write a message of what you did (something like "added file..." or anything else more meaningful :)) and then everything will be sent to the server\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:06 PM]: from there, we can get it easier than from the group folder\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:43:30 PM]: ok..i'll do that instead ..and if i face any problems i'll just post to the group folder and let you know. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:37 PM]: sure, no probme\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:40 PM]: problem\
+
+\f0\b Keith Miller
+\f1\b0 [3:43:47 PM]: I think I'll change the files now while this is all still fresh in my mind. Then Ahmed will have something he can work with for the serialization. Hopefully I'll get the stuff commited tonight.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:53 PM]: :)))   my typing is also suffering now\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:44:06 PM]: excellent thanks Keith!\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:44:30 PM]: ok..i'll start practicing now and will have something ready by tomorrow. \
+
+\f0\b Keith Miller
+\f1\b0 [3:44:32 PM]: I'll post back here when it is all done.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:44:49 PM]: OK then, meet on Wednesday?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : GMT 20?\
+
+\f0\b Keith Miller
+\f1\b0 [3:45:07 PM]: Sure, I think we are all done now. 20:00 GMT is cool.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:45:09 PM]: GMT 20, CET 21 as usual\
+
+\f0\b Keith Miller
+\f1\b0 : Yep.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:45:13 PM]: yep\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:45:17 PM]: :D\
+
+\f0\b Ahmed Madkour
+\f1\b0 : great\
+
+\f0\b Ahmed Madkour
+\f1\b0 : alright everyone. \
+
+\f0\b Keith Miller
+\f1\b0 : OK, bye\
+
+\f0\b Ahmed Madkour
+\f1\b0 : till wednesday then. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:45:33 PM]: take care!\
+
+\f0\b Ahmed Madkour
+\f1\b0 : bye. :o)\
+
+\f0\b Ahmed Madkour
+\f1\b0  has left the chat.\
+}
