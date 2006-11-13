@@ -12,9 +12,12 @@
 class DVD : public Item
 {
 public:
-    virtual int  getRentalPeriod( ) const;
-    virtual int  getRentalCharge( ) const;
-    virtual int  getLateFee( ) const;
+    DVD(const std::string&);
+    virtual ~DVD();
+
+    virtual const int getRentalPeriod() const;
+    virtual const int getRentalCharge() const;
+    virtual const int getLateFee() const;
 };
 
 #endif

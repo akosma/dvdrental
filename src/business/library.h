@@ -16,19 +16,23 @@ using namespace std;
 class Library
 {
 public:
-    Library( );
-    ~Library( );
+    Library();
+    ~Library();
 
-//! getAvailableItems fills the passed in vector with items that are available for rental
-    int getAvailableItems( vector<Item *> &availableItems ) const;
+    Item& operator[](const int id);
+    Item& getItem(const int);
+
+    //! getAvailableItems fills the passed in vector with items that are available for rental
+    const int getAvailableItems(vector<Item>&) const;
     
-    Item *newDVD( );
-    Item *newVHS( ); 
+    void addNewDVD(const std::string&);
+    void addNewVHS(const std::string&);
 
 private:
-    Item *newItem( Item *item );
+    void addNewItem(Item& item);
 
-    vector<Item *> _items;
+private:
+    vector<Item> _items;
 };
 
 #endif

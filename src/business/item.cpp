@@ -8,64 +8,76 @@
 
 #include "item.h"
 
-Item::Item( ) :
-    _id( -1 ),
-    _title( "" ),
-    _rented( false )
+Item::Item(const std::string& title) 
+: _id     (-1)
+, _title  (title)
+, _rented (false)
 {
-
 }
 
-Item::~Item( )
+Item::~Item()
 {
-
 }
 
-int Item::getId( ) const
+Item::Item(const Item& rhs)
+: _id     (rhs._id)
+, _title  (rhs._title)
+, _rented (rhs._rented)
+{
+}
+
+Item& Item::operator=(const Item& rhs)
+{
+    _id     = rhs._id;
+    _title  = rhs._title;
+    _rented = rhs._rented;
+    return *this;
+}
+
+const int Item::getId() const
 {
     return _id;
 }
 
-char *Item::getTitle( ) const
+const std::string& Item::getTitle() const
 {
     return _title;
 }
 
-void Item::setId( int id )
+void Item::setId(const int id)
 {
     _id = id;
 }
 
-void Item::setTitle( char *title )
+void Item::setTitle(const std::string& title)
 {
     _title = title;
 }
 
-int Item::getRentalPeriod( ) const
+const int Item::getRentalPeriod() const
 {
     assert( false );
     return 0;
 }
 
-int Item::getRentalCharge( ) const
+const int Item::getRentalCharge() const
 {
     assert( false );
     return 0;
 }
 
-int Item::getLateFee( ) const
+const int Item::getLateFee() const
 {
     assert( false );
     return 0;
 }
 
-
-bool Item::isRented( ) const
+const bool Item::isRented() const
 {
     return _rented;
 }
 
-void Item::setRented( bool rented )
+void Item::setRented(const bool rented)
 {
     _rented = rented;
 }

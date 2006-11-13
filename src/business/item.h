@@ -8,29 +8,34 @@
 #ifndef ItemH
 #define ItemH
 
+#include <string>
+using std::string;
+
 class Item
 {
 public:
-    Item( );
-    ~Item( );
+    Item(const std::string&);
+    virtual ~Item();
+    Item(const Item&);
+    Item& operator=(const Item&);
 
-    virtual int getRentalPeriod( ) const;
-    virtual int getRentalCharge( ) const;
-    virtual int getLateFee( ) const;
+    virtual const int getRentalPeriod() const;
+    virtual const int getRentalCharge() const;
+    virtual const int getLateFee() const;
 
-    int  getId( ) const;
-    char *getTitle( ) const;
+    const int  getId() const;
+    const std::string& getTitle() const;
 
-    void setId( int id );
-    void setTitle( char *title );
+    void setId(const int);
+    void setTitle(const std::string&);
 
-    bool isRented( ) const;
+    const bool isRented() const;
 
-    void setRented( bool rented );
+    void setRented(const bool);
 
 private:
-    int  _id;
-    char *_title;
-    bool _rented;
+    int         _id;
+    std::string _title;
+    bool        _rented;
 };
 #endif

@@ -56,58 +56,41 @@ namespace tests
     void LibraryTest::testCreateLibrary()
     {
         Library library;
-        Item *item;
+        library.addNewDVD("Brief Encounters of the Third Kind");
+        library.addNewDVD("Fellowship of the Ring");
+        library.addNewDVD("The Two Towers");
+        library.addNewDVD("Return of the King");
+        library.addNewDVD("Cronicles of Narnia");
+        library.addNewVHS("Thomas the Tank Engine");
+        library.addNewVHS("Apollo 13");
+        library.addNewVHS("Total Recall");
 
-        item = library.newDVD();
-        item->setTitle( "Brief Encounter" );
+        vector<Item> availableItems;
 
-        item = library.newDVD();
-        item->setTitle( "Fellowship of the Ring" );
+        int itemCount = library.getAvailableItems(availableItems);
 
-        item = library.newDVD();
-        item->setTitle( "The Two Towers" );
+        CPPUNIT_ASSERT_EQUAL(8, itemCount);
 
-        item = library.newDVD();
-        item->setTitle( "Return of the King" );
-
-        item = library.newDVD();
-        item->setTitle( "Cronicles of Narnia" );
-
-        item = library.newVHS();
-        item->setTitle( "Thomas the Tank Engine" );
-
-        item = library.newVHS();
-        item->setTitle( "Apollo 13" );
-
-        item = library.newVHS();
-        item->setTitle( "Total Recall" );
-
-        vector<Item *> availableItems;
-
-        int itemCount = library.getAvailableItems( availableItems );
-        
-        CPPUNIT_ASSERT_EQUAL(itemCount, 8);
-
-        for (int i = 0; i < availableItems.size( ); i++) 
+        for (size_t i = 0; i < availableItems.size(); i++) 
         {
-            Item *item = availableItems[ i ];
+            Item item = availableItems[i];
             
             if (typeid(item) == typeid(VHS))
             {
-                CPPUNIT_ASSERT_EQUAL(item->getRentalCharge(), 2);
+                CPPUNIT_ASSERT_EQUAL(2, item.getRentalCharge());
             }
             else if (typeid(item) == typeid(DVD))
             {
-                CPPUNIT_ASSERT_EQUAL(item->getRentalCharge(), 3);
+                CPPUNIT_ASSERT_EQUAL(3, item.getRentalCharge());
             }
         }
 
         // Rent two items from the library
-        availableItems[ 2 ]->setRented( true );
-        availableItems[ 3 ]->setRented( true );
-        vector<Item *> nowAvailable;
-        library.getAvailableItems( nowAvailable );
+        library[2].setRented(true);
+        library[3].setRented(true);
+        vector<Item> nowAvailable;
+        library.getAvailableItems(nowAvailable);
 
-        CPPUNIT_ASSERT_EQUAL(nowAvailable.size(), size_t(6));
+        CPPUNIT_ASSERT_EQUAL(size_t(6), nowAvailable.size());
     }
 }

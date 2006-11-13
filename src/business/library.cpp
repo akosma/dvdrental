@@ -9,44 +9,54 @@
 #include "vhs.h"
 
 Library::Library( )
+: _items (vector<Item>())
 {
-
 }
 
 Library::~Library( )
 {
-
 }
 
-int Library::getAvailableItems( vector<Item *> &availableItems ) const
+const int Library::getAvailableItems(vector<Item>& availableItems) const
 {
-    for ( vector<Item>::size_type i = 0; i < _items.size(); i++ ) {
-        Item *item = _items[ i ];
+    for ( vector<Item>::size_type i = 0; i < _items.size(); i++ )
+    {
+        Item item = _items[i];
 
-        if ( ! item->isRented( ) ) {
-            availableItems.push_back( item );
+        if (!item.isRented())
+        {
+            availableItems.push_back(item);
         }
     }
 
     return availableItems.size();
 }
 
-Item *Library::newItem( Item *item )
+Item& Library::operator[](const int id)
 {
-    item->setId( _items.size( ) );
-
-    _items.push_back( item );
-
-    return item;
+    return _items[id];
 }
 
-Item *Library::newDVD( )
+Item& Library::getItem(const int id)
 {
-    return newItem( new( DVD ) );
+    return _items[id];
 }
 
-Item *Library::newVHS( )
+void Library::addNewItem(Item& item)
 {
-    return newItem( new( VHS ) );
+    item.setId(_items.size());
+    _items.push_back(item);
+}
+
+void Library::addNewDVD(const std::string& title)
+{
+    DVD dvd(title);
+    addNewItem(dvd);
+}
+
+void Library::addNewVHS(const std::string& title)
+{
+    VHS vhs(title);
+    addNewItem(vhs);
 }
 
