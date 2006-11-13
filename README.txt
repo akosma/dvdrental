@@ -2,6 +2,7 @@ Welcome to the dvdrental project!
 
 This is the folder structure of the project:
 
+/bin:     Latest ready-to-use binaries for different platforms.
 /deploy:  Deployment scripts for different platforms.
 /doc:     Documentation of any kind, in the form of UML diagrams, CHM or PDF files.
 /ext:     External tools used in the project (libraries, scripts, etc).
