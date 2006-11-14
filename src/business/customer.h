@@ -26,7 +26,7 @@ public:
     string getFirstName( ) const;
     string getAddress( ) const;
     string getPhone( ) const;
-	virtual string getClassName( ); 
+	virtual const string getClassName( ) const;
 
     void setId( int id );
     void setLastName( const string &lastName );

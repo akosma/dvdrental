@@ -72,6 +72,11 @@ const int Item::getLateFee() const
     return 0;
 }
 
+const string Item::getClassName() const
+{
+    return "Item";
+}
+
 const bool Item::isRented() const
 {
     return _rented;

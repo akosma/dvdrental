@@ -19,7 +19,7 @@ public:
     int  getCustomerId( ) const;
     Date getRentalDate( ) const;
     Date getDueDate( ) const;
-	virtual string getClassName( ); 
+	virtual const string getClassName( ) const;
     
     void setCustomerId( int customerId );
     void setRentalDate( const Date &rentalDate );

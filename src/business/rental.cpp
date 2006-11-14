@@ -46,7 +46,7 @@ void Rental::setDueDate( const Date &dueDate )
     _dueDate = dueDate;
 }
 
-string Rental::getClassName( )
+const string Rental::getClassName( ) const
 {
 	return "rental.txt";
 }

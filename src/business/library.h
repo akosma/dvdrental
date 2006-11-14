@@ -26,7 +26,7 @@ public:
     //! getAvailableItems fills the passed in vector with items that are available for rental
     const int getAvailableItems(vector<Item>&) const;
     
-	virtual string getClassName( ); 
+	virtual const string getClassName( ) const;
 
 	void addNewDVD(const std::string&);
     void addNewVHS(const std::string&);

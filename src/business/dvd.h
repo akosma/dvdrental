@@ -19,7 +19,7 @@ public:
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
-	virtual string getClassName( ); 
+	const virtual string getClassName( ) const; 
 };
 
 #endif

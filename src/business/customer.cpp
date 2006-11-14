@@ -32,7 +32,7 @@ string Customer::getFirstName( ) const
     return _firstName;
 }
 
-string Customer::getClassName( )
+const string Customer::getClassName( ) const
 {
 	return "customer.txt";
 }

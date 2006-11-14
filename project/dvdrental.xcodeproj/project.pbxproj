@@ -54,6 +54,7 @@
 		3A1B95D80B07AC0600D5CEA1 /* vhs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vhs.h; path = ../src/business/vhs.h; sourceTree = SOURCE_ROOT; };
 		3A70AE8A0B078C8E005F2325 /* DVDRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVDRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_mac-2.6.a"; path = "/usr/local/lib/libwx_mac-2.6.a"; sourceTree = "<absolute>"; };
+		3A88B6BB0B0A6F3F004D2849 /* baseclass.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = baseclass.h; path = ../src/business/baseclass.h; sourceTree = SOURCE_ROOT; };
 		3A8AB9630B07C97C00D95203 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/test/main.cpp; sourceTree = SOURCE_ROOT; };
 		3A8AB96D0B07C9B000D95203 /* library.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = library.cpp; path = ../src/business/library.cpp; sourceTree = SOURCE_ROOT; };
 		3A8AB96E0B07C9B000D95203 /* library.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = library.h; path = ../src/business/library.h; sourceTree = SOURCE_ROOT; };
@@ -93,6 +94,7 @@
 		3A1B95CC0B07ABF800D5CEA1 /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				3A88B6BB0B0A6F3F004D2849 /* baseclass.h */,
 				3A8AB96D0B07C9B000D95203 /* library.cpp */,
 				3A8AB96E0B07C9B000D95203 /* library.h */,
 				3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */,

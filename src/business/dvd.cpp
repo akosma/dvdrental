@@ -30,7 +30,7 @@ const int DVD::getLateFee( ) const
     return 2;
 }
 
-string DVD::getClassName( )
+const string DVD::getClassName( ) const
 {
 	return "dvd.txt";
 }

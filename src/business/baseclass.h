@@ -15,7 +15,7 @@ using namespace std;
 class BaseClass
 {
 public:
-	virtual std::string getClassName( ) = 0; 
+	virtual const std::string getClassName() const = 0; 
 };
 
 #endif
