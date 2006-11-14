@@ -1,0 +1,1091 @@
+object frmNewForm: TfrmNewForm
+  Left = 8
+  Top = 8
+  AutoScroll = False
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'DVD Rental'
+  ClientHeight = 473
+  ClientWidth = 592
+  Color = clAppWorkSpace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = True
+  PopupMenu = MainForm.DesignerPopup
+  Visible = True
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnKeyDown = FormKeyDown
+  OnResize = FormResize
+  EVT_CLOSE = 'OnClose'
+  Wx_ICON.Data = {07544269746D617000000000}
+  Wx_Name = 'Main'
+  Wx_IDName = 'ID_DIALOG1'
+  Wx_IDValue = 1000
+  Wx_Class = 'wxFrame'
+  Wx_Center = True
+  Wx_Hidden = False
+  Wx_SizeToContents = True
+  Wx_GeneralStyle = []
+  Wx_DialogStyle = [wxCAPTION, wxSYSTEM_MENU, wxDIALOG_NO_PARENT, wxMINIMIZE_BOX, wxCLOSE_BOX]
+  Wx_DesignerType = dtWxFrame
+  Wx_Border = 0
+  Wx_BorderAlignment = []
+  PixelsPerInch = 96
+  TextHeight = 13
+  object statusBar: TWxStatusBar
+    Left = 0
+    Top = 454
+    Width = 592
+    Height = 19
+    Panels = <>
+    SimplePanel = False
+    Wx_Class = 'wxStatusBar'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_IDName = 'ID_STATUSBAR'
+    Wx_IDValue = 1004
+    Wx_StatusbarStyleSet = []
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_Enabled = True
+    Wx_Border = 0
+  end
+  object mainPanel: TWxPanel
+    Left = 0
+    Top = 0
+    Width = 592
+    Height = 454
+    Align = alClient
+    TabOrder = 1
+    Wx_BKColor = clBlack
+    Wx_Class = 'wxPanel'
+    Wx_ControlOrientation = wxControlVertical
+    Wx_Default = False
+    Wx_EventList.Strings = (
+      'EVT_UPDATE_UI:OnUpdateUI')
+    Wx_FGColor = clBlack
+    Wx_GeneralStyle = []
+    Wx_Hidden = False
+    Wx_IDName = 'ID_MAINPANEL'
+    Wx_IDValue = 1005
+    object notebook: TWxNotebook
+      Left = 8
+      Top = 7
+      Width = 574
+      Height = 439
+      ActivePage = rentalsNotebookPage
+      TabIndex = 0
+      TabOrder = 0
+      Wx_Class = 'wxNotebook'
+      Wx_ControlOrientation = wxControlVertical
+      Wx_EventList.Strings = (
+        'EVT_UPDATE_UI:OnUpdateUI'
+        'EVT_NOTEBOOK_PAGE_CHANGED:OnPageChanged'
+        'EVT_NOTEBOOK_PAGE_CHANGING:OnPageChanging')
+      Wx_IDName = 'ID_NOTEBOOK'
+      Wx_IDValue = 1002
+      Wx_Hidden = False
+      Wx_NoteBookStyle = []
+      Wx_GeneralStyle = []
+      object rentalsNotebookPage: TWxNoteBookPage
+        Caption = 'Rentals'
+        Wx_BKColor = clBlack
+        Wx_Class = 'wxPanel'
+        Wx_ControlOrientation = wxControlVertical
+        Wx_Default = False
+        Wx_EventList.Strings = (
+          'EVT_UPDATE_UI:OnUpdateUI')
+        Wx_FGColor = clBlack
+        Wx_GeneralStyle = []
+        Wx_Hidden = False
+        Wx_IDName = 'ID_RENTALSNOTEBOOKPAGE'
+        Wx_IDValue = 1006
+        object rentalsList: TWxListCtrl
+          Left = 5
+          Top = 8
+          Width = 168
+          Height = 395
+          Columns = <>
+          TabOrder = 0
+          ViewStyle = vsReport
+          EVT_LIST_ITEM_SELECTED = 'rentalsListSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxListCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_IDName = 'ID_RENTALSLIST'
+          Wx_IDValue = 1066
+          Wx_ListviewStyle = []
+          Wx_ListviewView = wxLC_REPORT
+        end
+        object rentalReview: TWxStaticText
+          Left = 188
+          Top = 9
+          Width = 370
+          Height = 300
+          TabOrder = 1
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_RENTALREVIEW'
+          Wx_IDValue = 1068
+          Wx_LabelStyle = []
+        end
+        object returnRentalButton: TWxButton
+          Left = 478
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Returned'
+          TabOrder = 2
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = True
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_RETURNRENTALBUTTON'
+          Wx_IDValue = 1069
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+        object lateRentalsButton: TWxButton
+          Left = 298
+          Top = 379
+          Width = 165
+          Height = 25
+          Caption = 'See Late Rentals'
+          TabOrder = 3
+          EVT_BUTTON = 'lateRentalsButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_LATERENTALSBUTTON'
+          Wx_IDValue = 1075
+          Wx_Height = 25
+          Wx_Width = 165
+        end
+      end
+      object newRentalNotebookPage: TWxNoteBookPage
+        Caption = 'Create New Rental'
+        Wx_BKColor = clBlack
+        Wx_Class = 'wxPanel'
+        Wx_ControlOrientation = wxControlVertical
+        Wx_Default = False
+        Wx_EventList.Strings = (
+          'EVT_UPDATE_UI:OnUpdateUI')
+        Wx_FGColor = clBlack
+        Wx_GeneralStyle = []
+        Wx_Hidden = False
+        Wx_IDName = 'ID_NEWRENTALNOTEBOOKPAGE'
+        Wx_IDValue = 1055
+        object selectCustomerLabel: TWxStaticText
+          Left = 8
+          Top = 9
+          Width = 102
+          Height = 17
+          Caption = '1) Select a Customer'
+          TabOrder = 0
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_SELECTCUSTOMERLABEL'
+          Wx_IDValue = 1056
+          Wx_LabelStyle = []
+        end
+        object newRentalCustomerList: TWxListCtrl
+          Left = 8
+          Top = 29
+          Width = 160
+          Height = 370
+          Columns = <>
+          TabOrder = 1
+          ViewStyle = vsReport
+          EVT_LIST_ITEM_SELECTED = 'newRentalCustomerListSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxListCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_IDName = 'ID_NEWRENTALCUSTOMERLIST'
+          Wx_IDValue = 1057
+          Wx_ListviewStyle = []
+          Wx_ListviewView = wxLC_REPORT
+        end
+        object selectItemLabel: TWxStaticText
+          Left = 198
+          Top = 9
+          Width = 133
+          Height = 17
+          Caption = '2) Select one or more Items'
+          TabOrder = 2
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_SELECTITEMLABEL'
+          Wx_IDValue = 1058
+          Wx_LabelStyle = []
+        end
+        object newRentalItemList: TWxListCtrl
+          Left = 198
+          Top = 29
+          Width = 160
+          Height = 370
+          Columns = <>
+          TabOrder = 3
+          ViewStyle = vsReport
+          EVT_LIST_ITEM_SELECTED = 'newRentalItemListSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxListCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_IDName = 'ID_NEWRENTALITEMLIST'
+          Wx_IDValue = 1059
+          Wx_ListviewStyle = []
+          Wx_ListviewView = wxLC_REPORT
+        end
+        object createRentalButton: TWxButton
+          Left = 388
+          Top = 349
+          Width = 165
+          Height = 25
+          Caption = 'Create Rental'
+          TabOrder = 4
+          EVT_BUTTON = 'createRentalButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = True
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_CREATERENTALBUTTON'
+          Wx_IDValue = 1060
+          Wx_Height = 25
+          Wx_Width = 165
+        end
+        object reviewCreateLabel: TWxStaticText
+          Left = 388
+          Top = 9
+          Width = 107
+          Height = 17
+          Caption = '3) Review and Create'
+          TabOrder = 5
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_REVIEWCREATELABEL'
+          Wx_IDValue = 1061
+          Wx_LabelStyle = []
+        end
+        object rentalSummary: TWxStaticText
+          Left = 388
+          Top = 29
+          Width = 160
+          Height = 310
+          TabOrder = 6
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_RENTALSUMMARY'
+          Wx_IDValue = 1062
+          Wx_LabelStyle = []
+        end
+        object cancelNewRental: TWxButton
+          Left = 388
+          Top = 379
+          Width = 165
+          Height = 25
+          Caption = 'Cancel'
+          TabOrder = 7
+          EVT_BUTTON = 'cancelNewRentalClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_CANCELNEWRENTAL'
+          Wx_IDValue = 1070
+          Wx_Height = 25
+          Wx_Width = 165
+        end
+      end
+      object customersNotebookPage: TWxNoteBookPage
+        Caption = 'Customers'
+        Wx_BKColor = clBlack
+        Wx_Class = 'wxPanel'
+        Wx_ControlOrientation = wxControlVertical
+        Wx_Default = False
+        Wx_EventList.Strings = (
+          'EVT_UPDATE_UI:OnUpdateUI')
+        Wx_FGColor = clBlack
+        Wx_GeneralStyle = []
+        Wx_Hidden = False
+        Wx_IDName = 'ID_CUSTOMERSNOTEBOOKPAGE'
+        Wx_IDValue = 1003
+        object customersList: TWxListCtrl
+          Left = 5
+          Top = 8
+          Width = 168
+          Height = 395
+          Columns = <>
+          TabOrder = 0
+          ViewStyle = vsReport
+          EVT_LIST_ITEM_SELECTED = 'customersListSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxListCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_IDName = 'ID_CUSTOMERSLIST'
+          Wx_IDValue = 1007
+          Wx_ListviewStyle = []
+          Wx_ListviewView = wxLC_REPORT
+        end
+        object firstNameLabel: TWxStaticText
+          Left = 198
+          Top = 21
+          Width = 54
+          Height = 17
+          Caption = 'First Name'
+          TabOrder = 1
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_FIRSTNAMELABEL'
+          Wx_IDValue = 1040
+          Wx_LabelStyle = []
+        end
+        object lastNameLabel: TWxStaticText
+          Left = 198
+          Top = 59
+          Width = 55
+          Height = 17
+          Caption = 'Last Name'
+          TabOrder = 2
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_LASTNAMELABEL'
+          Wx_IDValue = 1041
+          Wx_LabelStyle = []
+        end
+        object firstNameField: TWxEdit
+          Left = 298
+          Top = 19
+          Width = 231
+          Height = 21
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Modified = False
+          TabOrder = 3
+          EVT_TEXT_ENTER = 'firstNameFieldEnter'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_FIRSTNAMEFIELD'
+          Wx_IDValue = 1042
+          Wx_MaxLength = 0
+        end
+        object lastNameField: TWxEdit
+          Left = 298
+          Top = 57
+          Width = 231
+          Height = 21
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Modified = False
+          TabOrder = 4
+          EVT_TEXT_ENTER = 'lastNameFieldEnter'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_LASTNAMEFIELD'
+          Wx_IDValue = 1043
+          Wx_MaxLength = 0
+        end
+        object saveCustomerButton: TWxButton
+          Left = 388
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Save'
+          TabOrder = 5
+          EVT_BUTTON = 'saveCustomerButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = True
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_SAVECUSTOMERBUTTON'
+          Wx_IDValue = 1044
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+        object cancelCustomerEdition: TWxButton
+          Left = 478
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Cancel'
+          TabOrder = 6
+          EVT_BUTTON = 'cancelCustomerEditionClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_CANCELCUSTOMEREDITION'
+          Wx_IDValue = 1045
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+        object phoneNumberLabel: TWxStaticText
+          Left = 198
+          Top = 99
+          Width = 75
+          Height = 17
+          Caption = 'Phone Number'
+          TabOrder = 7
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_PHONENUMBERLABEL'
+          Wx_IDValue = 1046
+          Wx_LabelStyle = []
+        end
+        object phoneNumberField: TWxEdit
+          Left = 298
+          Top = 97
+          Width = 231
+          Height = 21
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Modified = False
+          TabOrder = 8
+          EVT_TEXT_ENTER = 'phoneNumberFieldEnter'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_PHONENUMBERFIELD'
+          Wx_IDValue = 1047
+          Wx_MaxLength = 0
+        end
+        object editCustomerButton: TWxButton
+          Left = 298
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Edit'
+          TabOrder = 9
+          EVT_BUTTON = 'editCustomerButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_EDITCUSTOMERBUTTON'
+          Wx_IDValue = 1073
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+      end
+      object itemsNotebookPage: TWxNoteBookPage
+        Caption = 'Items'
+        Wx_BKColor = clBlack
+        Wx_Class = 'wxPanel'
+        Wx_ControlOrientation = wxControlVertical
+        Wx_Default = False
+        Wx_EventList.Strings = (
+          'EVT_UPDATE_UI:OnUpdateUI')
+        Wx_FGColor = clBlack
+        Wx_GeneralStyle = []
+        Wx_Hidden = False
+        Wx_IDName = 'ID_ITEMSNOTEBOOKPAGE'
+        Wx_IDValue = 1005
+        object itemsList: TWxListCtrl
+          Left = 5
+          Top = 8
+          Width = 168
+          Height = 395
+          Columns = <>
+          TabOrder = 0
+          ViewStyle = vsReport
+          EVT_LIST_ITEM_SELECTED = 'itemsListSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxListCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_IDName = 'ID_ITEMSLIST'
+          Wx_IDValue = 1020
+          Wx_ListviewStyle = []
+          Wx_ListviewView = wxLC_REPORT
+        end
+        object itemTitleLabel: TWxStaticText
+          Left = 198
+          Top = 21
+          Width = 24
+          Height = 17
+          Caption = 'Title'
+          TabOrder = 1
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_ITEMTITLELABEL'
+          Wx_IDValue = 1048
+          Wx_LabelStyle = []
+        end
+        object itemTitleField: TWxEdit
+          Left = 298
+          Top = 19
+          Width = 231
+          Height = 21
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Modified = False
+          TabOrder = 2
+          EVT_TEXT_ENTER = 'itemTitleFieldEnter'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxTextCtrl'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_EditStyle = []
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_ITEMTITLEFIELD'
+          Wx_IDValue = 1049
+          Wx_MaxLength = 0
+        end
+        object itemKindLabel: TWxStaticText
+          Left = 198
+          Top = 59
+          Width = 25
+          Height = 17
+          Caption = 'Kind'
+          TabOrder = 3
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_KINDLABEL'
+          Wx_IDValue = 1050
+          Wx_LabelStyle = []
+        end
+        object itemKindChoice: TWxChoice
+          Left = 298
+          Top = 57
+          Width = 115
+          Height = 21
+          ItemHeight = 13
+          TabOrder = 4
+          Text = 'itemKindChoice'
+          Items.Strings = (
+            '(none)'
+            'VHS'
+            'DVD')
+          EVT_CHOICE = 'itemKindChoiceSelected'
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxChoice'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_ITEMKINDCHOICE'
+          Wx_IDValue = 1051
+        end
+        object itemCancelButton: TWxButton
+          Left = 478
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Cancel'
+          TabOrder = 5
+          EVT_BUTTON = 'itemCancelButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_ITEMCANCELBUTTON'
+          Wx_IDValue = 1052
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+        object itemSaveButton: TWxButton
+          Left = 388
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Save'
+          TabOrder = 6
+          EVT_BUTTON = 'itemSaveButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = True
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_ITEMSAVEBUTTON'
+          Wx_IDValue = 1053
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+        object availabilityLabel: TWxStaticText
+          Left = 198
+          Top = 99
+          Width = 53
+          Height = 17
+          Caption = 'Availability'
+          TabOrder = 7
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_AVAILABILITYLABEL'
+          Wx_IDValue = 1071
+          Wx_LabelStyle = []
+        end
+        object availableLabel: TWxStaticText
+          Left = 298
+          Top = 99
+          Width = 116
+          Height = 17
+          Caption = 'Available'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGreen
+          Font.Height = -11
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 8
+          Wx_BGColor = clBlack
+          Wx_Class = 'wxStaticText'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_AVAILABLELABEL'
+          Wx_IDValue = 1072
+          Wx_LabelStyle = []
+          InvisibleFGColorString = 'CUS:0,128,0'
+        end
+        object editItemButton: TWxButton
+          Left = 298
+          Top = 379
+          Width = 75
+          Height = 25
+          Caption = 'Edit'
+          TabOrder = 9
+          EVT_BUTTON = 'editItemButtonClick'
+          Wx_BKColor = clBlack
+          Wx_ButtonStyle = []
+          Wx_Class = 'wxButton'
+          Wx_ControlOrientation = wxControlVertical
+          Wx_Default = False
+          Wx_EventList.Strings = (
+            'EVT_BUTTON:OnClick'
+            'EVT_UPDATE_UI:OnUpdateUI')
+          Wx_FGColor = clBlack
+          Wx_GeneralStyle = []
+          Wx_Hidden = False
+          Wx_IDName = 'ID_EDITITEMBUTTON'
+          Wx_IDValue = 1074
+          Wx_Height = 25
+          Wx_Width = 75
+        end
+      end
+    end
+  end
+  object menuBar: TWxMenuBar
+    Left = 294
+    Top = 0
+    Width = 28
+    Height = 27
+    TabOrder = 2
+    Glyph.Data = {
+      36090000424D3609000000000000360000002800000018000000180000000100
+      2000000000000009000000000000000000000000000000000000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000808080000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF0080000000800000008000000080000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000808080008000000080000000800000008000000080000000800000008000
+      0000800000008000000000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF008000000080000000800000008000000080000000FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF0080000000800000008000000080000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF008000000080000000800000008000000080000000FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      800080808000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0000000000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080008080
+      8000808080008080800080808000808080008080800080808000808080008080
+      8000808080008080800080808000000000000000000000000000000000000000
+      0000000000008080800000808000008080000080800000808000008080008080
+      8000FFFFFF008000000080000000800000008000000080000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF008080800000808000008080000080800000808000008080008080
+      8000FFFFFF0080000000FFFFFF00FFFFFF00FFFFFF0080000000FFFFFF008000
+      00008000000080000000FFFFFF00FFFFFF00800000008000000080000000FFFF
+      FF00FFFFFF008080800000000000008080000080800000808000008080008080
+      8000FFFFFF008000000080000000800000008000000080000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF0080808000008080000080800000808000008080008080
+      8000808080008080800080808000808080008080800080808000808080008080
+      8000808080008080800080808000808080008080800080808000808080008080
+      8000808080008080800080808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000008080000080
+      8000008080000080800000808000008080000080800000808000}
+    Wx_Class = 'wxMenuBar'
+    Wx_MenuItems.IsSubMenu = False
+    Wx_MenuItems.Wx_Enabled = True
+    Wx_MenuItems.Wx_Hidden = False
+    Wx_MenuItems.Wx_IDValue = 0
+    Wx_MenuItems.Wx_MenuItemStyle = wxMnuItm_Normal
+    Wx_MenuItems.Wx_Checked = False
+    Wx_MenuItems.Wx_FileHistory = False
+    Wx_MenuItems.WxCustomMenuItem = {
+      11000000545778437573746F6D4D656E754974656D5450463018547778437573
+      746F6D4D656E754974656D577261707065720011436172726965642E49735375
+      624D656E750812436172726965642E57785F456E61626C656409114361727269
+      65642E57785F48696464656E0811436172726965642E57785F49444E616D6506
+      1049445F4D4E555F46494C455F3130313312436172726965642E57785F494456
+      616C756503F50318436172726965642E57785F4D656E754974656D5374796C65
+      070F77784D6E7549746D5F4E6F726D616C12436172726965642E57785F436170
+      74696F6E060446696C6512436172726965642E57785F436865636B6564081643
+      6172726965642E57585F4249544D41502E446174610A0C00000007544269746D
+      61700000000016436172726965642E57785F46696C65486973746F7279081843
+      6172726965642E5778437573746F6D4D656E754974656D0A3901000011000000
+      545778437573746F6D4D656E754974656D5450463018547778437573746F6D4D
+      656E754974656D577261707065720011436172726965642E49735375624D656E
+      750812436172726965642E57785F456E61626C65640911436172726965642E57
+      785F48696464656E0811436172726965642E57785F49444E616D650609777849
+      445F4558495412436172726965642E57785F494456616C756503FA0318436172
+      726965642E57785F4D656E754974656D5374796C65070F77784D6E7549746D5F
+      4E6F726D616C12436172726965642E57785F43617074696F6E06045175697412
+      436172726965642E57785F436865636B65640816436172726965642E57585F42
+      49544D41502E446174610A0C00000007544269746D6170000000001643617272
+      6965642E57785F46696C65486973746F72790800000000110000005457784375
+      73746F6D4D656E754974656D5450463018547778437573746F6D4D656E754974
+      656D577261707065720011436172726965642E49735375624D656E7508124361
+      72726965642E57785F456E61626C65640911436172726965642E57785F486964
+      64656E0811436172726965642E57785F49444E616D65061049445F4D4E555F45
+      4449545F3130333312436172726965642E57785F494456616C75650309041843
+      6172726965642E57785F4D656E754974656D5374796C65070F77784D6E754974
+      6D5F4E6F726D616C12436172726965642E57785F43617074696F6E0604456469
+      7412436172726965642E57785F436865636B65640816436172726965642E5758
+      5F4249544D41502E446174610A0C00000007544269746D617000000000164361
+      72726965642E57785F46696C65486973746F72790818436172726965642E5778
+      437573746F6D4D656E754974656D0AAB03000011000000545778437573746F6D
+      4D656E754974656D5450463018547778437573746F6D4D656E754974656D5772
+      61707065720011436172726965642E49735375624D656E750812436172726965
+      642E57785F456E61626C65640911436172726965642E57785F48696464656E08
+      11436172726965642E57785F49444E616D650608777849445F43555412436172
+      726965642E57785F494456616C7565030A0418436172726965642E57785F4D65
+      6E754974656D5374796C65070F77784D6E7549746D5F4E6F726D616C12436172
+      726965642E57785F43617074696F6E060343757412436172726965642E57785F
+      436865636B65640816436172726965642E57585F4249544D41502E446174610A
+      0C00000007544269746D61700000000016436172726965642E57785F46696C65
+      486973746F727908000011000000545778437573746F6D4D656E754974656D54
+      50463018547778437573746F6D4D656E754974656D5772617070657200114361
+      72726965642E49735375624D656E750812436172726965642E57785F456E6162
+      6C65640911436172726965642E57785F48696464656E0811436172726965642E
+      57785F49444E616D650609777849445F434F505912436172726965642E57785F
+      494456616C7565030B0418436172726965642E57785F4D656E754974656D5374
+      796C65070F77784D6E7549746D5F4E6F726D616C12436172726965642E57785F
+      43617074696F6E0604436F707912436172726965642E57785F436865636B6564
+      0816436172726965642E57585F4249544D41502E446174610A0C000000075442
+      69746D61700000000016436172726965642E57785F46696C65486973746F7279
+      08000011000000545778437573746F6D4D656E754974656D5450463018547778
+      437573746F6D4D656E754974656D577261707065720011436172726965642E49
+      735375624D656E750812436172726965642E57785F456E61626C656409114361
+      72726965642E57785F48696464656E0811436172726965642E57785F49444E61
+      6D65060A777849445F504153544512436172726965642E57785F494456616C75
+      65030C0418436172726965642E57785F4D656E754974656D5374796C65070F77
+      784D6E7549746D5F4E6F726D616C12436172726965642E57785F43617074696F
+      6E0605506173746512436172726965642E57785F436865636B65640816436172
+      726965642E57585F4249544D41502E446174610A0C00000007544269746D6170
+      0000000016436172726965642E57785F46696C65486973746F72790800000000
+      11000000545778437573746F6D4D656E754974656D5450463018547778437573
+      746F6D4D656E754974656D577261707065720011436172726965642E49735375
+      624D656E750812436172726965642E57785F456E61626C656409114361727269
+      65642E57785F48696464656E0811436172726965642E57785F49444E616D6506
+      1449445F4D4E555F435553544F4D45525F3130313412436172726965642E5778
+      5F494456616C756503F60318436172726965642E57785F4D656E754974656D53
+      74796C65070F77784D6E7549746D5F4E6F726D616C12436172726965642E5778
+      5F43617074696F6E0608437573746F6D657212436172726965642E57785F4368
+      65636B65640816436172726965642E57585F4249544D41502E446174610A0C00
+      000007544269746D61700000000016436172726965642E57785F46696C654869
+      73746F72790818436172726965642E5778437573746F6D4D656E754974656D0A
+      F503000011000000545778437573746F6D4D656E754974656D54504630185477
+      78437573746F6D4D656E754974656D577261707065720011436172726965642E
+      49735375624D656E750812436172726965642E57785F456E61626C6564091143
+      6172726965642E57785F48696464656E0811436172726965642E57785F49444E
+      616D65061749445F4D4E555F414444435553544F4D45525F3130313912436172
+      726965642E57785F494456616C756503FB0318436172726965642E57785F4D65
+      6E754974656D5374796C65070F77784D6E7549746D5F4E6F726D616C12436172
+      726965642E57785F43617074696F6E060C41646420437573746F6D6572124361
+      72726965642E57785F436865636B65640816436172726965642E57585F424954
+      4D41502E446174610A0C00000007544269746D61700000000016436172726965
+      642E57785F46696C65486973746F727908000011000000545778437573746F6D
+      4D656E754974656D5450463018547778437573746F6D4D656E754974656D5772
+      61707065720011436172726965642E49735375624D656E750812436172726965
+      642E57785F456E61626C65640911436172726965642E57785F48696464656E08
+      11436172726965642E57785F49444E616D65061849445F4D4E555F4544495443
+      5553544F4D45525F3130323212436172726965642E57785F494456616C756503
+      FE0318436172726965642E57785F4D656E754974656D5374796C65070F77784D
+      6E7549746D5F4E6F726D616C12436172726965642E57785F43617074696F6E06
+      0D4564697420437573746F6D657212436172726965642E57785F436865636B65
+      640816436172726965642E57585F4249544D41502E446174610A0C0000000754
+      4269746D61700000000016436172726965642E57785F46696C65486973746F72
+      7908000011000000545778437573746F6D4D656E754974656D54504630185477
+      78437573746F6D4D656E754974656D577261707065720011436172726965642E
+      49735375624D656E750812436172726965642E57785F456E61626C6564091143
+      6172726965642E57785F48696464656E0811436172726965642E57785F49444E
+      616D65061A49445F4D4E555F44454C455445435553544F4D45525F3130323312
+      436172726965642E57785F494456616C756503FF0318436172726965642E5778
+      5F4D656E754974656D5374796C65070F77784D6E7549746D5F4E6F726D616C12
+      436172726965642E57785F43617074696F6E060F44656C65746520437573746F
+      6D657212436172726965642E57785F436865636B65640816436172726965642E
+      57585F4249544D41502E446174610A0C00000007544269746D61700000000016
+      436172726965642E57785F46696C65486973746F727908000000001100000054
+      5778437573746F6D4D656E754974656D5450463018547778437573746F6D4D65
+      6E754974656D577261707065720011436172726965642E49735375624D656E75
+      0812436172726965642E57785F456E61626C65640911436172726965642E5778
+      5F48696464656E0811436172726965642E57785F49444E616D65061049445F4D
+      4E555F4954454D5F3130313512436172726965642E57785F494456616C756503
+      F70318436172726965642E57785F4D656E754974656D5374796C65070F77784D
+      6E7549746D5F4E6F726D616C12436172726965642E57785F43617074696F6E06
+      044974656D12436172726965642E57785F436865636B65640816436172726965
+      642E57585F4249544D41502E446174610A0C00000007544269746D6170000000
+      0016436172726965642E57785F46696C65486973746F72790818436172726965
+      642E5778437573746F6D4D656E754974656D0ADD030000110000005457784375
+      73746F6D4D656E754974656D5450463018547778437573746F6D4D656E754974
+      656D577261707065720011436172726965642E49735375624D656E7508124361
+      72726965642E57785F456E61626C65640911436172726965642E57785F486964
+      64656E0811436172726965642E57785F49444E616D65061349445F4D4E555F41
+      44444954454D5F3130323712436172726965642E57785F494456616C75650303
+      0418436172726965642E57785F4D656E754974656D5374796C65070F77784D6E
+      7549746D5F4E6F726D616C12436172726965642E57785F43617074696F6E0608
+      416464204974656D12436172726965642E57785F436865636B65640816436172
+      726965642E57585F4249544D41502E446174610A0C00000007544269746D6170
+      0000000016436172726965642E57785F46696C65486973746F72790800001100
+      0000545778437573746F6D4D656E754974656D5450463018547778437573746F
+      6D4D656E754974656D577261707065720011436172726965642E49735375624D
+      656E750812436172726965642E57785F456E61626C6564091143617272696564
+      2E57785F48696464656E0811436172726965642E57785F49444E616D65061449
+      445F4D4E555F454449544954454D5F3130323812436172726965642E57785F49
+      4456616C756503040418436172726965642E57785F4D656E754974656D537479
+      6C65070F77784D6E7549746D5F4E6F726D616C12436172726965642E57785F43
+      617074696F6E060945646974204974656D12436172726965642E57785F436865
+      636B65640816436172726965642E57585F4249544D41502E446174610A0C0000
+      0007544269746D61700000000016436172726965642E57785F46696C65486973
+      746F727908000011000000545778437573746F6D4D656E754974656D54504630
+      18547778437573746F6D4D656E754974656D5772617070657200114361727269
+      65642E49735375624D656E750812436172726965642E57785F456E61626C6564
+      0911436172726965642E57785F48696464656E0811436172726965642E57785F
+      49444E616D65061649445F4D4E555F44454C4554454954454D5F313033301243
+      6172726965642E57785F494456616C756503060418436172726965642E57785F
+      4D656E754974656D5374796C65070F77784D6E7549746D5F4E6F726D616C1243
+      6172726965642E57785F43617074696F6E060B44656C657465204974656D1243
+      6172726965642E57785F436865636B65640816436172726965642E57585F4249
+      544D41502E446174610A0C00000007544269746D617000000000164361727269
+      65642E57785F46696C65486973746F7279080000000011000000545778437573
+      746F6D4D656E754974656D5450463018547778437573746F6D4D656E75497465
+      6D577261707065720011436172726965642E49735375624D656E750812436172
+      726965642E57785F456E61626C65640911436172726965642E57785F48696464
+      656E0811436172726965642E57785F49444E616D65061249445F4D4E555F5245
+      4E54414C5F3130313612436172726965642E57785F494456616C756503F80318
+      436172726965642E57785F4D656E754974656D5374796C65070F77784D6E7549
+      746D5F4E6F726D616C12436172726965642E57785F43617074696F6E06065265
+      6E74616C12436172726965642E57785F436865636B6564081643617272696564
+      2E57585F4249544D41502E446174610A0C00000007544269746D617000000000
+      16436172726965642E57785F46696C65486973746F7279081843617272696564
+      2E5778437573746F6D4D656E754974656D0AA702000011000000545778437573
+      746F6D4D656E754974656D5450463018547778437573746F6D4D656E75497465
+      6D577261707065720011436172726965642E49735375624D656E750812436172
+      726965642E57785F456E61626C65640911436172726965642E57785F48696464
+      656E0811436172726965642E57785F49444E616D65061849445F4D4E555F4352
+      4541544552454E54414C5F3130323512436172726965642E57785F494456616C
+      756503010418436172726965642E57785F4D656E754974656D5374796C65070F
+      77784D6E7549746D5F4E6F726D616C12436172726965642E57785F4361707469
+      6F6E060D4372656174652052656E74616C12436172726965642E57785F436865
+      636B65640816436172726965642E57585F4249544D41502E446174610A0C0000
+      0007544269746D61700000000016436172726965642E57785F46696C65486973
+      746F727908000011000000545778437573746F6D4D656E754974656D54504630
+      18547778437573746F6D4D656E754974656D5772617070657200114361727269
+      65642E49735375624D656E750812436172726965642E57785F456E61626C6564
+      0911436172726965642E57785F48696464656E0811436172726965642E57785F
+      49444E616D65061A49445F4D4E555F5345454C41544552454E54414C535F3130
+      323612436172726965642E57785F494456616C75650302041843617272696564
+      2E57785F4D656E754974656D5374796C65070F77784D6E7549746D5F4E6F726D
+      616C12436172726965642E57785F43617074696F6E0610536565204C61746520
+      52656E74616C7312436172726965642E57785F436865636B6564081643617272
+      6965642E57585F4249544D41502E446174610A0C00000007544269746D617000
+      00000016436172726965642E57785F46696C65486973746F7279080000000011
+      000000545778437573746F6D4D656E754974656D545046301854777843757374
+      6F6D4D656E754974656D577261707065720011436172726965642E4973537562
+      4D656E750812436172726965642E57785F456E61626C65640911436172726965
+      642E57785F48696464656E0811436172726965642E57785F49444E616D650610
+      49445F4D4E555F48454C505F3130313712436172726965642E57785F49445661
+      6C756503F90318436172726965642E57785F4D656E754974656D5374796C6507
+      0F77784D6E7549746D5F4E6F726D616C12436172726965642E57785F43617074
+      696F6E060448656C7012436172726965642E57785F436865636B656408164361
+      72726965642E57585F4249544D41502E446174610A0C00000007544269746D61
+      700000000016436172726965642E57785F46696C65486973746F727908184361
+      72726965642E5778437573746F6D4D656E754974656D0A3E0100001100000054
+      5778437573746F6D4D656E754974656D5450463018547778437573746F6D4D65
+      6E754974656D577261707065720011436172726965642E49735375624D656E75
+      0812436172726965642E57785F456E61626C65640911436172726965642E5778
+      5F48696464656E0811436172726965642E57785F49444E616D65060A77784944
+      5F41424F555412436172726965642E57785F494456616C756503070418436172
+      726965642E57785F4D656E754974656D5374796C65070F77784D6E7549746D5F
+      4E6F726D616C12436172726965642E57785F43617074696F6E060841626F7574
+      2E2E2E12436172726965642E57785F436865636B65640816436172726965642E
+      57585F4249544D41502E446174610A0C00000007544269746D61700000000016
+      436172726965642E57785F46696C65486973746F72790800000000}
+    Wx_HasHistory = False
+  end
+end
