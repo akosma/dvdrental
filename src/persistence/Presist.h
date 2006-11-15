@@ -1,4 +1,4 @@
-/*header file for the Presist object. 
+/*header file for the Persist object. 
 This object is responsible for presisting and retrieving all the application data to and from files. 
 it references the baseClass.h */
 
@@ -18,7 +18,7 @@ class Persist
     Persist(BaseClass);                // gets the BaseClass without a file open mode.  
     Persist(BaseClass, Mode);          // gets the BaseClass and the mode of operation to be done with it. 
     ~Persist(void);                    // destructor ensures the file has been closed. 
-    BaseClass load(string className);  // public member function to load class. 
+    vector load(string className);     // public member function to load class. 
 	bool save (BaseClass);             // public member function to save class. 
 
   private:
