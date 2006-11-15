@@ -15,10 +15,13 @@ public:
     VHS(const std::string&);
     virtual ~VHS();
 
+    //! Overridden accessors that return values for VHS recordings
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
-	virtual const string getClassName( ) const; 
+
+    //! Clas name used for persistence
+	virtual const string getClassName( ) const;
 };
 
 #endif
