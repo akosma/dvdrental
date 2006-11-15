@@ -315,12 +315,12 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A88B7130B0A70BB004D2849</string>
+										<string>3A2270A60B0B89BB004B3FDE</string>
 										<key>history</key>
 										<array>
 											<string>3A88B7060B0A707B004D2849</string>
 											<string>3A88B7070B0A707B004D2849</string>
-											<string>3A88B7100B0A70AB004D2849</string>
+											<string>3A2270A30B0B89B9004B3FDE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -425,11 +425,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A88B7030B0A707B004D2849</string>
+				<string>3A2270980B0B898B004B3FDE</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>3A88B7040B0A707B004D2849</string>
+				<string>3A2270990B0B898B004B3FDE</string>
 				<string>3AEB35600B078ADF00618480</string>
-				<string>3A88B7050B0A707B004D2849</string>
+				<string>3A22709A0B0B898B004B3FDE</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -491,7 +491,11 @@
 								<string>3AEB35530B078AD600618480</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
-							<array/>
+							<array>
+								<array>
+									<integer>0</integer>
+								</array>
+							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
 							<string>{{0, 0}, {305, 825}}</string>
 						</dict>
@@ -536,12 +540,12 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A88B7140B0A70BB004D2849</string>
+										<string>3A2270A70B0B89BB004B3FDE</string>
 										<key>history</key>
 										<array>
 											<string>3A88B7060B0A707B004D2849</string>
 											<string>3A88B7070B0A707B004D2849</string>
-											<string>3A88B7080B0A707B004D2849</string>
+											<string>3A2270A20B0B89B0004B3FDE</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -587,7 +591,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {970, 534}}</string>
+										<string>{{10, 27}, {0, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -667,14 +671,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A88B70C0B0A707B004D2849</string>
+				<string>3A22709C0B0B898B004B3FDE</string>
 				<string>1CA23EE50692099D00951B8B</string>
-				<string>3A88B70D0B0A707B004D2849</string>
+				<string>3A22709D0B0B898B004B3FDE</string>
 				<string>3AE326C10B078DC8000D25EA</string>
-				<string>3A88B70E0B0A707B004D2849</string>
+				<string>3A22709E0B0B898B004B3FDE</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 				<string>1CA23EE80692099D00951B8B</string>
-				<string>3A88B70F0B0A707B004D2849</string>
+				<string>3A22709F0B0B898B004B3FDE</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildAndRun</string>

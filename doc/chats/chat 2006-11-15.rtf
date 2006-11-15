@@ -1,0 +1,472 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf410
+{\fonttbl\f0\fswiss\fcharset77 Arial-BoldMT;\f1\fswiss\fcharset77 ArialMT;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11700\viewh17140\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs28 \cf0 Adrian Kosmaczewski
+\f1\b0  has joined the chat.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:09:56 PM]: Here you are :)\
+
+\f0\b Keith Miller
+\f1\b0 : Hello adrian\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:09:59 PM]: sorry guys\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Aha! there he is!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:10:06 PM]: my connection was dropped :(\
+
+\f0\b Ahmed Madkour
+\f1\b0 : no worries.\
+
+\f0\b Ahmed Madkour
+\f1\b0 : How are you?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:10:19 PM]: fine fine! and you?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : fine...thanks!\
+
+\f0\b Keith Miller
+\f1\b0 : Tired...\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:10:34 PM]: guess so :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : hehehehe\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:10:56 PM]: anyway, how are you doing in the project these days? have you been able to see the app?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:11:00 PM]: or compile it?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:11:12 PM]: I haven't...but plan to do so tomorrow. \
+
+\f0\b Keith Miller
+\f1\b0 [3:11:26 PM]: Not yet - have been finishing assignment. Once that is done I'll be back on the project.\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:11:46 PM]: The last couple of days I have been on quite a steep learning curve. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:12:02 PM]: I got SVN working...and understood the concepts. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:12:10 PM]: yeah, for me too! this mix of templates + streams + strange compiler messages is killing me!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:12:13 PM]: cool\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:12:16 PM]: and I feel that i'm getting more comfortable with C++ in general. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:12:32 PM]: i was also on the assignment btw\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:12:43 PM]: I know...I didn't think compilers would differ! but i'm discovering outherwise\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:12:56 PM]: absolutely\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:11 PM]: how do you feel for the last week of the project? we're fine in track I think\
+
+\f0\b Ahmed Madkour
+\f1\b0 : I think so..\
+
+\f0\b Keith Miller
+\f1\b0 : I'm sure we are\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:16:31 PM]: I think we're creating quite a nice product. \
+
+\f0\b Keith Miller
+\f1\b0 : Indeed\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:16:47 PM]: I agree with your posting about this becoming a real Open source project :o)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : it's quite nice!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:16:57 PM]: hehe\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Have you seen my .h file?\
+
+\f0\b Keith Miller
+\f1\b0 [3:17:42 PM]: ...rushes off to tortoise and does an update...\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:17:48 PM]: yes, just a comment, if you don't mind, you've written "Presistence" inside, it's "Persistence"   :)   but other than that, it seems fines\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:17:53 PM]: time for an update!\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:18:46 PM]: indeed...I changed from presistence to persistance (which is the correct spelling) when I was formating the code according to the agreed standard. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : I'll change that. \
+
+\f0\b Keith Miller
+\f1\b0 : Looks OK to me.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:31 PM]: ah ok, haven't seen that sorry then  :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:19:36 PM]: i'm not very clear though about the mechanics of how I will extract the data from the objects. Can we go through that one more time...possibly on sunday?\
+
+\f0\b Keith Miller
+\f1\b0 [3:19:44 PM]: Should we be passing objects to functions as references? I'm not to sure on this myself\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:19:50 PM]: sure, my idea so far is the following:\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:20:33 PM]: for the UI we need basically vector<Customer> and the Library, which is a wrapper around a vector<Item>\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:21:37 PM]: so the idea would be to ask to Ahmed's persistence class to give back such vectors, with the info inside the files; and on the other side, to save those vectors into files whenever needed. that's all we need\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:21:58 PM]: we load the files upon program start, and save them whenever we add or remove something from the vector\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:16 PM]: yes, it's always better to use references, they act just like pointers\
+
+\f0\b Keith Miller
+\f1\b0 : OK\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:24 PM]: and you're sure they're not null\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:28 PM]: that's a good thing\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:22:46 PM]: what do you think?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:30 PM]: the GUI is pretty simple, and wxWidgets works like Visual Basic; each button has an Click event handler, which is a method on the form, and inside that method you put the code\
+
+\f0\b Keith Miller
+\f1\b0 [3:23:41 PM]: Sounds OK. We have the base classes done (but I need to write a few CppUnit tests). Ahmed is doing the persistence and you are doing the UI. Sounds like we have everything covered.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:42 PM]: so now that the UI is ready, adding that code is not much hassle\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:23:51 PM]: sure we have!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:24:07 PM]: the unit tests are easy to write in CppUnit, have you seen?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:24:17 PM]: have you guys been able to compile the apps?\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:24:55 PM]: I still haven't tried...that's on my list for tomorrow though. \
+
+\f0\b Keith Miller
+\f1\b0 [3:24:56 PM]: Yes - I have to say that the Delphi version (DUnit) is easier to use but I can cope with the C++ version.\
+
+\f0\b Keith Miller
+\f1\b0 : Compiling - tomorrow for me\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:25:19 PM]: ok! this has been a busy week, the assignment was not easy\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:25:21 PM]: cool\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:25:35 PM]: ok..let me jsut backtrack for a second to make sure I understand correctly. \
+
+\f0\b Keith Miller
+\f1\b0 [3:25:58 PM]: Actually the first code I wrote 27 years ago was a transaction update like the assignment. It was in COBOL. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:25:59 PM]: the persistence class will open the file and populate a vector object, then return a reference to it?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:26:41 PM]: yes, not a reference but a full object\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok. \
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:27:06 PM]: should I sort the data in the vector in any particular order?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:30 PM]: lucky you keith! I had a hard time imaging how to do such a program NOT using a relational DB    :)))\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:35 PM]: Ahmed, no sortin\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:36 PM]: g\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:27:39 PM]: :)\
+
+\f0\b Keith Miller
+\f1\b0  has left the chat.\
+
+\f0\b Keith Miller
+\f1\b0  has joined the chat.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:28:14 PM]: Don't run! :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Was it somethign I said?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : hehehehe\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:28:25 PM]: hehehe\
+
+\f0\b Keith Miller
+\f1\b0 [3:28:42 PM]: Dont know what I pressed then but it closed my Window. I think our next project should be a better version of Embanet. It shouldn't be difficult.\
+
+\f0\b Keith Miller
+\f1\b0 [3:29:08 PM]: I was going to say that teh combo boxes in the UI can probably be set to sort the data alphabetically.\
+
+\f0\b Keith Miller
+\f1\b0 : /combo/list/\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:30:17 PM]: LOL\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:30:19 PM]: ur right\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:30:34 PM]: yes, there's something like that in wxWidgets, if I remember well\
+
+\f0\b Keith Miller
+\f1\b0 [3:30:43 PM]: How is the streaming going to handle spaces in the customer names and film titles. This gave me a bit of a problem in teh assignment\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:31:49 PM]: let's open our Deitel & Deitel book, page 866, line 57 of the code: I propose we serialize things using the reinterpret_cast thing\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:32:05 PM]: that takes care of the whole instance, in char* format\
+
+\f0\b Keith Miller
+\f1\b0 : OK - looks good\
+
+\f0\b Ahmed Madkour
+\f1\b0 : looks good to me too. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:33:38 PM]: using that it's pretty straightforward, you just serialize and deserialize the whole instance, no matter what it is\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:33:47 PM]: cool!  :)\
+
+\f0\b Keith Miller
+\f1\b0 : Makes it simpler\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:33:59 PM]: yep\
+
+\f0\b Ahmed Madkour
+\f1\b0 : yeah, it is actually. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:34:38 PM]: otherwise using the << operators, I've tried that yesterday in the assignment and become crazy (even worse because I wanted to use templates... forget it!!!)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:34:49 PM]: but this pure binary serialization is cool\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:00 PM]: loop and flush\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:02 PM]: back and forth\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:17 PM]: OK guys, anything else?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : nothing from my side. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:23 PM]: Question, doubts?\
+
+\f0\b Keith Miller
+\f1\b0 [3:35:37 PM]: Who is going to post rge .h files for this weeks project contribution.\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:35:38 PM]: I should have some code compiled by Sunday. \
+
+\f0\b Keith Miller
+\f1\b0 : /rge/the/\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:35:53 PM]: From my side I'll continue adding logic behind the shell, and updating the ZIP file with binaries for everyone to see\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:36:09 PM]: Oh! I almost forgot\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:36:14 PM]: I can do it\
+
+\f0\b Ahmed Madkour
+\f1\b0 : Great, thanks. \
+
+\f0\b Keith Miller
+\f1\b0 : Thanks.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:36:55 PM]: May I ask you to add comments to your code wherever you feel it, like methods and so on? Then I update my subversion thing and will post it\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:04 PM]: public methods at least should be commented out\
+
+\f0\b Keith Miller
+\f1\b0 : Will do.\
+
+\f0\b Ahmed Madkour
+\f1\b0 : okl\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:20 PM]: try to use doxygen stuff, like //! and /*! (with the exclamation mark)\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:27 PM]: so we can extract it later\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:35 PM]: thanks! great\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:37:44 PM]: let's finish week 7 then :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 : yep! \
+
+\f0\b Keith Miller
+\f1\b0 [3:38:06 PM]: Perhaps we should keep each other posted on progress and ask questions of each other via the group. What about our next chat?\
+
+\f0\b Ahmed Madkour
+\f1\b0 : how abou Sunday?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:38:21 PM]: I will update my subversion in one hour, ok? that should leave you with enough time for comments\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:38:35 PM]: Sunday 2100 CET, 2000 GMT sounds good to me\
+
+\f0\b Ahmed Madkour
+\f1\b0 : good to me too. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:38:51 PM]: Keith?\
+
+\f0\b Keith Miller
+\f1\b0 [3:39:24 PM]: 2000GMT it is. I won't be able to commit SVN tonight as I have my assignment to finish. But I'll do it tomorrow at this time.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:03 PM]: I understand, but it's just for a couple of comments on the methods, that's all  :)\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:40:05 PM]: Adri...I think I miss understood. The comments is that for the cpp or the .h files?\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:13 PM]: .h is more than enough\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:40:15 PM]: I understood that it's for the cpp files. \
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:26 PM]: Doxygen takes both, so no problem\
+
+\f0\b Keith Miller
+\f1\b0 [3:40:31 PM]: OK - I can comment the methods now\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:40:52 PM]: thanks! no need to write wikipedia on them, just a brief description of 2 or 3 words will do it.\
+
+\f0\b Keith Miller
+\f1\b0 : Great. Best get to it then.\
+
+\f0\b Keith Miller
+\f1\b0 : Talk to you oin Sunday.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:41:31 PM]: cool guys! then let's continue on the board and website, and then talk to you on Sunday!\
+
+\f0\b Keith Miller
+\f1\b0 : Ok. Bye\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:41:45 PM]: take care and thanks for everything!\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:41:49 PM]: Ok..i'm don't know much about doxygen though...so just for today, i'll write normal comments, and aquaint my self with doxygen and sort them out later. \
+
+\f0\b Keith Miller
+\f1\b0  has left the chat.\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:03 PM]: no problem Ahmed!\
+
+\f0\b Ahmed Madkour
+\f1\b0 : ok...\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:17 PM]: write them on the .h files, that's OK\
+
+\f0\b Ahmed Madkour
+\f1\b0 [3:42:28 PM]: i better get on with it now...since I still didn't start my assignment!! :o(\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:42 PM]: glups, yeah, hurry up!\
+
+\f0\b Ahmed Madkour
+\f1\b0 : heheheh..\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:42:47 PM]: thanks for everything! take care\
+
+\f0\b Ahmed Madkour
+\f1\b0 : alrightly then. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : talk to you sunday. \
+
+\f0\b Ahmed Madkour
+\f1\b0 : ciao!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:00 PM]: have a nice end of the week!\
+
+\f0\b Adrian Kosmaczewski
+\f1\b0 [3:43:03 PM]: see you\
+
+\f0\b Ahmed Madkour
+\f1\b0 : you too. \
+
+\f0\b Ahmed Madkour
+\f1\b0  has left the chat.\
+}
