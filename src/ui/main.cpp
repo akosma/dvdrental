@@ -23,31 +23,31 @@
 BEGIN_EVENT_TABLE(Main,wxFrame)
 	////Manual Code Start
 	////Manual Code End
-	
+
 	EVT_CLOSE(Main::OnClose)
 	EVT_BUTTON(ID_LATERENTALSBUTTON,Main::lateRentalsButtonClick)
 	EVT_BUTTON(ID_EDITITEMBUTTON,Main::editItemButtonClick)
 	EVT_BUTTON(ID_EDITCUSTOMERBUTTON,Main::editCustomerButtonClick)
 	EVT_BUTTON(ID_CANCELNEWRENTAL,Main::cancelNewRentalClick)
-	
+
 	EVT_LIST_ITEM_SELECTED(ID_RENTALSLIST,Main::rentalsListSelected)
 	EVT_BUTTON(ID_CREATERENTALBUTTON,Main::createRentalButtonClick)
-	
+
 	EVT_LIST_ITEM_SELECTED(ID_NEWRENTALITEMLIST,Main::newRentalItemListSelected)
-	
+
 	EVT_LIST_ITEM_SELECTED(ID_NEWRENTALCUSTOMERLIST,Main::newRentalCustomerListSelected)
 	EVT_BUTTON(ID_ITEMSAVEBUTTON,Main::itemSaveButtonClick)
 	EVT_BUTTON(ID_ITEMCANCELBUTTON,Main::itemCancelButtonClick)
 	EVT_CHOICE(ID_ITEMKINDCHOICE,Main::itemKindChoiceSelected)
 	EVT_TEXT_ENTER(ID_ITEMTITLEFIELD,Main::itemTitleFieldEnter)
-	
+
 	EVT_LIST_ITEM_SELECTED(ID_ITEMSLIST,Main::itemsListSelected)
 	EVT_TEXT_ENTER(ID_PHONENUMBERFIELD,Main::phoneNumberFieldEnter)
 	EVT_BUTTON(ID_CANCELCUSTOMEREDITION,Main::cancelCustomerEditionClick)
 	EVT_BUTTON(ID_SAVECUSTOMERBUTTON,Main::saveCustomerButtonClick)
 	EVT_TEXT_ENTER(ID_LASTNAMEFIELD,Main::lastNameFieldEnter)
 	EVT_TEXT_ENTER(ID_FIRSTNAMEFIELD,Main::firstNameFieldEnter)
-	
+
 	EVT_LIST_ITEM_SELECTED(ID_CUSTOMERSLIST,Main::customersListSelected)
 END_EVENT_TABLE()
 ////Event Table End
@@ -128,30 +128,30 @@ void Main::CreateGUIControls()
 	wxMenu *ID_MNU_FILE_1013_Mnu_Obj = new wxMenu(0);
 	ID_MNU_FILE_1013_Mnu_Obj->Append(wxID_EXIT, wxT("Quit"), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_FILE_1013_Mnu_Obj, wxT("File"));
-	
+
 	wxMenu *ID_MNU_EDIT_1033_Mnu_Obj = new wxMenu(0);
 	ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_CUT, wxT("Cut"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_COPY, wxT("Copy"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_PASTE, wxT("Paste"), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_EDIT_1033_Mnu_Obj, wxT("Edit"));
-	
+
 	wxMenu *ID_MNU_CUSTOMER_1014_Mnu_Obj = new wxMenu(0);
 	ID_MNU_CUSTOMER_1014_Mnu_Obj->Append(ID_MNU_ADDCUSTOMER_1019, wxT("Add Customer"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_CUSTOMER_1014_Mnu_Obj->Append(ID_MNU_EDITCUSTOMER_1022, wxT("Edit Customer"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_CUSTOMER_1014_Mnu_Obj->Append(ID_MNU_DELETECUSTOMER_1023, wxT("Delete Customer"), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_CUSTOMER_1014_Mnu_Obj, wxT("Customer"));
-	
+
 	wxMenu *ID_MNU_ITEM_1015_Mnu_Obj = new wxMenu(0);
 	ID_MNU_ITEM_1015_Mnu_Obj->Append(ID_MNU_ADDITEM_1027, wxT("Add Item"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_ITEM_1015_Mnu_Obj->Append(ID_MNU_EDITITEM_1028, wxT("Edit Item"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_ITEM_1015_Mnu_Obj->Append(ID_MNU_DELETEITEM_1030, wxT("Delete Item"), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_ITEM_1015_Mnu_Obj, wxT("Item"));
-	
+
 	wxMenu *ID_MNU_RENTAL_1016_Mnu_Obj = new wxMenu(0);
 	ID_MNU_RENTAL_1016_Mnu_Obj->Append(ID_MNU_CREATERENTAL_1025, wxT("Create Rental"), wxT(""), wxITEM_NORMAL);
 	ID_MNU_RENTAL_1016_Mnu_Obj->Append(ID_MNU_SEELATERENTALS_1026, wxT("See Late Rentals"), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_RENTAL_1016_Mnu_Obj, wxT("Rental"));
-	
+
 	wxMenu *ID_MNU_HELP_1017_Mnu_Obj = new wxMenu(0);
 	ID_MNU_HELP_1017_Mnu_Obj->Append(wxID_ABOUT, wxT("About..."), wxT(""), wxITEM_NORMAL);
 	menuBar->Append(ID_MNU_HELP_1017_Mnu_Obj, wxT("Help"));
@@ -194,9 +194,9 @@ void Main::CreateGUIControls()
 	SetStatusBar(statusBar);
 	SetTitle(wxT("DVD Rental"));
 	SetIcon(wxNullIcon);
-	SetSize(8,8,600,500);
+	SetSize(8,8,600,515);
 	Center();
-	
+
 	////GUI Items Creation End
 }
 
