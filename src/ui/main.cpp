@@ -64,25 +64,53 @@ Main::~Main()
 
 void Main::CreateGUIControls()
 {
-	//Do not add custom code here
-	//wxDev-C++ designer will remove them.
-	//Add the custom code before or after the blocks
-	////GUI Items Creation Start
+	mainSizer = new wxBoxSizer(wxHORIZONTAL);
+	this->SetSizer(mainSizer);
+	this->SetAutoLayout(true);
 
 	statusBar = new wxStatusBar(this, ID_STATUSBAR);
 
 	mainPanel = new wxPanel(this, ID_MAINPANEL, wxPoint(0,0), wxSize(592,454));
+	mainSizer->Add(mainPanel, 1, wxEXPAND | wxALL, 0);
+
+    notebookSizer = new wxBoxSizer(wxHORIZONTAL);
+    mainPanel->SetSizer(notebookSizer);
+	mainPanel->SetAutoLayout(true);
 
 	notebook = new wxNotebook(mainPanel, ID_NOTEBOOK, wxPoint(8,7),wxSize(574,439));
+    notebookSizer->Add(notebook, 1, wxEXPAND | wxALL, 5);
 
+    rentalsPageSizer = new wxBoxSizer(wxHORIZONTAL);
 	rentalsNotebookPage = new wxPanel(notebook, ID_RENTALSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
 	notebook->AddPage(rentalsNotebookPage, wxT("Rentals"));
+    rentalsNotebookPage->SetSizer(rentalsPageSizer);
+    rentalsNotebookPage->SetAutoLayout(true);
 
-	newRentalNotebookPage = new wxPanel(notebook, ID_NEWRENTALNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
+    // New Rentals Tab
+
+    newRentalNotebookPage = new wxPanel(notebook, ID_NEWRENTALNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
 	notebook->AddPage(newRentalNotebookPage, wxT("Create New Rental"));
 
-	customersNotebookPage = new wxPanel(notebook, ID_CUSTOMERSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
+	rentalsList = new wxListCtrl(rentalsNotebookPage, ID_RENTALSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
+    rentalsPageSizer->Add(rentalsList, 1, wxEXPAND | wxALL, 5);
+    innerNewRentalPageSizer = new wxBoxSizer(wxVERTICAL);
+    rentalsPageSizer->Add(innerNewRentalPageSizer, 1, wxEXPAND | wxALL, 5);
+
+	rentalReview = new wxStaticText(rentalsNotebookPage, ID_RENTALREVIEW, wxT(""), wxPoint(188,9), wxDefaultSize, 0, wxT("rentalReview"));
+    innerNewRentalPageSizer->Add(rentalReview, 1, wxEXPAND | wxALL, 5);
+
+    buttonsNewRentalPageSizer = new wxBoxSizer(wxHORIZONTAL);
+    innerNewRentalPageSizer->Add(buttonsNewRentalPageSizer, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	returnRentalButton = new wxButton(rentalsNotebookPage, ID_RETURNRENTALBUTTON, wxT("Returned"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("returnRentalButton"));
+    buttonsNewRentalPageSizer->Add(returnRentalButton, 0, wxALIGN_RIGHT | wxALL, 5);
+
+	lateRentalsButton = new wxButton(rentalsNotebookPage, ID_LATERENTALSBUTTON, wxT("See Late Rentals"), wxPoint(298,379), wxSize(165,25), 0, wxDefaultValidator, wxT("lateRentalsButton"));
+    buttonsNewRentalPageSizer->Add(lateRentalsButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    
+    customersNotebookPage = new wxPanel(notebook, ID_CUSTOMERSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
 	notebook->AddPage(customersNotebookPage, wxT("Customers"));
+
 
 	customersList = new wxListCtrl(customersNotebookPage, ID_CUSTOMERSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
 
@@ -171,12 +199,6 @@ void Main::CreateGUIControls()
 
 	rentalSummary = new wxStaticText(newRentalNotebookPage, ID_RENTALSUMMARY, wxT(""), wxPoint(388,29), wxDefaultSize, 0, wxT("rentalSummary"));
 
-	rentalsList = new wxListCtrl(rentalsNotebookPage, ID_RENTALSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
-
-	rentalReview = new wxStaticText(rentalsNotebookPage, ID_RENTALREVIEW, wxT(""), wxPoint(188,9), wxDefaultSize, 0, wxT("rentalReview"));
-
-	returnRentalButton = new wxButton(rentalsNotebookPage, ID_RETURNRENTALBUTTON, wxT("Returned"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("returnRentalButton"));
-
 	cancelNewRental = new wxButton(newRentalNotebookPage, ID_CANCELNEWRENTAL, wxT("Cancel"), wxPoint(388,379), wxSize(165,25), 0, wxDefaultValidator, wxT("cancelNewRental"));
 
 	availabilityLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABILITYLABEL, wxT("Availability"), wxPoint(198,99), wxDefaultSize, 0, wxT("availabilityLabel"));
@@ -189,15 +211,14 @@ void Main::CreateGUIControls()
 
 	editItemButton = new wxButton(itemsNotebookPage, ID_EDITITEMBUTTON, wxT("Edit"), wxPoint(298,379), wxSize(75,25), 0, wxDefaultValidator, wxT("editItemButton"));
 
-	lateRentalsButton = new wxButton(rentalsNotebookPage, ID_LATERENTALSBUTTON, wxT("See Late Rentals"), wxPoint(298,379), wxSize(165,25), 0, wxDefaultValidator, wxT("lateRentalsButton"));
-
 	SetStatusBar(statusBar);
 	SetTitle(wxT("DVD Rental"));
 	SetIcon(wxNullIcon);
 	SetSize(8,8,600,515);
 	Center();
 
-	////GUI Items Creation End
+	GetSizer()->Fit(this);
+	GetSizer()->SetSizeHints(this);
 }
 
 void Main::OnClose(wxCloseEvent& event)

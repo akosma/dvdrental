@@ -37,7 +37,7 @@
 
 ////Dialog Style Start
 #undef Main_STYLE
-#define Main_STYLE wxCAPTION | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxCLOSE_BOX
+#define Main_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
 ////Dialog Style End
 
 class Main : public wxFrame
@@ -69,9 +69,14 @@ class Main : public wxFrame
 		void lateRentalsButtonClick(wxCommandEvent& event);
 		
 	private:
-		//Do not add custom control declarations
-		//wxDev-C++ will remove them. Add custom code after the block.
-		////GUI Control Declaration Start
+		wxBoxSizer *mainSizer;
+		wxBoxSizer *notebookSizer;
+        wxBoxSizer *customersPageSizer;
+        wxBoxSizer *itemsPageSizer;
+        wxBoxSizer *rentalsPageSizer;
+        wxBoxSizer *newRentalPageSizer;
+        wxBoxSizer *innerNewRentalPageSizer;
+        wxBoxSizer *buttonsNewRentalPageSizer;
 		wxButton *lateRentalsButton;
 		wxButton *editItemButton;
 		wxButton *editCustomerButton;
@@ -112,7 +117,6 @@ class Main : public wxFrame
 		wxNotebook *notebook;
 		wxPanel *mainPanel;
 		wxStatusBar *statusBar;
-		////GUI Control Declaration End
 		
 	private:
 		//Note: if you receive any error with these enum IDs, then you need to
