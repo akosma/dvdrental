@@ -328,14 +328,14 @@ object frmNewForm: TfrmNewForm
           Wx_IDValue = 1062
           Wx_LabelStyle = []
         end
-        object cancelNewRental: TWxButton
+        object cancelNewRentalButton: TWxButton
           Left = 388
           Top = 379
           Width = 165
           Height = 25
           Caption = 'Cancel'
           TabOrder = 7
-          EVT_BUTTON = 'cancelNewRentalClick'
+          EVT_BUTTON = 'cancelNewRentalButtonClick'
           Wx_BKColor = clBlack
           Wx_ButtonStyle = []
           Wx_Class = 'wxButton'
@@ -347,7 +347,7 @@ object frmNewForm: TfrmNewForm
           Wx_FGColor = clBlack
           Wx_GeneralStyle = []
           Wx_Hidden = False
-          Wx_IDName = 'ID_CANCELNEWRENTAL'
+          Wx_IDName = 'ID_CANCELNEWRENTALBUTTON'
           Wx_IDValue = 1070
           Wx_Height = 25
           Wx_Width = 165
