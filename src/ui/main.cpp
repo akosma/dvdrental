@@ -174,30 +174,46 @@ void Main::CreateGUIControls()
 
     // Items Tab
 
+    itemsPageSizer = new wxBoxSizer(wxHORIZONTAL);
     itemsNotebookPage = new wxPanel(notebook, ID_ITEMSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
     notebook->AddPage(itemsNotebookPage, wxT("Items"));
+    itemsNotebookPage->SetSizer(itemsPageSizer);
+    itemsNotebookPage->SetAutoLayout(true);
 
     itemsList = new wxListCtrl(itemsNotebookPage, ID_ITEMSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
+    itemsPageSizer->Add(itemsList, 1, wxEXPAND | wxALL, 5);
+    innerItemsPageSizer = new wxBoxSizer(wxVERTICAL);
+    itemsPageSizer->Add(innerItemsPageSizer, 1, wxEXPAND | wxALL, 5);
 
     itemTitleLabel = new wxStaticText(itemsNotebookPage, ID_ITEMTITLELABEL, wxT("Title"), wxPoint(198,21), wxDefaultSize, 0, wxT("itemTitleLabel"));
-    itemKindLabel = new wxStaticText(itemsNotebookPage, ID_KINDLABEL, wxT("Kind"), wxPoint(198,59), wxDefaultSize, 0, wxT("itemKindLabel"));
-    availabilityLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABILITYLABEL, wxT("Availability"), wxPoint(198,99), wxDefaultSize, 0, wxT("availabilityLabel"));
-
+    innerItemsPageSizer->Add(itemTitleLabel, 0, wxALIGN_LEFT | wxALL, 5);
     itemTitleField = new wxTextCtrl(itemsNotebookPage, ID_ITEMTITLEFIELD, wxT(""), wxPoint(298,19), wxSize(231,21), 0, wxDefaultValidator, wxT("itemTitleField"));
+    innerItemsPageSizer->Add(itemTitleField, 0, wxALIGN_RIGHT | wxALL, 5);
+
+    itemKindLabel = new wxStaticText(itemsNotebookPage, ID_KINDLABEL, wxT("Kind"), wxPoint(198,59), wxDefaultSize, 0, wxT("itemKindLabel"));
+    innerItemsPageSizer->Add(itemKindLabel, 0, wxALIGN_LEFT | wxALL, 5);
 
     wxArrayString arrayStringFor_itemKindChoice;
     arrayStringFor_itemKindChoice.Add(wxT("VHS"));
     arrayStringFor_itemKindChoice.Add(wxT("DVD"));
     itemKindChoice = new wxChoice(itemsNotebookPage, ID_ITEMKINDCHOICE, wxPoint(298,57), wxSize(115,21), arrayStringFor_itemKindChoice, 0, wxDefaultValidator, wxT("itemKindChoice"));
     itemKindChoice->SetSelection(-1);
+    innerItemsPageSizer->Add(itemKindChoice, 0, wxALIGN_RIGHT | wxALL, 5);
+
+    availabilityLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABILITYLABEL, wxT("Availability"), wxPoint(198,99), wxDefaultSize, 0, wxT("availabilityLabel"));
+    innerItemsPageSizer->Add(availabilityLabel, 0, wxALIGN_LEFT | wxALL, 5);
 
     availableLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABLELABEL, wxT("Available"), wxPoint(298,99), wxDefaultSize, 0, wxT("availableLabel"));
     availableLabel->SetForegroundColour(wxColour(0,128,0));
     availableLabel->SetFont(wxFont(14, wxSWISS, wxNORMAL,wxBOLD, FALSE));
+    innerItemsPageSizer->Add(availableLabel, 0, wxALIGN_RIGHT | wxALL, 5);
 
     itemCancelButton = new wxButton(itemsNotebookPage, ID_ITEMCANCELBUTTON, wxT("Cancel"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemCancelButton"));
+    innerItemsPageSizer->Add(itemCancelButton, 0, wxALIGN_RIGHT | wxALL, 5);
     itemSaveButton = new wxButton(itemsNotebookPage, ID_ITEMSAVEBUTTON, wxT("Save"), wxPoint(388,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemSaveButton"));
+    innerItemsPageSizer->Add(itemSaveButton, 0, wxALIGN_RIGHT | wxALL, 5);
     editItemButton = new wxButton(itemsNotebookPage, ID_EDITITEMBUTTON, wxT("Edit"), wxPoint(298,379), wxSize(75,25), 0, wxDefaultValidator, wxT("editItemButton"));
+    innerItemsPageSizer->Add(editItemButton, 0, wxALIGN_RIGHT | wxALL, 5);
 
     // Create New Rental Tab
 

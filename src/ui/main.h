@@ -81,6 +81,7 @@ class Main : public wxFrame
         wxBoxSizer *newRentalPageSizer;
         wxBoxSizer *innerNewRentalPageSizer;
         wxBoxSizer *buttonsNewRentalPageSizer;
+        wxBoxSizer *innerItemsPageSizer;
 
         wxButton *lateRentalsButton;
         wxButton *editItemButton;
