@@ -23,6 +23,9 @@
 		3A1B95DD0B07AC0600D5CEA1 /* rental.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D50B07AC0600D5CEA1 /* rental.cpp */; };
 		3A1B95DE0B07AC0600D5CEA1 /* vhs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */; };
 		3A70AE950B078D22005F2325 /* libwx_mac-2.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */; };
+		3A7D67EE0B0E95B10044FD67 /* icon.xpm in Resources */ = {isa = PBXBuildFile; fileRef = 3A7D67ED0B0E95B10044FD67 /* icon.xpm */; };
+		3A7D68420B0E98830044FD67 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A7D68410B0E98830044FD67 /* Info.plist */; };
+		3A7D68690B0E99200044FD67 /* dvdicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 3A7D68680B0E99200044FD67 /* dvdicon.icns */; };
 		3A8AB9640B07C97C00D95203 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AB9630B07C97C00D95203 /* main.cpp */; };
 		3A8AB9680B07C99300D95203 /* libstdc++.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A14EC9F0B07C629007B6212 /* libstdc++.a */; };
 		3A8AB9690B07C99300D95203 /* libcppunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A14ECA50B07C64E007B6212 /* libcppunit.a */; };
@@ -54,6 +57,9 @@
 		3A1B95D80B07AC0600D5CEA1 /* vhs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = vhs.h; path = ../src/business/vhs.h; sourceTree = SOURCE_ROOT; };
 		3A70AE8A0B078C8E005F2325 /* DVDRental.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVDRental.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A70AE940B078D22005F2325 /* libwx_mac-2.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libwx_mac-2.6.a"; path = "/usr/local/lib/libwx_mac-2.6.a"; sourceTree = "<absolute>"; };
+		3A7D67ED0B0E95B10044FD67 /* icon.xpm */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = icon.xpm; path = ../src/ui/icon.xpm; sourceTree = SOURCE_ROOT; };
+		3A7D68410B0E98830044FD67 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = ../src/ui/Info.plist; sourceTree = SOURCE_ROOT; };
+		3A7D68680B0E99200044FD67 /* dvdicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = dvdicon.icns; path = ../src/ui/dvdicon.icns; sourceTree = SOURCE_ROOT; };
 		3A88B6BB0B0A6F3F004D2849 /* baseclass.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = baseclass.h; path = ../src/business/baseclass.h; sourceTree = SOURCE_ROOT; };
 		3A8AB9630B07C97C00D95203 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/test/main.cpp; sourceTree = SOURCE_ROOT; };
 		3A8AB96D0B07C9B000D95203 /* library.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = library.cpp; path = ../src/business/library.cpp; sourceTree = SOURCE_ROOT; };
@@ -116,6 +122,9 @@
 		3A70AE7F0B078C15005F2325 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3A7D68680B0E99200044FD67 /* dvdicon.icns */,
+				3A7D68410B0E98830044FD67 /* Info.plist */,
+				3A7D67ED0B0E95B10044FD67 /* icon.xpm */,
 				3A1B95C60B07ABF600D5CEA1 /* dvdrental.cpp */,
 				3A1B95C70B07ABF600D5CEA1 /* dvdrental.h */,
 				3A1B95C80B07ABF600D5CEA1 /* main.cpp */,
@@ -212,6 +221,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7D67EE0B0E95B10044FD67 /* icon.xpm in Resources */,
+				3A7D68420B0E98830044FD67 /* Info.plist in Resources */,
+				3A7D68690B0E99200044FD67 /* dvdicon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +313,7 @@
 					"/usr/local/include/wx-2.6",
 					/usr/include,
 				);
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = ../src/ui/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -341,7 +353,7 @@
 					"/usr/local/include/wx-2.6",
 					/usr/include,
 				);
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = ../src/ui/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_CPLUSPLUSFLAGS = (

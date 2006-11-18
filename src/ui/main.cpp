@@ -8,15 +8,8 @@
 //---------------------------------------------------------------------------
 
 #include "main.h"
+#include "icon.xpm"
 
-//Do not add custom headers
-//wxDev-C++ designer will remove them
-////Header Include Start
-////Header Include End
-
-//----------------------------------------------------------------------------
-// Main
-//----------------------------------------------------------------------------
 BEGIN_EVENT_TABLE(Main,wxFrame)
     EVT_CLOSE(Main::OnClose)
 
@@ -49,6 +42,10 @@ Main::Main(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint
 {
     CreateMenuBar();
     CreateGUIControls();
+    
+    // Add an icon to this frame
+    wxIcon icon(wxICON(icon));
+    SetIcon(icon);
 }
 
 Main::~Main()
