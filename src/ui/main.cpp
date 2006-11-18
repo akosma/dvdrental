@@ -8,7 +8,6 @@
 //---------------------------------------------------------------------------
 
 #include "main.h"
-#include "icon.xpm"
 
 BEGIN_EVENT_TABLE(Main,wxFrame)
     EVT_CLOSE(Main::OnClose)
@@ -42,10 +41,10 @@ Main::Main(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint
 {
     CreateMenuBar();
     CreateGUIControls();
-    
-    // Add an icon to this frame
-    wxIcon icon(wxICON(icon));
-    SetIcon(icon);
+
+    #ifdef WIN32
+        this->SetIcon(wxIcon("IDI_ICON_APP"));
+    #endif
 }
 
 Main::~Main()

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 //
-// Name:        dvdrentalApp.rc
+// Name:        dvdrental.rc
 // Author:      ako
 // Created:     11/14/2006 12:14:42 PM
 // Description: 
@@ -9,3 +9,4 @@
 
 #include <wx/msw/wx.rc>
 
+IDI_ICON_APP               ICON                    "dvdicon.ico"
