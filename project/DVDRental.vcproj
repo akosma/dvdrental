@@ -53,7 +53,8 @@
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="&quot;C:\wxWidgets-2.6.3\include&quot;"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -108,7 +109,8 @@
 			<Tool
 				Name="VCPreLinkEventTool"/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="&quot;C:\wxWidgets-2.6.3\include&quot;"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -186,6 +188,16 @@
 			</File>
 			<File
 				RelativePath="..\src\business\vhs.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="">
+			<File
+				RelativePath="..\src\ui\dvdicon.ico">
+			</File>
+			<File
+				RelativePath="..\src\ui\dvdrental.rc">
 			</File>
 		</Filter>
 	</Files>
