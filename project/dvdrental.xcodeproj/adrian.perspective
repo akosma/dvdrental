@@ -521,10 +521,10 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3A4866770B0F3D57003A185B</string>
+										<string>3A340DC30B107BE500C90338</string>
 										<key>history</key>
 										<array>
-											<string>3A4866750B0F3D50003A185B</string>
+											<string>3A4866770B0F3D57003A185B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -568,6 +568,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {970, 226}}</string>
+										<key>RubberWindowFrame</key>
+										<string>50 136 1297 884 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -621,8 +623,6 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {970, 226}}</string>
-										<key>RubberWindowFrame</key>
-										<string>50 136 1297 884 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXRunSessionModule</string>
@@ -649,14 +649,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3A4865FB0B0F33FE003A185B</string>
+				<string>3A340DBE0B107BBC00C90338</string>
 				<string>1CA23EE50692099D00951B8B</string>
-				<string>3A4865FC0B0F33FE003A185B</string>
+				<string>3A340DBF0B107BBC00C90338</string>
 				<string>3AE326C10B078DC8000D25EA</string>
-				<string>3A4865FD0B0F33FE003A185B</string>
+				<string>3A340DC00B107BBC00C90338</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 				<string>1CA23EE80692099D00951B8B</string>
-				<string>3A4865FE0B0F33FE003A185B</string>
+				<string>3A340DC10B107BBC00C90338</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.buildAndRun</string>
@@ -825,7 +825,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3A4866590B0F35A3003A185B</string>
 		<string>/Users/adrian/Desktop/dvdrental/project/dvdrental.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

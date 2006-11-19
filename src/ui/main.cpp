@@ -43,6 +43,8 @@ Main::Main(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint
     CreateGUIControls();
 
     #ifdef WIN32
+		// The DVD icon is taken from
+		// http://www.pef.org/stopworkplaceviolence/images/dvd-icon.jpg
         this->SetIcon(wxIcon("IDI_ICON_APP"));
     #endif
 }
