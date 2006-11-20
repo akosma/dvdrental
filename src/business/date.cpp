@@ -75,6 +75,15 @@ void Date::nextDay()
     }
 }
 
+// Add number of days to the date
+// For the DVDRental project we will only be adding 2 or 7 days to the date so we will use
+// a simple loop.
+void Date::addDays( int days )
+{
+    while ( days-- > 0 )
+        nextDay( );
+}
+
 // Return true if current year is a leap year
 // The year is a leap year if
 //   it is divisible by 4 and is not divisible by 100

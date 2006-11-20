@@ -11,12 +11,14 @@
 #include <map>
 using std::map;
 
+#include <vector>
+using std::vector;
+
 #include <string>
 using std::string;
 
-#ifndef BASECLASS_H
 #include "baseclass.h"
-#endif
+#include "item.h"
 
 class Customer : public BaseClass
 {
@@ -44,11 +46,14 @@ public:
     static const std::string FILE_NAME;
     
 private:
-    int  _id;             //! Unique ID for this customer
-    char _lastName[40];       //! Cusomer last name
-    char _firstName[40];      //! Customer first name
-    char _address[40];        //! Customer address
-    char _phone[40];          //! Customer phone
+    int    _id;             //! Unique ID for this customer
+    string _lastName;       //! Cusomer last name
+    string _firstName;      //! Customer first name
+    string _address;        //! Customer address
+    string _phone;          //! Customer phone
+
+//! List of the items in this rental
+    vector<Item *> _Items;
 };
 
 typedef std::map<int, Customer> Customers;

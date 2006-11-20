@@ -12,17 +12,18 @@ public:
     Date( );     // default constructor
     Date( int d, int m , int y );
 
-    void print();       // Print date in d/m/y format
+    void print();               // Print date in d/m/y format
 
-    void nextDay();     // Increment to nect day
+    void nextDay();             // Increment to next day
+    void addDays( int days );   // Add number of days to the date
 
 private:
-    int     month;      // Date values
+    int     month;              // Date values
     int     day;
     int     year;
 
-    bool isLeapYear();  // Returns true if a leap year
-    int  daysInMonth(); // Returns the number of days in the month
+    bool isLeapYear();          // Returns true if a leap year
+    int  daysInMonth();         // Returns the number of days in the month
 }; // end class Date
 
 #endif

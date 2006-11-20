@@ -11,9 +11,8 @@
 #include <string>
 using std::string;
 
-#ifndef BASECLASS_H
 #include "baseclass.h"
-#endif
+#include "date.h"
 
 class Item : public BaseClass
 {
@@ -27,6 +26,14 @@ public:
     //! Assignment overload
     Item& operator=(const Item&);
 
+    //! Function used to mark an item as being rented out.
+    //! CustomerId identifies the customer, and rentalDate is the
+    //! date of the rental. Returns true if rental successful.
+    bool rentItem( int customerId, Date &rentalDate );
+
+    // Return rented item
+    void returnItem( );
+
     //! Access functions - these are overriden in the DVD and VHS classes
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
@@ -35,21 +42,26 @@ public:
     //! Access functions
     const int  getId() const;
     const std::string getTitle() const;
+    int  getCustomerId( ) const;
+    Date getRentalDate( ) const;
+    Date getDueDate( ) const;
+
+    //! Used for persistence
+	virtual const string getClassName( ) const;
 
     //! Mutators
     void setId(const int);
     void setTitle(const std::string&);
-    void setRented(const bool);
 
     //! Returns true if recording is rented out
     const bool isRented() const;
 
 private:
-    void setString(const std::string&, char*);
-
-private:
-    int  _id;        //! Unique id for this recording
-    char _title[40];     //! Recording title
-    bool _rented;    //! true if rented out
+    int         _id;            //! Unique id for this recording
+    std::string _title;         //! Recording title
+    bool        _rented;        //! true if rented out
+    int         _customerId;    //! Links this rental to a customer
+    Date        _rentalDate;    //! Date rental was taked out
+    Date        _dueDate;       //! Date recording due to be returned
 };
 #endif
