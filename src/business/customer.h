@@ -47,10 +47,10 @@ public:
     
 private:
     int    _id;             //! Unique ID for this customer
-    string _lastName;       //! Cusomer last name
-    string _firstName;      //! Customer first name
-    string _address;        //! Customer address
-    string _phone;          //! Customer phone
+    char _lastName[40];       //! Cusomer last name
+    char _firstName[40];      //! Customer first name
+    char _address[40];        //! Customer address
+    char _phone[40];          //! Customer phone
 
 //! List of the items in this rental
     vector<Item *> _Items;

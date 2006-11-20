@@ -46,9 +46,6 @@ public:
     Date getRentalDate( ) const;
     Date getDueDate( ) const;
 
-    //! Used for persistence
-	virtual const string getClassName( ) const;
-
     //! Mutators
     void setId(const int);
     void setTitle(const std::string&);
@@ -57,11 +54,11 @@ public:
     const bool isRented() const;
 
 private:
-    int         _id;            //! Unique id for this recording
-    std::string _title;         //! Recording title
-    bool        _rented;        //! true if rented out
-    int         _customerId;    //! Links this rental to a customer
-    Date        _rentalDate;    //! Date rental was taked out
-    Date        _dueDate;       //! Date recording due to be returned
+    int  _id;            //! Unique id for this recording
+    char _title[40];         //! Recording title
+    bool _rented;        //! true if rented out
+    int  _customerId;    //! Links this rental to a customer
+    Date _rentalDate;    //! Date rental was taked out
+    Date _dueDate;       //! Date recording due to be returned
 };
 #endif
