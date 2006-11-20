@@ -110,8 +110,9 @@ LINK32_OBJS= \
 	"$(INTDIR)\main.obj" \
 	"$(INTDIR)\rental.obj" \
 	"$(INTDIR)\vhs.obj" \
+	"$(INTDIR)\dvdrental.res"
 
-"$(OUTDIR)\DVDRental.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
+"$(OUTDIR)\DVDRental.exe" : "$(OUTDIR)" $(RESOURCE) $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
   $(LINK32_FLAGS) $(LINK32_OBJS)
 <<
@@ -207,6 +208,7 @@ LINK32_OBJS= \
 	"$(INTDIR)\main.obj" \
 	"$(INTDIR)\rental.obj" \
 	"$(INTDIR)\vhs.obj" \
+	"$(INTDIR)\dvdrental.res"
 
 "$(OUTDIR)\DVDRental.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -271,6 +273,9 @@ SOURCE=..\src\business\vhs.cpp
 "$(INTDIR)\vhs.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
+
+"$(INTDIR)\dvdrental.res" :
+    rc.exe /i "C:\wxWidgets-2.6.3\include" /fo "$(INTDIR)\dvdrental.res" "..\src\ui\dvdrental.rc"
 
 !ENDIF
 
