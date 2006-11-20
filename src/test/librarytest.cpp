@@ -86,8 +86,9 @@ namespace tests
         }
 
         // Rent two items from the library
-        library[2].setRented(true);
-        library[3].setRented(true);
+        Date rentalDate;
+        library[2].rentItem( 1, rentalDate );
+        library[3].rentItem( 2, rentalDate );
         vector<Item> nowAvailable;
         library.getAvailableItems(nowAvailable);
 
