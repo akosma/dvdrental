@@ -5,16 +5,21 @@
  *  items that can be rented out.
  */
 
-#ifndef LibraryH
-#define LibraryH
+#ifndef LIBRARY_H
+#define LIBRARY_H
 
 #include <vector>
 using namespace std;
 
+#ifndef ITEM_H
 #include "item.h"
-#include "baseclass.h"
+#endif
 
-class Library
+#ifndef BASECLASS_H
+#include "baseclass.h"
+#endif
+
+class Library : public BaseClass
 {
 public:
     Library();
@@ -26,14 +31,14 @@ public:
     //! getAvailableItems fills the passed in vector with items that are available for rental
     const int getAvailableItems(vector<Item>&) const;
 
-    //! Used for persistence
-	virtual const string getClassName( ) const;
-
     //! Add a new DVD title to the library
 	void addNewDVD(const std::string&);
 
     //! Add a new VHS title to the library
     void addNewVHS(const std::string&);
+
+public:
+    static const std::string FILE_NAME;
 
 private:
     //! Helper used by addNewDVD and addNewVHS

@@ -6,6 +6,8 @@
 
 #include "rental.h"
 
+const std::string Rental::FILE_NAME = "rentals.dat";
+
 Rental::Rental( )
 {
 
@@ -44,9 +46,4 @@ void Rental::setRentalDate( const Date &rentalDate )
 void Rental::setDueDate( const Date &dueDate )
 {
     _dueDate = dueDate;
-}
-
-const string Rental::getClassName( ) const
-{
-	return "rental.txt";
 }

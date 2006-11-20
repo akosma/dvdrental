@@ -4,10 +4,12 @@
  *  Declaration for the VHS class
  */
 
-#ifndef VHSH
-#define VHSH
+#ifndef VHS_H
+#define VHS_H
 
+#ifndef ITEM_H
 #include "item.h"
+#endif
 
 class VHS : public Item
 {
@@ -19,10 +21,6 @@ public:
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
-
-    //! Clas name used for persistence
-	virtual const string getClassName( ) const;
 };
 
 #endif
-

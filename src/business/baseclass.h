@@ -5,17 +5,16 @@
  *  function getClassName that is used to specify the file name during the serialization process.
  */
 
-#ifndef BASECLASSH
-#define BASECLASSH
+#ifndef BASECLASS_H
+#define BASECLASS_H
 
 #include <string>
 using namespace std;
 
-
 class BaseClass
 {
-public:
-	virtual const std::string getClassName() const = 0; 
+protected:
+    void setStringField(const std::string&, char*);
 };
 
 #endif

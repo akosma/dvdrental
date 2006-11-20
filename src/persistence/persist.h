@@ -4,20 +4,33 @@ it references the baseClass.h */
 
 #ifndef PERSIST_H
 #define PERSIST_H
-#include "baseclass.h"
-#include "customer.h"
-#include "item.h"
-#include "rental.h"
 
+#include <map>
+using std::map;
+
+#ifndef CUSTOMER_H
+#include "../business/customer.h"
+#endif
+
+#ifndef ITEM_H
+#include "../business/item.h"
+#endif
+
+#ifndef RENTAL_H
+#include "../business/rental.h"
+#endif
 
 class Persist
-	{
-  public:
-    Persist(BaseClass *); // gets the BaseClass without a file open mode.  
-    bool load(BaseClass *); // Saves the class to the relevent file. 
+{
+public:
+    static Customers* loadCustomers();
+    static void saveCustomers(Customers&);
 
-  private:
-	BaseClass * _base; 
-  };
+private:
+    static void createDummyCustomerFile();
+
+private:
+    Persist();
+};
 
 #endif

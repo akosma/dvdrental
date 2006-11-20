@@ -5,15 +5,17 @@
  *  and VHS classes. 
  */
 
-#ifndef ItemH
-#define ItemH
+#ifndef ITEM_H
+#define ITEM_H
 
 #include <string>
 using std::string;
 
+#ifndef BASECLASS_H
 #include "baseclass.h"
+#endif
 
-class Item
+class Item : public BaseClass
 {
 public:
     //! Contructor - sets title of recording
@@ -29,11 +31,10 @@ public:
     virtual const int getRentalPeriod() const;
     virtual const int getRentalCharge() const;
     virtual const int getLateFee() const;
-	virtual const string getClassName( ) const;
 
     //! Access functions
     const int  getId() const;
-    const std::string& getTitle() const;
+    const std::string getTitle() const;
 
     //! Mutators
     void setId(const int);
@@ -44,8 +45,11 @@ public:
     const bool isRented() const;
 
 private:
-    int         _id;        //! Unique id for this recording
-    std::string _title;     //! Recording title
-    bool        _rented;    //! true if rented out
+    void setString(const std::string&, char*);
+
+private:
+    int  _id;        //! Unique id for this recording
+    char _title[40];     //! Recording title
+    bool _rented;    //! true if rented out
 };
 #endif

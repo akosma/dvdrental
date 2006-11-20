@@ -4,11 +4,16 @@
  *  Declaration for the DVD class.
  */
 
-#ifndef DVDH
-#define DVDH
+#ifndef DVD_H
+#define DVD_H
 
+#ifndef ITEM_H
 #include "item.h"
+#endif
+
+#ifndef BASECLASS_H
 #include "baseclass.h"
+#endif
 
 class DVD : public Item
 {

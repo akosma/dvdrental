@@ -5,15 +5,23 @@
  */
 
 #include "library.h"
-#include "dvd.h"
-#include "vhs.h"
 
-Library::Library( )
+#ifndef DVD_H
+#include "dvd.h"
+#endif
+
+#ifndef VHS_H
+#include "vhs.h"
+#endif
+
+const std::string Library::FILE_NAME = "library.dat";
+
+Library::Library()
 : _items (vector<Item>())
 {
 }
 
-Library::~Library( )
+Library::~Library()
 {
 }
 
@@ -58,9 +66,4 @@ void Library::addNewVHS(const std::string& title)
 {
     VHS vhs(title);
     addNewItem(vhs);
-}
-
-const string Library::getClassName( ) const
-{
-	return "library.txt";
 }

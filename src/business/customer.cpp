@@ -7,68 +7,89 @@
 
 #include "customer.h"
 
-Customer::Customer( )
-{
+const std::string Customer::FILE_NAME = "customers.dat";
 
+Customer::Customer()
+: _id        (0)
+, _firstName ()
+, _lastName  ()
+, _address   ()
+, _phone     ()
+{
 }
 
-Customer::~Customer( )
+Customer::Customer(int id)
+: _id        (id)
+, _firstName ()
+, _lastName  ()
+, _address   ()
+, _phone     ()
 {
-
 }
 
-int Customer::getId( ) const
+Customer::~Customer()
+{
+}
+
+Customer::Customer(const Customer& rhs)
+: _id (rhs._id)
+{
+    setFirstName(rhs._firstName);
+    setLastName(rhs._lastName);
+    setAddress(rhs._address);
+    setPhone(rhs._phone);
+}
+
+Customer& Customer::operator=(const Customer& rhs)
+{
+    _id = rhs._id;
+    setFirstName(rhs._firstName);
+    setLastName(rhs._lastName);
+    setAddress(rhs._address);
+    setPhone(rhs._phone);
+}
+
+int Customer::getId() const
 {
     return _id;
 }
 
-string Customer::getLastName( ) const
+const std::string Customer::getLastName() const
 {
     return _lastName;
 }
 
-string Customer::getFirstName( ) const
+const std::string Customer::getFirstName() const
 {
     return _firstName;
 }
 
-const string Customer::getClassName( ) const
-{
-	return "customer.txt";
-}
-
-string Customer::getAddress( ) const
+const std::string Customer::getAddress() const
 {
     return _address;
 }
 
-string Customer::getPhone( ) const
+const std::string Customer::getPhone() const
 {
     return _phone;
 }
 
-void Customer::setId( int id )
+void Customer::setLastName(const std::string& lastName)
 {
-    _id = id;
+    setStringField(lastName, _lastName);
 }
 
-void Customer::setLastName( const string &lastName )
+void Customer::setFirstName(const std::string& firstName)
 {
-    _lastName = lastName;
+    setStringField(firstName, _firstName);
 }
 
-void Customer::setFirstName( const string &firstName )
+void Customer::setAddress(const std::string& address)
 {
-    _firstName = firstName;
+    setStringField(address, _address);
 }
 
-void Customer::setAddress( const string &address ) 
+void Customer::setPhone(const std::string& phone)
 {
-    _address = address;
+    setStringField(phone, _phone);
 }
-
-void Customer::setPhone( const string &phone ) 
-{
-    _phone = phone;
-}
-

@@ -10,9 +10,9 @@
 
 Item::Item(const std::string& title) 
 : _id     (-1)
-, _title  (title)
 , _rented (false)
 {
+    setTitle(title);
 }
 
 Item::~Item()
@@ -21,15 +21,15 @@ Item::~Item()
 
 Item::Item(const Item& rhs)
 : _id     (rhs._id)
-, _title  (rhs._title)
 , _rented (rhs._rented)
 {
+    setTitle(rhs._title);
 }
 
 Item& Item::operator=(const Item& rhs)
 {
     _id     = rhs._id;
-    _title  = rhs._title;
+    setTitle(rhs._title);
     _rented = rhs._rented;
     return *this;
 }
@@ -39,7 +39,7 @@ const int Item::getId() const
     return _id;
 }
 
-const std::string& Item::getTitle() const
+const std::string Item::getTitle() const
 {
     return _title;
 }
@@ -51,7 +51,7 @@ void Item::setId(const int id)
 
 void Item::setTitle(const std::string& title)
 {
-    _title = title;
+    setStringField(title, _title);
 }
 
 const int Item::getRentalPeriod() const
@@ -70,11 +70,6 @@ const int Item::getLateFee() const
 {
     assert( false );
     return 0;
-}
-
-const string Item::getClassName() const
-{
-    return "Item";
 }
 
 const bool Item::isRented() const

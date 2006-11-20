@@ -2,8 +2,8 @@
 // Keith Miller
 // 19 October 2006
 
-#ifndef DateH
-#define DateH
+#ifndef DATE_H
+#define DATE_H
 
 // Class Date definition
 class Date

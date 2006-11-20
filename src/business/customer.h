@@ -5,48 +5,52 @@
  *  can hire recordings
  */
 
-#ifndef CustomerH
-#define CustomerH
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
+
+#include <map>
+using std::map;
 
 #include <string>
-#include <vector>
-using namespace std;
+using std::string;
 
-#include "rental.h"
+#ifndef BASECLASS_H
 #include "baseclass.h"
+#endif
 
 class Customer : public BaseClass
 {
 public:
-    Customer( );
-    ~Customer( );
+    Customer();
+    Customer(int id);
+    virtual ~Customer();
+    Customer(const Customer&);
+    Customer& operator=(const Customer&);
 
     //! Accessors
-    int    getId( ) const;
-    string getLastName( ) const;
-    string getFirstName( ) const;
-    string getAddress( ) const;
-    string getPhone( ) const;
-
-    //! Used for persistence
-	virtual const string getClassName( ) const;
+    int    getId() const;
+    const std::string getLastName() const;
+    const std::string getFirstName() const;
+    const std::string getAddress() const;
+    const std::string getPhone() const;
 
     //! Mutators
-    void setId( int id );
-    void setLastName( const string &lastName );
-    void setFirstName( const string &firstName );
-    void setAddress( const string &address );
-    void setPhone( const string &phone );
+    void setLastName(const std::string& lastName);
+    void setFirstName(const std::string& firstName);
+    void setAddress(const std::string& address);
+    void setPhone(const std::string& phone);
 
+public:
+    static const std::string FILE_NAME;
+    
 private:
-    int    _id;             //! Unique ID for this customer
-    string _lastName;       //! Cusomer last name
-    string _firstName;      //! Customer first name
-    string _address;        //! Customer address
-    string _phone;          //! Custoimer phone
-
-//! List of the rentals that this customer has
-    vector<Rental *> _rentals;
+    int  _id;             //! Unique ID for this customer
+    char _lastName[40];       //! Cusomer last name
+    char _firstName[40];      //! Customer first name
+    char _address[40];        //! Customer address
+    char _phone[40];          //! Customer phone
 };
+
+typedef std::map<int, Customer> Customers;
 
 #endif

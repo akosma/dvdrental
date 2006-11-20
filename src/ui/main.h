@@ -31,6 +31,10 @@
 #include <wx/panel.h>
 #include <wx/statusbr.h>
 
+#ifndef CONTROLLER_H
+#include "controller.h"
+#endif
+
 #undef Main_STYLE
 #define Main_STYLE wxCAPTION | wxRESIZE_BORDER | wxSYSTEM_MENU | wxMINIMIZE_BOX | wxMAXIMIZE_BOX | wxCLOSE_BOX
 
@@ -42,7 +46,7 @@ class Main : public wxFrame
     public:
         Main(wxWindow *parent,
              wxWindowID id = 1,
-             const wxString &title = wxT("DVD Rental"),
+             const wxString &title = wxT("DVDRental"),
              const wxPoint& pos = wxDefaultPosition,
              const wxSize& size = wxDefaultSize,
              long style = Main_STYLE);
@@ -69,9 +73,11 @@ class Main : public wxFrame
         void newRentalCustomerListSelected(wxListEvent& event);
         void newRentalItemListSelected(wxListEvent& event);
 
-        void itemKindChoiceSelected(wxCommandEvent& event );
+        void itemKindChoiceSelected(wxCommandEvent& event);
 
     private:
+        Controller controller;
+    
         wxBoxSizer *mainSizer;
         wxBoxSizer *notebookSizer;
         wxBoxSizer *customersPageSizer;
@@ -91,7 +97,7 @@ class Main : public wxFrame
         wxButton *createRentalButton;
         wxButton *itemSaveButton;
         wxButton *itemCancelButton;
-        wxButton *cancelCustomerEdition;
+        wxButton *cancelCustomerEditionButton;
         wxButton *saveCustomerButton;
 
         wxStaticText *availableLabel;
@@ -151,20 +157,18 @@ class Main : public wxFrame
             ID_SELECTITEMLABEL = 1058,
             ID_NEWRENTALCUSTOMERLIST = 1057,
             ID_SELECTCUSTOMERLABEL = 1056,
-            ID_MNU_FILE_1013 = 1013,
-            ID_MNU_EDIT_1033 = 1033,
-            ID_MNU_CUSTOMER_1014 = 1014,
-            ID_MNU_ADDCUSTOMER_1019 = 1019,
-            ID_MNU_EDITCUSTOMER_1022 = 1022,
-            ID_MNU_DELETECUSTOMER_1023 = 1023,
-            ID_MNU_ITEM_1015 = 1015,
-            ID_MNU_ADDITEM_1027 = 1027,
-            ID_MNU_EDITITEM_1028 = 1028,
-            ID_MNU_DELETEITEM_1030 = 1030,
-            ID_MNU_RENTAL_1016 = 1016,
-            ID_MNU_CREATERENTAL_1025 = 1025,
-            ID_MNU_SEELATERENTALS_1026 = 1026,
-            ID_MNU_HELP_1017 = 1017,
+            ID_MNU_FILE = 1013,
+            ID_MNU_EDIT = 1033,
+            ID_MNU_CUSTOMER = 1014,
+            ID_MNU_ADDCUSTOMER = 1019,
+            ID_MNU_DELETECUSTOMER = 1023,
+            ID_MNU_ITEM = 1015,
+            ID_MNU_ADDITEM = 1027,
+            ID_MNU_DELETEITEM = 1030,
+            ID_MNU_RENTAL = 1016,
+            ID_MNU_CREATERENTAL = 1025,
+            ID_MNU_SEELATERENTALS = 1026,
+            ID_MNU_HELP = 1017,
 
             ID_ITEMSAVEBUTTON = 1053,
             ID_ITEMCANCELBUTTON = 1052,
@@ -176,7 +180,7 @@ class Main : public wxFrame
             ID_ITEMSNOTEBOOKPAGE = 1005,
             ID_PHONENUMBERFIELD = 1047,
             ID_PHONENUMBERLABEL = 1046,
-            ID_CANCELCUSTOMEREDITION = 1045,
+            ID_CANCELCUSTOMEREDITIONBUTTON = 1045,
             ID_SAVECUSTOMERBUTTON = 1044,
             ID_LASTNAMEFIELD = 1043,
             ID_FIRSTNAMEFIELD = 1042,
