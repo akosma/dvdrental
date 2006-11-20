@@ -42,6 +42,7 @@ ALL : "$(OUTDIR)\tests.exe"
 
 
 CLEAN :
+	-@erase "$(INTDIR)\baseclass.obj"
 	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
 	-@erase "$(INTDIR)\dvd.obj"
@@ -96,6 +97,7 @@ BSC32_SBRS= \
 LINK32=link.exe
 LINK32_FLAGS=/OUT:"$(OUTDIR)/tests.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /DEBUG /PDB:"$(OUTDIR)/tests.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /MACHINE:X86 cppunit_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
+	"$(INTDIR)\baseclass.obj" \
 	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
 	"$(INTDIR)\dvd.obj" \
@@ -130,6 +132,7 @@ ALL : "$(OUTDIR)\tests.exe"
 
 
 CLEAN :
+	-@erase "$(INTDIR)\baseclass.obj"
 	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
 	-@erase "$(INTDIR)\dvd.obj"
@@ -187,6 +190,7 @@ BSC32_SBRS= \
 LINK32=link.exe
 LINK32_FLAGS=/OUT:"$(OUTDIR)/tests.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\cppunit-1.12.0\lib" /DEBUG /PDB:"$(OUTDIR)/tests.pdb" /SUBSYSTEM:CONSOLE /MACHINE:X86 cppunitd_dll.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib
 LINK32_OBJS= \
+	"$(INTDIR)\baseclass.obj" \
 	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
 	"$(INTDIR)\dvd.obj" \
@@ -210,6 +214,12 @@ LINK32_OBJS= \
 SOURCE=..\src\business\customer.cpp
 
 "$(INTDIR)\customer.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
+
+
+SOURCE=..\src\business\baseclass.cpp
+
+"$(INTDIR)\baseclass.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 

@@ -47,6 +47,7 @@ Customer& Customer::operator=(const Customer& rhs)
     setLastName(rhs._lastName);
     setAddress(rhs._address);
     setPhone(rhs._phone);
+    return *this;
 }
 
 int Customer::getId() const

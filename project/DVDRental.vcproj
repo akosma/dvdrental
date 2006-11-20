@@ -131,6 +131,12 @@
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
 			<File
+				RelativePath="..\src\business\baseclass.cpp">
+			</File>
+			<File
+				RelativePath="..\src\ui\controller.cpp">
+			</File>
+			<File
 				RelativePath="..\src\business\customer.cpp">
 			</File>
 			<File
@@ -152,6 +158,9 @@
 				RelativePath="..\src\ui\main.cpp">
 			</File>
 			<File
+				RelativePath="..\src\persistence\persist.cpp">
+			</File>
+			<File
 				RelativePath="..\src\business\rental.cpp">
 			</File>
 			<File
@@ -162,6 +171,9 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\src\ui\controller.h">
+			</File>
 			<File
 				RelativePath="..\src\business\customer.h">
 			</File>
@@ -182,6 +194,9 @@
 			</File>
 			<File
 				RelativePath="..\src\ui\main.h">
+			</File>
+			<File
+				RelativePath="..\src\persistence\persist.h">
 			</File>
 			<File
 				RelativePath="..\src\business\rental.h">
