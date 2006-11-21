@@ -9,19 +9,19 @@
 #endif
 
 #ifndef LIBRARY_H
-#include "library.h"
+#include "../business/library.h"
 #endif
 
 #ifndef ITEM_H
-#include "item.h"
+#include "../business/item.h"
 #endif
 
 #ifndef VHS_H
-#include "vhs.h"
+#include "../business/vhs.h"
 #endif
 
 #ifndef DVD_H
-#include "dvd.h"
+#include "../business/dvd.h"
 #endif
 
 Controller::Controller()

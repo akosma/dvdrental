@@ -41,6 +41,7 @@ Rental& Rental::operator=(const Rental& rhs)
     _itemId = rhs._itemId;
     _rentalDate = rhs._rentalDate;
     _dueDate = rhs._dueDate;
+    return *this;
 }
 
 Rental::~Rental( )
