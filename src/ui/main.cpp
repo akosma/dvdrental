@@ -12,28 +12,34 @@
 BEGIN_EVENT_TABLE(Main,wxFrame)
     EVT_CLOSE(Main::OnClose)
 
-    EVT_BUTTON(ID_LATERENTALSBUTTON,Main::lateRentalsButtonClick)
-    EVT_BUTTON(ID_EDITITEMBUTTON,Main::editItemButtonClick)
-    EVT_BUTTON(ID_EDITCUSTOMERBUTTON,Main::editCustomerButtonClick)
-    EVT_BUTTON(ID_CANCELNEWRENTALBUTTON,Main::cancelNewRentalButtonClick)
-    EVT_BUTTON(ID_CREATERENTALBUTTON,Main::createRentalButtonClick)
-    EVT_BUTTON(ID_ITEMSAVEBUTTON,Main::itemSaveButtonClick)
-    EVT_BUTTON(ID_ITEMCANCELBUTTON,Main::itemCancelButtonClick)
-    EVT_BUTTON(ID_CANCELCUSTOMEREDITIONBUTTON,Main::cancelCustomerEditionClick)
-    EVT_BUTTON(ID_SAVECUSTOMERBUTTON,Main::saveCustomerButtonClick)
+    EVT_BUTTON(ID_LATERENTALSBUTTON,           Main::OnLateRentalsButtonClick)
+    EVT_BUTTON(ID_EDITITEMBUTTON,              Main::OnEditItemButtonClick)
+    EVT_BUTTON(ID_EDITCUSTOMERBUTTON,          Main::OnEditCustomerButtonClick)
+    EVT_BUTTON(ID_CANCELNEWRENTALBUTTON,       Main::OnCancelNewRentalButtonClick)
+    EVT_BUTTON(ID_CREATERENTALBUTTON,          Main::OnCreateRentalButtonClick)
+    EVT_BUTTON(ID_ITEMSAVEBUTTON,              Main::OnItemSaveButtonClick)
+    EVT_BUTTON(ID_ITEMCANCELBUTTON,            Main::OnItemCancelButtonClick)
+    EVT_BUTTON(ID_CANCELCUSTOMEREDITIONBUTTON, Main::OnCancelCustomerEditionClick)
+    EVT_BUTTON(ID_SAVECUSTOMERBUTTON,          Main::OnSaveCustomerButtonClick)
 
-    EVT_CHOICE(ID_ITEMKINDCHOICE,Main::itemKindChoiceSelected)
+    EVT_CHOICE(ID_ITEMKINDCHOICE, Main::OnItemKindChoiceSelected)
 
-    EVT_TEXT_ENTER(ID_ITEMTITLEFIELD,Main::itemTitleFieldEnter)
-    EVT_TEXT_ENTER(ID_LASTNAMEFIELD,Main::lastNameFieldEnter)
-    EVT_TEXT_ENTER(ID_FIRSTNAMEFIELD,Main::firstNameFieldEnter)
-    EVT_TEXT_ENTER(ID_PHONENUMBERFIELD,Main::phoneNumberFieldEnter)
+    EVT_TEXT_ENTER(ID_ITEMTITLEFIELD,   Main::OnItemTitleFieldEnter)
+    EVT_TEXT_ENTER(ID_FIRSTNAMEFIELD,   Main::OnFirstNameFieldEnter)
+    EVT_TEXT_ENTER(ID_LASTNAMEFIELD,    Main::OnLastNameFieldEnter)
+    EVT_TEXT_ENTER(ID_PHONENUMBERFIELD, Main::OnPhoneNumberFieldEnter)
+    EVT_TEXT_ENTER(ID_ADDRESSFIELD,     Main::OnAddressFieldEnter)
 
-    EVT_LIST_ITEM_SELECTED(ID_ITEMSLIST,Main::itemsListSelected)
-    EVT_LIST_ITEM_SELECTED(ID_RENTALSLIST,Main::rentalsListSelected)
-    EVT_LIST_ITEM_SELECTED(ID_NEWRENTALITEMLIST,Main::newRentalItemListSelected)
-    EVT_LIST_ITEM_SELECTED(ID_NEWRENTALCUSTOMERLIST,Main::newRentalCustomerListSelected)
-    EVT_LIST_ITEM_SELECTED(ID_CUSTOMERSLIST,Main::customersListSelected)
+    EVT_LIST_ITEM_SELECTED(ID_ITEMSLIST,             Main::OnItemsListSelected)
+    EVT_LIST_ITEM_SELECTED(ID_RENTALSLIST,           Main::OnRentalsListSelected)
+    EVT_LIST_ITEM_SELECTED(ID_NEWRENTALITEMLIST,     Main::OnNewRentalItemListSelected)
+    EVT_LIST_ITEM_SELECTED(ID_NEWRENTALCUSTOMERLIST, Main::OnNewRentalCustomerListSelected)
+    EVT_LIST_ITEM_SELECTED(ID_CUSTOMERSLIST,         Main::OnCustomersListSelected)
+    
+    EVT_MENU(wxID_EXIT,             Main::OnMenuFileExitSelected)
+    EVT_MENU(wxID_ABOUT,            Main::OnMenuHelpAboutSelected)
+    EVT_MENU(ID_MNU_ADDCUSTOMER,    Main::OnMenuAddCustomerSelected)
+    EVT_MENU(ID_MNU_DELETECUSTOMER, Main::OnMenuDeleteCustomerSelected)
 END_EVENT_TABLE()
 
 Main::Main(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &position, const wxSize& size, long style)
@@ -42,14 +48,7 @@ Main::Main(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint
 {
     CreateMenuBar();
     CreateGUIControls();
-
-    #ifdef WIN32
-		// The DVD icon is taken from
-		// http://www.pef.org/stopworkplaceviolence/images/dvd-icon.jpg
-        this->SetIcon(wxIcon("IDI_ICON_APP"));
-    #endif
-    
-    controller.fillCustomersList(customersList);
+    LoadData();
 }
 
 Main::~Main()
@@ -59,45 +58,67 @@ Main::~Main()
 void Main::CreateMenuBar()
 {
     menuBar = new wxMenuBar();
-    wxMenu *ID_MNU_FILE_1013_Mnu_Obj = new wxMenu(0);
-    ID_MNU_FILE_1013_Mnu_Obj->Append(wxID_EXIT, wxT("Quit"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_FILE_1013_Mnu_Obj, wxT("File"));
+    wxMenu *fileMenu = new wxMenu(0);
+    fileMenu->Append(wxID_EXIT, wxT("Quit\tCtrl-Q"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(fileMenu, wxT("File"));
 
-    wxMenu *ID_MNU_EDIT_1033_Mnu_Obj = new wxMenu(0);
-    ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_CUT, wxT("Cut"), wxT(""), wxITEM_NORMAL);
-    ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_COPY, wxT("Copy"), wxT(""), wxITEM_NORMAL);
-    ID_MNU_EDIT_1033_Mnu_Obj->Append(wxID_PASTE, wxT("Paste"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_EDIT_1033_Mnu_Obj, wxT("Edit"));
+    wxMenu *editMenu = new wxMenu(0);
+    editMenu->Append(wxID_CUT, wxT("Cut\tCtrl-X"), wxT(""), wxITEM_NORMAL);
+    editMenu->Append(wxID_COPY, wxT("Copy\tCtrl-C"), wxT(""), wxITEM_NORMAL);
+    editMenu->Append(wxID_PASTE, wxT("Paste\tCtrl-V"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(editMenu, wxT("Edit"));
 
-    wxMenu *ID_MNU_CUSTOMER_1014_Mnu_Obj = new wxMenu(0);
-    ID_MNU_CUSTOMER_1014_Mnu_Obj->Append(ID_MNU_ADDCUSTOMER, wxT("Add Customer"), wxT(""), wxITEM_NORMAL);
-    ID_MNU_CUSTOMER_1014_Mnu_Obj->Append(ID_MNU_DELETECUSTOMER, wxT("Delete Customer"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_CUSTOMER_1014_Mnu_Obj, wxT("Customer"));
+    wxMenu *customerMenu = new wxMenu(0);
+    customerMenu->Append(ID_MNU_ADDCUSTOMER, wxT("Add Customer\tCtrl-A"), wxT(""), wxITEM_NORMAL);
+    customerMenu->Append(ID_MNU_DELETECUSTOMER, wxT("Delete Customer\tCtrl-D"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(customerMenu, wxT("Customer"));
 
-    wxMenu *ID_MNU_ITEM_1015_Mnu_Obj = new wxMenu(0);
-    ID_MNU_ITEM_1015_Mnu_Obj->Append(ID_MNU_ADDITEM, wxT("Add Item"), wxT(""), wxITEM_NORMAL);
-    ID_MNU_ITEM_1015_Mnu_Obj->Append(ID_MNU_DELETEITEM, wxT("Delete Item"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_ITEM_1015_Mnu_Obj, wxT("Item"));
+    wxMenu *itemMenu = new wxMenu(0);
+    itemMenu->Append(ID_MNU_ADDITEM, wxT("Add Item"), wxT(""), wxITEM_NORMAL);
+    itemMenu->Append(ID_MNU_DELETEITEM, wxT("Delete Item"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(itemMenu, wxT("Item"));
 
-    wxMenu *ID_MNU_RENTAL_1016_Mnu_Obj = new wxMenu(0);
-    ID_MNU_RENTAL_1016_Mnu_Obj->Append(ID_MNU_CREATERENTAL, wxT("Create Rental"), wxT(""), wxITEM_NORMAL);
-    ID_MNU_RENTAL_1016_Mnu_Obj->Append(ID_MNU_SEELATERENTALS, wxT("See Late Rentals"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_RENTAL_1016_Mnu_Obj, wxT("Rental"));
+    wxMenu *rentalMenu = new wxMenu(0);
+    rentalMenu->Append(ID_MNU_CREATERENTAL, wxT("Create Rental"), wxT(""), wxITEM_NORMAL);
+    rentalMenu->Append(ID_MNU_SEELATERENTALS, wxT("See Late Rentals"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(rentalMenu, wxT("Rental"));
 
-    wxMenu *ID_MNU_HELP_1017_Mnu_Obj = new wxMenu(0);
-    ID_MNU_HELP_1017_Mnu_Obj->Append(wxID_ABOUT, wxT("About..."), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(ID_MNU_HELP_1017_Mnu_Obj, wxT("Help"));
+    wxMenu *helpMenu = new wxMenu(0);
+    helpMenu->Append(wxID_ABOUT, wxT("About...\tF1"), wxT(""), wxITEM_NORMAL);
+    menuBar->Append(helpMenu, wxT("Help"));
     SetMenuBar(menuBar);
 }
 
 void Main::CreateGUIControls()
 {
-    // Global window set up
+    CreateGlobalControls();
+
+    // Create the four tab pages of the notebook
+    CreateNewRentalTab();
+    CreateRentalsTab();
+    CreateCustomersTab();
+    CreateItemsTab();
+
+    // Latest touches of style
+    SetTitle(wxT("DVDRental"));
+    SetIcon(wxNullIcon);
+#ifdef WIN32
+    // The DVD icon is taken from
+    // http://www.pef.org/stopworkplaceviolence/images/dvd-icon.jpg
+    SetIcon(wxIcon("IDI_ICON_APP"));
+#endif
+    SetSize(8,8,600,515);
+    Center();
+
+    GetSizer()->Fit(this);
+    GetSizer()->SetSizeHints(this);
+}
+
+void Main::CreateGlobalControls()
+{
     mainSizer = new wxBoxSizer(wxHORIZONTAL);
     this->SetSizer(mainSizer);
     this->SetAutoLayout(true);
-
-    statusBar = new wxStatusBar(this, ID_STATUSBAR);
 
     // This "mainPanel" is used to provide a common background to the window
     // similar to the background of a dialog box
@@ -110,49 +131,65 @@ void Main::CreateGUIControls()
 
     notebook = new wxNotebook(mainPanel, ID_NOTEBOOK, wxPoint(8,7),wxSize(574,439));
     notebookSizer->Add(notebook, 1, wxEXPAND | wxALL, 5);
+}
 
-    // Customers Tab
-
+void Main::CreateCustomersTab()
+{
     customersPageSizer = new wxBoxSizer(wxHORIZONTAL);
     customersNotebookPage = new wxPanel(notebook, ID_CUSTOMERSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
     notebook->AddPage(customersNotebookPage, wxT("Customers"));
     customersNotebookPage->SetSizer(customersPageSizer);
     customersNotebookPage->SetAutoLayout(true);
 
-    customersList = new wxListCtrl(customersNotebookPage, ID_CUSTOMERSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT + wxLC_NO_HEADER + wxLC_SINGLE_SEL);
-    customersList->InsertColumn(0, wxString("Customer names"), wxLIST_FORMAT_LEFT, 270);
+    customersList = new wxListCtrl(customersNotebookPage, ID_CUSTOMERSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT + wxLC_SINGLE_SEL);
+    customersList->InsertColumn(0, wxT("Name"), wxLIST_FORMAT_LEFT, 150);
+    customersList->InsertColumn(1, wxT("Phone"), wxLIST_FORMAT_LEFT, 150);
 
     customersPageSizer->Add(customersList, 1, wxEXPAND | wxALL, 5);
     innerCustomersPageSizer = new wxBoxSizer(wxVERTICAL);
     customersPageSizer->Add(innerCustomersPageSizer, 1, wxEXPAND | wxALL, 5);
 
+    customerFieldsSizer = new wxGridBagSizer(10, 10);
+    innerCustomersPageSizer->Add(customerFieldsSizer, 1, wxEXPAND | wxALL, 5);
+
     firstNameLabel = new wxStaticText(customersNotebookPage, ID_FIRSTNAMELABEL, wxT("First Name"), wxPoint(198,21), wxDefaultSize, 0, wxT("firstNameLabel"));
-    innerCustomersPageSizer->Add(firstNameLabel, 0, wxALIGN_LEFT | wxALL, 5);
-    firstNameField = new wxTextCtrl(customersNotebookPage, ID_FIRSTNAMEFIELD, wxT(""), wxPoint(298,19), wxSize(231,21), 0, wxDefaultValidator, wxT("firstNameField"));
-    innerCustomersPageSizer->Add(firstNameField, 0, wxALIGN_RIGHT | wxALL, 5);
+    customerFieldsSizer->Add(firstNameLabel, wxGBPosition(0, 0));
+    firstNameField = new wxTextCtrl(customersNotebookPage, ID_FIRSTNAMEFIELD, wxT(""), wxPoint(298,19), wxDefaultSize, wxTE_PROCESS_ENTER);
+    customerFieldsSizer->Add(firstNameField, wxGBPosition(0, 1), wxDefaultSpan, wxGROW);
 
     lastNameLabel = new wxStaticText(customersNotebookPage, ID_LASTNAMELABEL, wxT("Last Name"), wxPoint(198,59), wxDefaultSize, 0, wxT("lastNameLabel"));
-    innerCustomersPageSizer->Add(lastNameLabel, 0, wxALIGN_LEFT | wxALL, 5);
-    lastNameField = new wxTextCtrl(customersNotebookPage, ID_LASTNAMEFIELD, wxT(""), wxPoint(298,57), wxSize(231,21), 0, wxDefaultValidator, wxT("lastNameField"));
-    innerCustomersPageSizer->Add(lastNameField, 0, wxALIGN_RIGHT | wxALL, 5);
+    customerFieldsSizer->Add(lastNameLabel, wxGBPosition(1, 0));
+    lastNameField = new wxTextCtrl(customersNotebookPage, ID_LASTNAMEFIELD, wxT(""), wxPoint(298,57), wxDefaultSize, wxTE_PROCESS_ENTER);
+    customerFieldsSizer->Add(lastNameField, wxGBPosition(1, 1), wxDefaultSpan, wxGROW);
+
+    addressLabel = new wxStaticText(customersNotebookPage, ID_ADDRESSLABEL, wxT("Address"), wxPoint(198,99), wxDefaultSize, 0, wxT("addressLabel"));
+    customerFieldsSizer->Add(addressLabel, wxGBPosition(2, 0));
+    addressField = new wxTextCtrl(customersNotebookPage, ID_ADDRESSFIELD, wxT(""), wxPoint(298,97), wxDefaultSize, wxTE_PROCESS_ENTER);
+    customerFieldsSizer->Add(addressField, wxGBPosition(2, 1), wxDefaultSpan, wxGROW);
 
     phoneNumberLabel = new wxStaticText(customersNotebookPage, ID_PHONENUMBERLABEL, wxT("Phone Number"), wxPoint(198,99), wxDefaultSize, 0, wxT("phoneNumberLabel"));
-    innerCustomersPageSizer->Add(phoneNumberLabel, 0, wxALIGN_LEFT | wxALL, 5);
-    phoneNumberField = new wxTextCtrl(customersNotebookPage, ID_PHONENUMBERFIELD, wxT(""), wxPoint(298,97), wxSize(231,21), 0, wxDefaultValidator, wxT("phoneNumberField"));
-    innerCustomersPageSizer->Add(phoneNumberField, 0, wxALIGN_RIGHT | wxALL, 5);
+    customerFieldsSizer->Add(phoneNumberLabel, wxGBPosition(3, 0));
+    phoneNumberField = new wxTextCtrl(customersNotebookPage, ID_PHONENUMBERFIELD, wxT(""), wxPoint(298,97), wxDefaultSize, wxTE_PROCESS_ENTER);
+    customerFieldsSizer->Add(phoneNumberField, wxGBPosition(3, 1), wxDefaultSpan, wxGROW);
 
+    customerFieldsSizer->AddGrowableCol(1);
+
+    buttonsCustomerSizer = new wxBoxSizer(wxHORIZONTAL);
+    innerCustomersPageSizer->Add(buttonsCustomerSizer, 0, wxALIGN_RIGHT | wxALL, 5);
+    
     editCustomerButton = new wxButton(customersNotebookPage, ID_EDITCUSTOMERBUTTON, wxT("Edit"), wxPoint(298,379), wxSize(75,25), 0, wxDefaultValidator, wxT("editCustomerButton"));
     editCustomerButton->Disable();
-    innerCustomersPageSizer->Add(editCustomerButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    buttonsCustomerSizer->Add(editCustomerButton, 0, wxALIGN_RIGHT | wxALL, 5);
     saveCustomerButton = new wxButton(customersNotebookPage, ID_SAVECUSTOMERBUTTON, wxT("Save"), wxPoint(388,379), wxSize(75,25), 0, wxDefaultValidator, wxT("saveCustomerButton"));
     saveCustomerButton->Disable();
-    innerCustomersPageSizer->Add(saveCustomerButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    buttonsCustomerSizer->Add(saveCustomerButton, 0, wxALIGN_RIGHT | wxALL, 5);
     cancelCustomerEditionButton = new wxButton(customersNotebookPage, ID_CANCELCUSTOMEREDITIONBUTTON, wxT("Cancel"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("cancelCustomerEditionButton"));
     cancelCustomerEditionButton->Disable();
-    innerCustomersPageSizer->Add(cancelCustomerEditionButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    buttonsCustomerSizer->Add(cancelCustomerEditionButton, 0, wxALIGN_RIGHT | wxALL, 5);
+}
 
-    // Rentals Tab
-
+void Main::CreateRentalsTab()
+{
     rentalsPageSizer = new wxBoxSizer(wxHORIZONTAL);
     rentalsNotebookPage = new wxPanel(notebook, ID_RENTALSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
     notebook->AddPage(rentalsNotebookPage, wxT("Rentals"));
@@ -161,23 +198,24 @@ void Main::CreateGUIControls()
 
     rentalsList = new wxListCtrl(rentalsNotebookPage, ID_RENTALSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
     rentalsPageSizer->Add(rentalsList, 1, wxEXPAND | wxALL, 5);
-    innerNewRentalPageSizer = new wxBoxSizer(wxVERTICAL);
-    rentalsPageSizer->Add(innerNewRentalPageSizer, 1, wxEXPAND | wxALL, 5);
+    innerRentalsPageSizer = new wxBoxSizer(wxVERTICAL);
+    rentalsPageSizer->Add(innerRentalsPageSizer, 1, wxEXPAND | wxALL, 5);
 
     rentalReview = new wxStaticText(rentalsNotebookPage, ID_RENTALREVIEW, wxT(""), wxPoint(188,9), wxDefaultSize, 0, wxT("rentalReview"));
-    innerNewRentalPageSizer->Add(rentalReview, 1, wxEXPAND | wxALL, 5);
+    innerRentalsPageSizer->Add(rentalReview, 1, wxEXPAND | wxALL, 5);
 
     buttonsNewRentalPageSizer = new wxBoxSizer(wxHORIZONTAL);
-    innerNewRentalPageSizer->Add(buttonsNewRentalPageSizer, 0, wxALIGN_RIGHT | wxALL, 5);
+    innerRentalsPageSizer->Add(buttonsNewRentalPageSizer, 0, wxALIGN_RIGHT | wxALL, 5);
 
     returnRentalButton = new wxButton(rentalsNotebookPage, ID_RETURNRENTALBUTTON, wxT("Returned"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("returnRentalButton"));
     buttonsNewRentalPageSizer->Add(returnRentalButton, 0, wxALIGN_RIGHT | wxALL, 5);
 
     lateRentalsButton = new wxButton(rentalsNotebookPage, ID_LATERENTALSBUTTON, wxT("See Late Rentals"), wxPoint(298,379), wxSize(165,25), 0, wxDefaultValidator, wxT("lateRentalsButton"));
     buttonsNewRentalPageSizer->Add(lateRentalsButton, 0, wxALIGN_RIGHT | wxALL, 5);
+}
 
-    // Items Tab
-
+void Main::CreateItemsTab()
+{
     itemsPageSizer = new wxBoxSizer(wxHORIZONTAL);
     itemsNotebookPage = new wxPanel(notebook, ID_ITEMSNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
     notebook->AddPage(itemsNotebookPage, wxT("Items"));
@@ -189,62 +227,105 @@ void Main::CreateGUIControls()
     innerItemsPageSizer = new wxBoxSizer(wxVERTICAL);
     itemsPageSizer->Add(innerItemsPageSizer, 1, wxEXPAND | wxALL, 5);
 
-    itemTitleLabel = new wxStaticText(itemsNotebookPage, ID_ITEMTITLELABEL, wxT("Title"), wxPoint(198,21), wxDefaultSize, 0, wxT("itemTitleLabel"));
-    innerItemsPageSizer->Add(itemTitleLabel, 0, wxALIGN_LEFT | wxALL, 5);
+    itemFieldsSizer = new wxGridBagSizer(10, 10);
+    innerItemsPageSizer->Add(itemFieldsSizer, 1, wxEXPAND | wxALL, 5);
+
+    itemTitleLabel = new wxStaticText(itemsNotebookPage, ID_ITEMTITLELABEL, wxT("Title"), wxPoint(198,21), wxDefaultSize, wxTE_PROCESS_ENTER);
+    itemFieldsSizer->Add(itemTitleLabel, wxGBPosition(0, 0));
     itemTitleField = new wxTextCtrl(itemsNotebookPage, ID_ITEMTITLEFIELD, wxT(""), wxPoint(298,19), wxSize(231,21), 0, wxDefaultValidator, wxT("itemTitleField"));
-    innerItemsPageSizer->Add(itemTitleField, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemFieldsSizer->Add(itemTitleField, wxGBPosition(0, 1), wxDefaultSpan, wxGROW);
 
     itemKindLabel = new wxStaticText(itemsNotebookPage, ID_KINDLABEL, wxT("Kind"), wxPoint(198,59), wxDefaultSize, 0, wxT("itemKindLabel"));
-    innerItemsPageSizer->Add(itemKindLabel, 0, wxALIGN_LEFT | wxALL, 5);
+    itemFieldsSizer->Add(itemKindLabel, wxGBPosition(1, 0));
 
     wxArrayString arrayStringFor_itemKindChoice;
     arrayStringFor_itemKindChoice.Add(wxT("VHS"));
     arrayStringFor_itemKindChoice.Add(wxT("DVD"));
     itemKindChoice = new wxChoice(itemsNotebookPage, ID_ITEMKINDCHOICE, wxPoint(298,57), wxSize(115,21), arrayStringFor_itemKindChoice, 0, wxDefaultValidator, wxT("itemKindChoice"));
     itemKindChoice->SetSelection(-1);
-    innerItemsPageSizer->Add(itemKindChoice, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemFieldsSizer->Add(itemKindChoice, wxGBPosition(1, 1), wxDefaultSpan, wxGROW);
 
     availabilityLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABILITYLABEL, wxT("Availability"), wxPoint(198,99), wxDefaultSize, 0, wxT("availabilityLabel"));
-    innerItemsPageSizer->Add(availabilityLabel, 0, wxALIGN_LEFT | wxALL, 5);
+    itemFieldsSizer->Add(availabilityLabel, wxGBPosition(2, 0));
 
     availableLabel = new wxStaticText(itemsNotebookPage, ID_AVAILABLELABEL, wxT("Available"), wxPoint(298,99), wxDefaultSize, 0, wxT("availableLabel"));
     availableLabel->SetForegroundColour(wxColour(0,128,0));
     availableLabel->SetFont(wxFont(14, wxSWISS, wxNORMAL,wxBOLD, FALSE));
-    innerItemsPageSizer->Add(availableLabel, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemFieldsSizer->Add(availableLabel, wxGBPosition(2, 1), wxDefaultSpan, wxGROW);
 
-    itemCancelButton = new wxButton(itemsNotebookPage, ID_ITEMCANCELBUTTON, wxT("Cancel"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemCancelButton"));
-    innerItemsPageSizer->Add(itemCancelButton, 0, wxALIGN_RIGHT | wxALL, 5);
-    itemSaveButton = new wxButton(itemsNotebookPage, ID_ITEMSAVEBUTTON, wxT("Save"), wxPoint(388,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemSaveButton"));
-    innerItemsPageSizer->Add(itemSaveButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemFieldsSizer->AddGrowableCol(1);
+
+    buttonsItemSizer = new wxBoxSizer(wxHORIZONTAL);
+    innerItemsPageSizer->Add(buttonsItemSizer, 0, wxALIGN_RIGHT | wxALL, 5);
+
     editItemButton = new wxButton(itemsNotebookPage, ID_EDITITEMBUTTON, wxT("Edit"), wxPoint(298,379), wxSize(75,25), 0, wxDefaultValidator, wxT("editItemButton"));
-    innerItemsPageSizer->Add(editItemButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    buttonsItemSizer->Add(editItemButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemSaveButton = new wxButton(itemsNotebookPage, ID_ITEMSAVEBUTTON, wxT("Save"), wxPoint(388,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemSaveButton"));
+    buttonsItemSizer->Add(itemSaveButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    itemCancelButton = new wxButton(itemsNotebookPage, ID_ITEMCANCELBUTTON, wxT("Cancel"), wxPoint(478,379), wxSize(75,25), 0, wxDefaultValidator, wxT("itemCancelButton"));
+    buttonsItemSizer->Add(itemCancelButton, 0, wxALIGN_RIGHT | wxALL, 5);
+}
 
-    // Create New Rental Tab
-
+void Main::CreateNewRentalTab()
+{
+    newRentalPageSizer = new wxBoxSizer(wxHORIZONTAL);
     newRentalNotebookPage = new wxPanel(notebook, ID_NEWRENTALNOTEBOOKPAGE, wxPoint(4,24), wxSize(566,411));
     notebook->AddPage(newRentalNotebookPage, wxT("Create New Rental"));
+    newRentalNotebookPage->SetSizer(newRentalPageSizer);
+    newRentalNotebookPage->SetAutoLayout(true);
+
+    newRentalFieldsSizer = new wxGridBagSizer(10, 10);
+    newRentalPageSizer->Add(newRentalFieldsSizer, 1, wxEXPAND | wxALL, 5);
 
     selectCustomerLabel = new wxStaticText(newRentalNotebookPage, ID_SELECTCUSTOMERLABEL, wxT("1) Select a Customer"), wxPoint(8,9), wxDefaultSize, 0, wxT("selectCustomerLabel"));
+    newRentalFieldsSizer->Add(selectCustomerLabel, wxGBPosition(0, 0), wxDefaultSpan, wxGROW);
     selectItemLabel = new wxStaticText(newRentalNotebookPage, ID_SELECTITEMLABEL, wxT("2) Select one or more Items"), wxPoint(198,9), wxDefaultSize, 0, wxT("selectItemLabel"));
+    newRentalFieldsSizer->Add(selectItemLabel, wxGBPosition(0, 1), wxDefaultSpan, wxGROW);
     reviewCreateLabel = new wxStaticText(newRentalNotebookPage, ID_REVIEWCREATELABEL, wxT("3) Review and Create"), wxPoint(388,9), wxDefaultSize, 0, wxT("reviewCreateLabel"));
+    newRentalFieldsSizer->Add(reviewCreateLabel, wxGBPosition(0, 2), wxDefaultSpan, wxGROW);
 
-    newRentalCustomerList = new wxListCtrl(newRentalNotebookPage, ID_NEWRENTALCUSTOMERLIST, wxPoint(8,29), wxSize(160,370), wxLC_REPORT);
+    newRentalCustomerList = new wxListCtrl(newRentalNotebookPage, ID_NEWRENTALCUSTOMERLIST, wxPoint(8,29), wxSize(160,370), wxLC_REPORT + wxLC_SINGLE_SEL);
+    newRentalCustomerList->InsertColumn(0, wxT("Name"), wxLIST_FORMAT_LEFT, 150);
+    newRentalFieldsSizer->Add(newRentalCustomerList, wxGBPosition(1, 0), wxDefaultSpan, wxGROW);
     newRentalItemList = new wxListCtrl(newRentalNotebookPage, ID_NEWRENTALITEMLIST, wxPoint(198,29), wxSize(160,370), wxLC_REPORT);
+    newRentalFieldsSizer->Add(newRentalItemList, wxGBPosition(1, 1), wxDefaultSpan, wxGROW);
 
     rentalSummary = new wxStaticText(newRentalNotebookPage, ID_RENTALSUMMARY, wxT(""), wxPoint(388,29), wxDefaultSize, 0, wxT("rentalSummary"));
+    newRentalFieldsSizer->Add(rentalSummary, wxGBPosition(1, 2), wxDefaultSpan, wxGROW);
+
+    newRentalFieldsSizer->AddGrowableRow(1);
+    newRentalFieldsSizer->AddGrowableCol(0);
+    newRentalFieldsSizer->AddGrowableCol(1);
+    newRentalFieldsSizer->AddGrowableCol(2);
 
     createRentalButton = new wxButton(newRentalNotebookPage, ID_CREATERENTALBUTTON, wxT("Create Rental"), wxPoint(388,349), wxSize(165,25), 0, wxDefaultValidator, wxT("createRentalButton"));
     cancelNewRentalButton = new wxButton(newRentalNotebookPage, ID_CANCELNEWRENTALBUTTON, wxT("Cancel"), wxPoint(388,379), wxSize(165,25), 0, wxDefaultValidator, wxT("cancelNewRentalButton"));
-
-    SetStatusBar(statusBar);
-    SetTitle(wxT("DVD Rental"));
-    SetIcon(wxNullIcon);
-    SetSize(8,8,600,515);
-    Center();
-
-    GetSizer()->Fit(this);
-    GetSizer()->SetSizeHints(this);
 }
+
+void Main::LoadData()
+{
+    controller.fillCustomersList(customersList);
+    controller.fillCustomersList(newRentalCustomerList);
+}
+
+void Main::OnMenuFileExitSelected(wxCommandEvent& WXUNUSED(event))
+{
+    int answer = wxMessageBox("Are you sure?", "Exit DVDRental", wxYES_NO);
+    if (answer == wxYES)
+    {
+        Close(true);
+    }
+}
+
+void Main::OnMenuHelpAboutSelected(wxCommandEvent& WXUNUSED(event))
+{
+    wxString msg;
+    msg.Printf( _T("DVDRental Application, 2006\n\n")
+                _T("Ahmed Madkour\nKeith Miller\nAdrian Kosmaczewski"));
+
+    wxMessageBox(msg, _T("About DVDRental"), wxOK | wxICON_INFORMATION, this);
+}
+
 
 void Main::OnClose(wxCloseEvent& event)
 {
@@ -254,120 +335,101 @@ void Main::OnClose(wxCloseEvent& event)
 /*
  * firstNameFieldEnter
  */
-void Main::firstNameFieldEnter(wxCommandEvent& event)
+void Main::OnFirstNameFieldEnter(wxCommandEvent& event)
 {
-    // insert your code here
+    lastNameField->SetFocus();
 }
 
 /*
  * lastNameFieldEnter
  */
-void Main::lastNameFieldEnter(wxCommandEvent& event)
+void Main::OnLastNameFieldEnter(wxCommandEvent& event)
 {
-    // insert your code here
+    addressField->SetFocus();
 }
 
-/*
- * saveCustomerButtonClick
- */
-void Main::saveCustomerButtonClick(wxCommandEvent& event)
+void Main::OnAddressFieldEnter(wxCommandEvent& event)
 {
-    saveCustomerButton->Disable();
-    editCustomerButton->Enable();
-    cancelCustomerEditionButton->Disable();
-    firstNameField->SetEditable(false);
-    lastNameField->SetEditable(false);
-}
-
-/*
- * itemSaveButtonClick
- */
-void Main::itemSaveButtonClick(wxCommandEvent& event)
-{
-    // insert your code here
-}
-
-/*
- * itemCancelButtonClick
- */
-void Main::itemCancelButtonClick(wxCommandEvent& event)
-{
-    // insert your code here
-}
-
-/*
- * itemTitleFieldEnter
- */
-void Main::itemTitleFieldEnter(wxCommandEvent& event)
-{
-    // insert your code here
-}
-
-/*
- * itemKindChoiceSelected
- */
-void Main::itemKindChoiceSelected(wxCommandEvent& event )
-{
-    // insert your code here
+    phoneNumberField->SetFocus();    
 }
 
 /*
  * phoneNumberFieldEnter
  */
-void Main::phoneNumberFieldEnter(wxCommandEvent& event)
+void Main::OnPhoneNumberFieldEnter(wxCommandEvent& event)
 {
-    // insert your code here
+    OnSaveCustomerButtonClick(event);
+}
+
+/*
+ * saveCustomerButtonClick
+ */
+void Main::OnSaveCustomerButtonClick(wxCommandEvent& event)
+{
+    wxString first = firstNameField->GetValue();
+    wxString last = lastNameField->GetValue();
+    wxString address = addressField->GetValue();
+    wxString phone = phoneNumberField->GetValue();
+    if (first.Length() == 0 || first.Length() == 0)
+    {
+        wxMessageBox(_T("You must provide the first and the last name."), _T("Error"), wxOK | wxICON_ERROR, this);
+    }
+    else
+    {
+        controller.saveCustomer(first, last, address, phone);
+        controller.fillCustomersList(customersList);
+        saveCustomerButton->Disable();
+        editCustomerButton->Enable();
+        cancelCustomerEditionButton->Disable();
+        firstNameField->SetEditable(false);
+        lastNameField->SetEditable(false);
+        addressField->SetEditable(false);
+        phoneNumberField->SetEditable(false);
+    }
 }
 
 /*
  * cancelCustomerEditionClick
  */
-void Main::cancelCustomerEditionClick(wxCommandEvent& event)
+void Main::OnCancelCustomerEditionClick(wxCommandEvent& event)
 {
     saveCustomerButton->Disable();
     editCustomerButton->Enable();
     cancelCustomerEditionButton->Disable();
     firstNameField->SetEditable(false);
     lastNameField->SetEditable(false);
+    addressField->SetEditable(false);
+    phoneNumberField->SetEditable(false);
+    firstNameField->SetValue(controller.getCurrentCustomerFirstName());
+    lastNameField->SetValue(controller.getCurrentCustomerLastName());
+    addressField->SetValue(controller.getCurrentCustomerAddress());
+    phoneNumberField->SetValue(controller.getCurrentCustomerPhoneNumber());
 }
-
 
 /*
  * customersListSelected
  */
-void Main::customersListSelected(wxListEvent& event)
+void Main::OnCustomersListSelected(wxListEvent& event)
 {
     int customerId = (int)event.GetData();
     controller.loadCustomer(customerId);
     firstNameField->SetEditable(false);
     lastNameField->SetEditable(false);
+    addressField->SetEditable(false);
+    phoneNumberField->SetEditable(false);
     saveCustomerButton->Disable();
     editCustomerButton->Enable();
     cancelCustomerEditionButton->Disable();
     firstNameField->SetValue(controller.getCurrentCustomerFirstName());
     lastNameField->SetValue(controller.getCurrentCustomerLastName());
-}
-
-/*
- * itemsListSelected
- */
-void Main::itemsListSelected(wxListEvent& event)
-{
-    // insert your code here
-}
-
-/*
- * rentalsListSelected
- */
-void Main::rentalsListSelected(wxListEvent& event)
-{
-    // insert your code here
+    addressField->SetValue(controller.getCurrentCustomerAddress());
+    phoneNumberField->SetValue(controller.getCurrentCustomerPhoneNumber());
 }
 
 /*
  * editCustomerButtonClick
  */
-void Main::editCustomerButtonClick(wxCommandEvent& event)
+void Main::OnEditCustomerButtonClick(wxCommandEvent& event)
 {
     saveCustomerButton->Enable();
     editCustomerButton->Disable();
@@ -375,12 +437,95 @@ void Main::editCustomerButtonClick(wxCommandEvent& event)
     firstNameField->SetEditable(true);
     firstNameField->SetFocus();
     lastNameField->SetEditable(true);
+    addressField->SetEditable(true);
+    phoneNumberField->SetEditable(true);
+}
+
+void Main::OnMenuAddCustomerSelected(wxCommandEvent& event)
+{
+    notebook->SetSelection(2);
+    controller.prepareForNewCustomer();
+    saveCustomerButton->Enable();
+    editCustomerButton->Disable();
+    cancelCustomerEditionButton->Enable();
+    firstNameField->SetEditable(true);
+    firstNameField->SetFocus();
+    lastNameField->SetEditable(true);
+    addressField->SetEditable(true);
+    phoneNumberField->SetEditable(true);
+    firstNameField->SetValue("");
+    lastNameField->SetValue("");
+    addressField->SetValue("");
+    phoneNumberField->SetValue("");
+}
+
+void Main::OnMenuDeleteCustomerSelected(wxCommandEvent& event)
+{
+    notebook->SetSelection(2);
+    int answer = wxMessageBox("Are you sure?", "Delete current customer", wxYES_NO);
+    if (answer == wxYES)
+    {
+        controller.deleteCurrentCustomer();
+        controller.fillCustomersList(customersList);
+        firstNameField->SetValue("");
+        lastNameField->SetValue("");
+        addressField->SetValue("");
+        phoneNumberField->SetValue("");
+    }
+}
+
+/*
+ * itemSaveButtonClick
+ */
+void Main::OnItemSaveButtonClick(wxCommandEvent& event)
+{
+    // insert your code here
+}
+
+/*
+ * itemCancelButtonClick
+ */
+void Main::OnItemCancelButtonClick(wxCommandEvent& event)
+{
+    // insert your code here
+}
+
+/*
+ * itemTitleFieldEnter
+ */
+void Main::OnItemTitleFieldEnter(wxCommandEvent& event)
+{
+    // insert your code here
+}
+
+/*
+ * itemKindChoiceSelected
+ */
+void Main::OnItemKindChoiceSelected(wxCommandEvent& event )
+{
+    // insert your code here
+}
+
+/*
+ * itemsListSelected
+ */
+void Main::OnItemsListSelected(wxListEvent& event)
+{
+    // insert your code here
+}
+
+/*
+ * rentalsListSelected
+ */
+void Main::OnRentalsListSelected(wxListEvent& event)
+{
+    // insert your code here
 }
 
 /*
  * newRentalCustomerListSelected
  */
-void Main::newRentalCustomerListSelected(wxListEvent& event)
+void Main::OnNewRentalCustomerListSelected(wxListEvent& event)
 {
     // insert your code here
 }
@@ -388,7 +533,7 @@ void Main::newRentalCustomerListSelected(wxListEvent& event)
 /*
  * newRentalItemListSelected
  */
-void Main::newRentalItemListSelected(wxListEvent& event)
+void Main::OnNewRentalItemListSelected(wxListEvent& event)
 {
     // insert your code here
 }
@@ -396,7 +541,7 @@ void Main::newRentalItemListSelected(wxListEvent& event)
 /*
  * createRentalButtonClick
  */
-void Main::createRentalButtonClick(wxCommandEvent& event)
+void Main::OnCreateRentalButtonClick(wxCommandEvent& event)
 {
     // insert your code here
 }
@@ -404,7 +549,7 @@ void Main::createRentalButtonClick(wxCommandEvent& event)
 /*
  * cancelNewRentalButtonClick
  */
-void Main::cancelNewRentalButtonClick(wxCommandEvent& event)
+void Main::OnCancelNewRentalButtonClick(wxCommandEvent& event)
 {
     // insert your code here
 }
@@ -412,7 +557,7 @@ void Main::cancelNewRentalButtonClick(wxCommandEvent& event)
 /*
  * editItemButtonClick
  */
-void Main::editItemButtonClick(wxCommandEvent& event)
+void Main::OnEditItemButtonClick(wxCommandEvent& event)
 {
     // insert your code here
 }
@@ -420,7 +565,7 @@ void Main::editItemButtonClick(wxCommandEvent& event)
 /*
  * lateRentalsButtonClick
  */
-void Main::lateRentalsButtonClick(wxCommandEvent& event)
+void Main::OnLateRentalsButtonClick(wxCommandEvent& event)
 {
     // insert your code here
 }

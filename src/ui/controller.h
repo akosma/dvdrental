@@ -40,10 +40,19 @@ public:
     void fillRentalsList(wxListCtrl* list);
     
     void loadCustomers();
+    void saveCustomers();
     void fillCustomersList(wxListCtrl* list);
     void loadCustomer(int id);
     const wxString getCurrentCustomerFirstName() const;
     const wxString getCurrentCustomerLastName() const;
+    const wxString getCurrentCustomerAddress() const;
+    const wxString getCurrentCustomerPhoneNumber() const;
+    void deleteCurrentCustomer();
+    void prepareForNewCustomer();
+    void saveCustomer(wxString& firstName, wxString& lastName, wxString& address, wxString& phone);
+    
+private:
+    int getMaximumCustomerId();
 
 private:
     Library    _library;

@@ -58,13 +58,54 @@ void Persist::createDummyCustomerFile()
 {
     // File not found, create dummy file
     Customers customers;
-    Customer customer1(0);
-    customer1.setFirstName("Robert");
-    customer1.setLastName("Smith");
-    Customer customer2(1);
-    customer2.setFirstName("John");
-    customer2.setLastName("Davis");
-    customers[0] = customer1;
-    customers[1] = customer2;
+    Customer customer0(0);
+    customer0.setFirstName("Robert");
+    customer0.setLastName("Smith");
+    customer0.setPhone("(123) 456-7890");
+    customer0.setAddress("Guadalajara Ave. 234");
+    customers[0] = customer0;
+
+    Customer customer1(1);
+    customer1.setFirstName("John");
+    customer1.setLastName("Davis");
+    customer1.setPhone("(987) 654-3210");
+    customer1.setAddress("Palm Beach Boulevard 32");
+    customers[1] = customer1;
+
+    Customer customer2(2);
+    customer2.setFirstName("Pam");
+    customer2.setLastName("Johnson");
+    customer2.setPhone("(985) 987-1897");
+    customer2.setAddress("Chuleta Street East 242");
+    customers[2] = customer2;
+
+    Customer customer3(3);
+    customer3.setFirstName("Robert");
+    customer3.setLastName("Palmer");
+    customer3.setPhone("(987) 322-9875");
+    customer3.setAddress("Important Valley Street 267");
+    customers[3] = customer3;
+
+    Customer customer4(4);
+    customer4.setFirstName("Juan");
+    customer4.setLastName("Perez");
+    customer4.setPhone("(488) 133-3510");
+    customer4.setAddress("Antonio Avenue, 325 East");
+    customers[4] = customer4;
+
+    Customer customer5(5);
+    customer5.setFirstName("Pedro");
+    customer5.setLastName("Gonzales");
+    customer5.setPhone("(987) 458-9632");
+    customer5.setAddress("");
+    customers[5] = customer5;
+
+    Customer customer6(6);
+    customer6.setFirstName("Jean");
+    customer6.setLastName("Delafontaine");
+    customer6.setPhone("(558) 987-5463");
+    customer6.setAddress("Rue des Moines East, 35");
+    customers[6] = customer6;
+
     saveCustomers(customers);
 }

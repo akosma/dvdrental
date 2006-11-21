@@ -30,6 +30,7 @@
 #include <wx/notebook.h>
 #include <wx/panel.h>
 #include <wx/statusbr.h>
+#include <wx/gbsizer.h>
 
 #ifndef CONTROLLER_H
 #include "controller.h"
@@ -52,90 +53,105 @@ class Main : public wxFrame
              long style = Main_STYLE);
         virtual ~Main();
 
-        void firstNameFieldEnter(wxCommandEvent& event);
-        void lastNameFieldEnter(wxCommandEvent& event);
-        void itemTitleFieldEnter(wxCommandEvent& event);
-        void phoneNumberFieldEnter(wxCommandEvent& event);
+        void OnFirstNameFieldEnter(wxCommandEvent& event);
+        void OnLastNameFieldEnter(wxCommandEvent& event);
+        void OnItemTitleFieldEnter(wxCommandEvent& event);
+        void OnPhoneNumberFieldEnter(wxCommandEvent& event);
+        void OnAddressFieldEnter(wxCommandEvent& event);
 
-        void saveCustomerButtonClick(wxCommandEvent& event);
-        void itemSaveButtonClick(wxCommandEvent& event);
-        void itemCancelButtonClick(wxCommandEvent& event);
-        void cancelCustomerEditionClick(wxCommandEvent& event);
-        void createRentalButtonClick(wxCommandEvent& event);
-        void cancelNewRentalButtonClick(wxCommandEvent& event);
-        void editItemButtonClick(wxCommandEvent& event);
-        void lateRentalsButtonClick(wxCommandEvent& event);
-        void editCustomerButtonClick(wxCommandEvent& event);
+        void OnSaveCustomerButtonClick(wxCommandEvent& event);
+        void OnItemSaveButtonClick(wxCommandEvent& event);
+        void OnItemCancelButtonClick(wxCommandEvent& event);
+        void OnCancelCustomerEditionClick(wxCommandEvent& event);
+        void OnCreateRentalButtonClick(wxCommandEvent& event);
+        void OnCancelNewRentalButtonClick(wxCommandEvent& event);
+        void OnEditItemButtonClick(wxCommandEvent& event);
+        void OnLateRentalsButtonClick(wxCommandEvent& event);
+        void OnEditCustomerButtonClick(wxCommandEvent& event);
 
-        void customersListSelected(wxListEvent& event);
-        void itemsListSelected(wxListEvent& event);
-        void rentalsListSelected(wxListEvent& event);
-        void newRentalCustomerListSelected(wxListEvent& event);
-        void newRentalItemListSelected(wxListEvent& event);
+        void OnCustomersListSelected(wxListEvent& event);
+        void OnItemsListSelected(wxListEvent& event);
+        void OnRentalsListSelected(wxListEvent& event);
+        void OnNewRentalCustomerListSelected(wxListEvent& event);
+        void OnNewRentalItemListSelected(wxListEvent& event);
 
-        void itemKindChoiceSelected(wxCommandEvent& event);
+        void OnItemKindChoiceSelected(wxCommandEvent& event);
+        
+        void OnMenuFileExitSelected(wxCommandEvent& event);
+        void OnMenuHelpAboutSelected(wxCommandEvent& event);
+        void OnMenuAddCustomerSelected(wxCommandEvent& event);
+        void OnMenuDeleteCustomerSelected(wxCommandEvent& event);
 
     private:
         Controller controller;
     
-        wxBoxSizer *mainSizer;
-        wxBoxSizer *notebookSizer;
-        wxBoxSizer *customersPageSizer;
-        wxBoxSizer *innerCustomersPageSizer;
-        wxBoxSizer *itemsPageSizer;
-        wxBoxSizer *rentalsPageSizer;
-        wxBoxSizer *newRentalPageSizer;
-        wxBoxSizer *innerNewRentalPageSizer;
-        wxBoxSizer *buttonsNewRentalPageSizer;
-        wxBoxSizer *innerItemsPageSizer;
+        wxBoxSizer* mainSizer;
+        wxBoxSizer* notebookSizer;
 
-        wxButton *lateRentalsButton;
-        wxButton *editItemButton;
-        wxButton *editCustomerButton;
-        wxButton *cancelNewRentalButton;
-        wxButton *returnRentalButton;
-        wxButton *createRentalButton;
-        wxButton *itemSaveButton;
-        wxButton *itemCancelButton;
-        wxButton *cancelCustomerEditionButton;
-        wxButton *saveCustomerButton;
+        wxBoxSizer* customersPageSizer;
+        wxBoxSizer* innerCustomersPageSizer;
+        wxBoxSizer* buttonsCustomerSizer;
 
-        wxStaticText *availableLabel;
-        wxStaticText *availabilityLabel;
-        wxStaticText *rentalReview;
-        wxStaticText *rentalSummary;
-        wxStaticText *reviewCreateLabel;
-        wxStaticText *selectItemLabel;
-        wxStaticText *selectCustomerLabel;
-        wxStaticText *itemKindLabel;
-        wxStaticText *phoneNumberLabel;
-        wxStaticText *itemTitleLabel;
-        wxStaticText *lastNameLabel;
-        wxStaticText *firstNameLabel;
+        wxBoxSizer* itemsPageSizer;
+        wxBoxSizer* rentalsPageSizer;
+        wxBoxSizer* innerRentalsPageSizer;
+        wxBoxSizer* newRentalPageSizer;
+        wxBoxSizer* buttonsNewRentalPageSizer;
+        wxBoxSizer* innerItemsPageSizer;
+        wxBoxSizer* buttonsItemSizer;
 
-        wxListCtrl *rentalsList;
-        wxListCtrl *newRentalItemList;
-        wxListCtrl *newRentalCustomerList;
-        wxListCtrl *itemsList;
-        wxListCtrl *customersList;
+        wxGridBagSizer* newRentalFieldsSizer;
+        wxGridBagSizer* customerFieldsSizer;
+        wxGridBagSizer* itemFieldsSizer;
 
-        wxChoice *itemKindChoice;
+        wxButton* lateRentalsButton;
+        wxButton* editItemButton;
+        wxButton* editCustomerButton;
+        wxButton* cancelNewRentalButton;
+        wxButton* returnRentalButton;
+        wxButton* createRentalButton;
+        wxButton* itemSaveButton;
+        wxButton* itemCancelButton;
+        wxButton* cancelCustomerEditionButton;
+        wxButton* saveCustomerButton;
 
-        wxTextCtrl *itemTitleField;
-        wxTextCtrl *phoneNumberField;
-        wxTextCtrl *lastNameField;
-        wxTextCtrl *firstNameField;
+        wxStaticText* availableLabel;
+        wxStaticText* availabilityLabel;
+        wxStaticText* rentalReview;
+        wxStaticText* rentalSummary;
+        wxStaticText* reviewCreateLabel;
+        wxStaticText* selectItemLabel;
+        wxStaticText* selectCustomerLabel;
+        wxStaticText* itemKindLabel;
+        wxStaticText* phoneNumberLabel;
+        wxStaticText* itemTitleLabel;
+        wxStaticText* lastNameLabel;
+        wxStaticText* firstNameLabel;
+        wxStaticText* addressLabel;
 
-        wxPanel *itemsNotebookPage;
-        wxPanel *customersNotebookPage;
-        wxPanel *newRentalNotebookPage;
-        wxPanel *rentalsNotebookPage;
-        wxNotebook *notebook;
+        wxListCtrl* rentalsList;
+        wxListCtrl* newRentalItemList;
+        wxListCtrl* newRentalCustomerList;
+        wxListCtrl* itemsList;
+        wxListCtrl* customersList;
 
-        wxPanel *mainPanel;
+        wxChoice* itemKindChoice;
 
-        wxStatusBar *statusBar;
-        wxMenuBar *menuBar;
+        wxTextCtrl* itemTitleField;
+        wxTextCtrl* phoneNumberField;
+        wxTextCtrl* lastNameField;
+        wxTextCtrl* firstNameField;
+        wxTextCtrl* addressField;
+
+        wxPanel* itemsNotebookPage;
+        wxPanel* customersNotebookPage;
+        wxPanel* newRentalNotebookPage;
+        wxPanel* rentalsNotebookPage;
+        wxNotebook* notebook;
+
+        wxPanel* mainPanel;
+
+        wxMenuBar* menuBar;
 
     private:
 
@@ -192,13 +208,21 @@ class Main : public wxFrame
             ID_RENTALSNOTEBOOKPAGE = 1006,
             ID_NOTEBOOK = 1002,
             ID_MAINPANEL = 1005,
-            ID_STATUSBAR = 1004
+            ID_STATUSBAR = 1004,
+            ID_ADDRESSLABEL = 1060,
+            ID_ADDRESSFIELD = 1061
         };
 
     private:
         void OnClose(wxCloseEvent& event);
         void CreateGUIControls();
+        void CreateGlobalControls();
+        void CreateCustomersTab();
+        void CreateRentalsTab();
+        void CreateItemsTab();
+        void CreateNewRentalTab();
         void CreateMenuBar();
+        void LoadData();
 };
 
 #endif
