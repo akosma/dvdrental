@@ -48,7 +48,6 @@ CLEAN :
 	-@erase "$(INTDIR)\dvd.obj"
 	-@erase "$(INTDIR)\item.obj"
 	-@erase "$(INTDIR)\library.obj"
-	-@erase "$(INTDIR)\rental.obj"
 	-@erase "$(INTDIR)\vhs.obj"
 	-@erase "$(OUTDIR)\tests.exe"
 	-@erase "$(OUTDIR)\vc70.idb"
@@ -105,7 +104,6 @@ LINK32_OBJS= \
 	"$(INTDIR)\item.obj" \
 	"$(INTDIR)\library.obj" \
 	"$(INTDIR)\main.obj" \
-	"$(INTDIR)\rental.obj" \
 	"$(INTDIR)\vhs.obj" \
 
 "$(OUTDIR)\tests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
@@ -138,7 +136,6 @@ CLEAN :
 	-@erase "$(INTDIR)\dvd.obj"
 	-@erase "$(INTDIR)\item.obj"
 	-@erase "$(INTDIR)\library.obj"
-	-@erase "$(INTDIR)\rental.obj"
 	-@erase "$(INTDIR)\vhs.obj"
 	-@erase "$(INTDIR)\vc70.idb"
 	-@erase "$(INTDIR)\vc70.pdb"
@@ -198,7 +195,6 @@ LINK32_OBJS= \
 	"$(INTDIR)\item.obj" \
 	"$(INTDIR)\library.obj" \
 	"$(INTDIR)\main.obj" \
-	"$(INTDIR)\rental.obj" \
 	"$(INTDIR)\vhs.obj" \
 
 "$(OUTDIR)\tests.exe" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
@@ -244,12 +240,6 @@ SOURCE=..\src\business\item.cpp
 SOURCE=..\src\business\library.cpp
 
 "$(INTDIR)\library.obj" : $(SOURCE) "$(INTDIR)"
-	$(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-SOURCE=..\src\business\rental.cpp
-
-"$(INTDIR)\rental.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 

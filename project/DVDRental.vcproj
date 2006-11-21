@@ -161,9 +161,6 @@
 				RelativePath="..\src\persistence\persist.cpp">
 			</File>
 			<File
-				RelativePath="..\src\business\rental.cpp">
-			</File>
-			<File
 				RelativePath="..\src\business\vhs.cpp">
 			</File>
 		</Filter>
@@ -197,9 +194,6 @@
 			</File>
 			<File
 				RelativePath="..\src\persistence\persist.h">
-			</File>
-			<File
-				RelativePath="..\src\business\rental.h">
 			</File>
 			<File
 				RelativePath="..\src\business\vhs.h">

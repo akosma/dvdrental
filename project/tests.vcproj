@@ -148,9 +148,6 @@
 				RelativePath="..\src\test\main.cpp">
 			</File>
 			<File
-				RelativePath="..\src\business\rental.cpp">
-			</File>
-			<File
 				RelativePath="..\src\business\vhs.cpp">
 			</File>
 		</Filter>
@@ -178,9 +175,6 @@
 			</File>
 			<File
 				RelativePath="..\src\test\librarytest.h">
-			</File>
-			<File
-				RelativePath="..\src\business\rental.h">
 			</File>
 			<File
 				RelativePath="..\src\business\vhs.h">
