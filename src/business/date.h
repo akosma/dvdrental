@@ -19,6 +19,68 @@ public:
     void nextDay();             // Increment to next day
     void addDays( int days );   // Add number of days to the date
 
+    /*!
+     * Equality operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator==(const Date& rhs) const;
+
+    /*!
+     * Inequality operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator!=(const Date& rhs) const;
+
+    /*!
+     * Less-than operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator<(const Date& rhs) const;
+
+    /*!
+     * Less-or-equal-than operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator<=(const Date& rhs) const;
+
+    /*!
+     * Bigger-than operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator>(const Date& rhs) const;
+
+    /*!
+     * Bigger-or-equal-than operator.
+     * 
+     * \param rhs The instance to copy from.
+     * 
+     * \return A boolean.
+     */
+    const bool operator>=(const Date& rhs) const;
+    
+    /*!
+     * Returns an ISO 8601 standard string, representing the 
+     * current instance.
+     * 
+     * \return A string.
+     */
+    const std::string getStandardString() const;
+
 private:
     int     month;              // Date values
     int     day;

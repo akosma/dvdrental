@@ -5,6 +5,10 @@
 // Member function definitions for class Date
 
 #include <iostream>
+#include <ctime>     // for time manipulation functions
+
+#include <sstream>
+using std::stringstream;
 
 using std::cout;
 using std::endl;
@@ -13,8 +17,21 @@ using std::endl;
 
 // default constructor
 Date::Date( )
+: year  (0)
+, month (0)
+, day   (0)
 {
-
+    // basic time manipulation taken from
+    // http://www.informit.com/guides/content.asp?g=cplusplus&seqNum=65&rl=1
+    std::time_t curr;
+    std::tm local;
+    time(&curr);
+    local = *(std::localtime(&curr));
+    
+    // now build the proper instance
+    year = local.tm_year + 1900;
+    month = local.tm_mon + 1;
+    day = local.tm_mday;
 }
 
 Date::Date(const Date& rhs)
@@ -136,3 +153,151 @@ int  Date::daysInMonth()
 }
 
 
+/*!
+ * Equality operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator==(const Date& rhs) const
+{
+    bool result = (year == rhs.year);
+    result = result && (month == rhs.month);
+    result = result && (day == rhs.day);
+    return result;
+}
+
+/*!
+ * Inequality operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator!=(const Date& rhs) const
+{
+    bool result = !(*this  == rhs);
+    return result;
+}
+
+/*!
+ * Less-than operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator<(const Date& rhs) const
+{
+    bool smaller = false;
+    if (year < rhs.year)
+    {
+        smaller = true;
+    }
+    else
+    {
+        if (year > rhs.year)
+        {
+            smaller = false;
+        }
+        else
+        {
+            // Both years are equal: compare months
+            if (month < rhs.month)
+            {
+                smaller = true;
+            }
+            else
+            {
+                if (month > rhs.month)
+                {
+                    smaller = false;
+                }
+                else
+                {
+                    // Both years and months are equal:
+                    // compare days
+                    if (day < rhs.day)
+                    {
+                        smaller = true;
+                    }
+                    else
+                    {
+                        smaller = false;
+                    }
+                }
+            }
+        }
+    }
+    return smaller;
+}
+
+/*!
+ * Bigger-than operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator>(const Date& rhs) const
+{
+    bool result = !(*this < rhs) && !(*this == rhs);
+    return result;
+}
+
+/*!
+ * Less-or-equal-than operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator<=(const Date& rhs) const
+{
+    bool result = (*this < rhs) || (*this == rhs);
+    return result;
+}
+
+/*!
+ * Bigger-or-equal-than operator.
+ * 
+ * \param rhs The instance to copy from.
+ * 
+ * \return A boolean.
+ */
+const bool Date::operator>=(const Date& rhs) const
+{
+    bool result = (*this > rhs) || (*this == rhs);
+    return result;
+}
+
+/*!
+ * Returns an ISO 8601 standard string, representing the 
+ * current instance.
+ * 
+ * \return A string.
+ */
+const std::string Date::getStandardString() const
+{
+    // ISO 8601 standard ("YYYY-MM-DD") described here:
+    // http://www.cl.cam.ac.uk/~mgk25/iso-time.html
+    std::stringstream ss;
+    ss << year;
+    ss << "-";
+
+    if (month < 10)
+    {
+        ss << "0";
+    }
+    ss << month;
+    ss << "-";
+
+    if (day < 10)
+    {
+        ss << "0";
+    }
+    ss << day;
+    
+    return ss.str();
+}

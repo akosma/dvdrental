@@ -6,12 +6,19 @@
 
 #include "library.h"
 
+#include <map>
+using std::map;
+
 #ifndef DVD_H
 #include "dvd.h"
 #endif
 
 #ifndef VHS_H
 #include "vhs.h"
+#endif
+
+#ifndef ITEM_H
+#include "item.h"
 #endif
 
 const std::string Library::FILE_NAME = "library.dat";
@@ -25,20 +32,19 @@ Library::~Library()
 {
 }
 
-//const int Library::getAvailableItems(Items& availableItems) const
-//{
-//    Items::iterator iter;
-//    for (iter = _items.begin(); iter != _items.end(); iter++)
-//    {
-//        Item& item = (*iter).second;
-//        if (!item.isRented())
-//        {
-//            availableItems[item.getId()] = item;
-//        }
-//    }
-//
-//    return availableItems.size();
-//}
+void Library::getAvailableItems(Items& availableItems)
+{
+    Items::reverse_iterator iterator;
+    int count = _items.size();
+    for(iterator = _items.rbegin(); iterator != _items.rend(); ++iterator)
+    {
+        Item& item = iterator->second;
+        if (!item.isRented())
+        {
+            availableItems[item.getId()] = item;
+        }
+    }
+}
 
 Item& Library::operator[](const int id)
 {
@@ -83,7 +89,7 @@ void Library::erase(const int id)
 
 const int Library::getMaximumItemId()
 {
-    int result = 0;
+    int result = -1;
     Items::reverse_iterator iterator;
     for(iterator = _items.rbegin(); iterator != _items.rend(); iterator++)
     {

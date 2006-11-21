@@ -27,9 +27,12 @@ using std::string;
 #include "../business/library.h"
 #endif
 
-#ifndef RENTAL_H
-#include "../business/rental.h"
-#endif
+enum Availability
+{
+    UNKNOWN = -1,
+    NOT_AVAILABLE = 0,
+    AVAILABLE = 1
+};
 
 class Controller
 {
@@ -37,8 +40,6 @@ public:
     Controller();
     virtual ~Controller();
 
-    void fillRentalsList(wxListCtrl* list);
-    
     void loadCustomers();
     void saveCustomers();
     void fillCustomersList(wxListCtrl* list);
@@ -49,17 +50,24 @@ public:
     const wxString getCurrentCustomerPhoneNumber() const;
     void deleteCurrentCustomer();
     void prepareForNewCustomer();
-    void saveCustomer(wxString& firstName, wxString& lastName, wxString& address, wxString& phone);
+    void saveCustomer(wxString&, wxString&, wxString&, wxString&);
     
     void loadLibrary();
     void saveLibrary();
     void fillItemsList(wxListCtrl* list);
+    void fillAvailableItemsList(wxListCtrl* list);
     void loadItem(int id);
     const wxString getCurrentItemTitle() const;
     const int getCurrentItemKind() const;
+    const Availability getCurrentItemAvailability() const;
     void deleteCurrentItem();
     void prepareForNewItem();
     void saveItem(wxString& title, int kind);
+    
+    void fillRentalsList(wxListCtrl* list);
+    const bool createRental(wxListCtrl*, wxListCtrl*);
+    void setCurrentRental(int);
+    void returnCurrentRental();
     
 private:
     int getMaximumCustomerId();
@@ -67,10 +75,9 @@ private:
 private:
     Library    _library;
     Customers* _customers;
-    Rentals*   _rentals;
     Customer*  _currentCustomer;
     Item*      _currentItem;
-    Rental*    _currentRental;
+    int        _currentRentalId;
 };
 
 #endif

@@ -18,6 +18,10 @@ using std::map;
 #include "baseclass.h"
 #endif
 
+#ifndef DATE_H
+#include "date.h"
+#endif
+
 class Item : public BaseClass
 {
 public:
@@ -31,26 +35,35 @@ public:
     //! Assignment overload
     Item& operator=(const Item&);
 
-    //! Access functions - these are overriden in the DVD and VHS classes
+    //! Access functions
     const int getRentalPeriod() const;
     const int getRentalCharge() const;
     const int getLateFee() const;
-    
-    const int getItemKind() const;
-
-    //! Access functions
     const int  getId() const;
     const std::string getTitle() const;
+    const int getItemKind() const;
+    const std::string getItemKindString() const;
+    const int getCustomerId() const;
+    const Date& getDueDate() const;
 
     void setTitle(const std::string&);
+    
+    void setRentedByCustomerId(const int);
+    const bool isRented() const;
+    void setReturned();
+    const bool isLate() const;
 
 private:
-    int  _id;            //! Unique id for this recording
+    int  _id;                //! Unique id for this recording
     char _title[40];         //! Recording title
     int  _rentalPeriod;
     int  _rentalCharge;
     int  _lateFee;
     int  _kind;
+    bool _rented;
+    int  _customerId;
+    Date _rentalDate;
+    Date _dueDate;
 };
 
 typedef std::map<int, Item> Items;

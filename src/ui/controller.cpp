@@ -27,10 +27,9 @@
 Controller::Controller()
 : _library        (Library())
 , _customers      (0)
-, _rentals        (0)
 , _currentCustomer(0)
 , _currentItem    (0)
-, _currentRental  (0)
+, _currentRentalId(-1)
 {
     loadCustomers();
     loadLibrary();
@@ -39,15 +38,10 @@ Controller::Controller()
 Controller::~Controller()
 {
     delete _customers;
-    delete _rentals;
     
     // Do not delete _currentCustomer! It is owned by _customers.
     // See Controller::loadCustomer below for details.
     // The same applies to _currentItem!
-}
-
-void Controller::fillRentalsList(wxListCtrl* list)
-{
 }
 
 void Controller::loadCustomers()
@@ -210,12 +204,12 @@ int Controller::getMaximumCustomerId()
 
 void Controller::loadLibrary()
 {
-    Persist::loadLibrary(_library.getItems());
+    Persist::loadItems(_library.getItems());
 }
 
 void Controller::saveLibrary()
 {
-    Persist::saveLibrary(_library.getItems());
+    Persist::saveItems(_library.getItems());
 }
 
 void Controller::fillItemsList(wxListCtrl* list)
@@ -226,17 +220,100 @@ void Controller::fillItemsList(wxListCtrl* list)
     for(iterator = items.rbegin(); iterator != items.rend(); iterator++)
     {
         Item& curItem = iterator->second;
+        wxListItem item;
+        if (curItem.isRented())
+        {
+            item.SetTextColour(wxColour(128,0,0));
+            if (curItem.isLate())
+            {
+                item.SetBackgroundColour(wxColour(255, 255, 0));
+            }
+        }
+        else
+        {
+            item.SetTextColour(wxColour(0,128,0));
+        }
         wxString number;
         number << curItem.getId();
         wxString title;
         title << curItem.getTitle().c_str();
-        wxListItem item;
         item.SetText(number);
         long id = (long)curItem.getId();
         item.SetData(id);
         list->InsertItem(item);
         int itemId = item.GetId();
         list->SetItem(itemId, 1, title);
+        wxString kind;
+        kind << curItem.getItemKindString().c_str();
+        list->SetItem(itemId, 2, kind);
+    }
+}
+
+void Controller::fillRentalsList(wxListCtrl* list)
+{
+    list->DeleteAllItems();
+    Items::reverse_iterator iterator;
+    Items& items = _library.getItems();
+    for(iterator = items.rbegin(); iterator != items.rend(); iterator++)
+    {
+        Item& curItem = iterator->second;
+        wxListItem item;
+        if (!curItem.isRented())
+        {
+            continue;
+        }
+        wxString number;
+        number << curItem.getId();
+        wxString title;
+        title << curItem.getTitle().c_str();
+        item.SetText(number);
+        long id = (long)curItem.getId();
+        item.SetData(id);
+        list->InsertItem(item);
+        int itemId = item.GetId();
+        list->SetItem(itemId, 1, title);
+        wxString kind;
+        kind << curItem.getItemKindString().c_str();
+        list->SetItem(itemId, 2, kind);
+        
+        wxString customer;
+        customer << (*_customers)[curItem.getCustomerId()].getFirstName().c_str();
+        customer << " ";
+        customer << (*_customers)[curItem.getCustomerId()].getLastName().c_str();
+        list->SetItem(itemId, 3, customer);
+        
+        wxString date;
+        date << curItem.getDueDate().getStandardString().c_str();
+        list->SetItem(itemId, 4, date);
+    }
+}
+
+void Controller::fillAvailableItemsList(wxListCtrl* list)
+{
+    list->DeleteAllItems();
+    Items::reverse_iterator iterator;
+    Items& items = _library.getItems();
+    for(iterator = items.rbegin(); iterator != items.rend(); iterator++)
+    {
+        Item& curItem = iterator->second;
+        wxListItem item;
+        if (curItem.isRented())
+        {
+            continue;
+        }
+        wxString number;
+        number << curItem.getId();
+        wxString title;
+        title << curItem.getTitle().c_str();
+        item.SetText(number);
+        long id = (long)curItem.getId();
+        item.SetData(id);
+        list->InsertItem(item);
+        int itemId = item.GetId();
+        list->SetItem(itemId, 1, title);
+        wxString kind;
+        kind << curItem.getItemKindString().c_str();
+        list->SetItem(itemId, 2, kind);
     }
 }
 
@@ -314,5 +391,68 @@ void Controller::saveItem(wxString& title, int kind)
     {
         _currentItem->setTitle(title.c_str());
     }
+    saveLibrary();
+}
+
+const Availability Controller::getCurrentItemAvailability() const
+{
+    Availability result;
+    if (NULL == _currentItem)
+    {
+        result = UNKNOWN;
+    }
+    else
+    {
+        if (_currentItem->isRented())
+        {
+            result = NOT_AVAILABLE;
+        }
+        else
+        {
+            result = AVAILABLE;
+        }
+    }
+    return result;
+}
+
+const bool Controller::createRental(wxListCtrl* customers, wxListCtrl* items)
+{
+    bool result = false;
+    if (customers->GetSelectedItemCount() == 1 && items->GetSelectedItemCount() >= 1)
+    {
+        int customer = -1;
+        for (int i = 0; i < customers->GetItemCount(); i++)
+        {
+            int state = customers->GetItemState(i, wxLIST_STATE_SELECTED);
+            if (state == wxLIST_STATE_SELECTED)
+            {
+                customer = customers->GetItemData(i);
+                break;
+            }
+        }
+        
+        for (int j = 0; j < items->GetItemCount(); j++)
+        {
+            int state = items->GetItemState(j, wxLIST_STATE_SELECTED);
+            if (state == wxLIST_STATE_SELECTED)
+            {
+                int item = items->GetItemData(j);
+                _library[item].setRentedByCustomerId(customer);
+            }
+        }
+        result = true;
+    }
+    saveLibrary();
+    return result;
+}
+
+void Controller::setCurrentRental(int itemId)
+{
+    _currentRentalId = itemId;
+}
+
+void Controller::returnCurrentRental()
+{
+    _library[_currentRentalId].setReturned();
     saveLibrary();
 }

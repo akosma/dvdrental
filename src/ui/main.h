@@ -64,16 +64,13 @@ class Main : public wxFrame
         void OnItemCancelButtonClick(wxCommandEvent& event);
         void OnCancelCustomerEditionClick(wxCommandEvent& event);
         void OnCreateRentalButtonClick(wxCommandEvent& event);
-        void OnCancelNewRentalButtonClick(wxCommandEvent& event);
         void OnEditItemButtonClick(wxCommandEvent& event);
-        void OnLateRentalsButtonClick(wxCommandEvent& event);
         void OnEditCustomerButtonClick(wxCommandEvent& event);
+        void OnRentalsReturnButtonClick(wxCommandEvent& event);
 
         void OnCustomersListSelected(wxListEvent& event);
         void OnItemsListSelected(wxListEvent& event);
         void OnRentalsListSelected(wxListEvent& event);
-        void OnNewRentalCustomerListSelected(wxListEvent& event);
-        void OnNewRentalItemListSelected(wxListEvent& event);
 
         void OnMenuFileExitSelected(wxCommandEvent& event);
         void OnMenuHelpAboutSelected(wxCommandEvent& event);
@@ -106,7 +103,6 @@ class Main : public wxFrame
         wxGridBagSizer* customerFieldsSizer;
         wxGridBagSizer* itemFieldsSizer;
 
-        wxButton* lateRentalsButton;
         wxButton* editItemButton;
         wxButton* editCustomerButton;
         wxButton* cancelNewRentalButton;
@@ -119,7 +115,6 @@ class Main : public wxFrame
 
         wxStaticText* availableLabel;
         wxStaticText* availabilityLabel;
-        wxStaticText* rentalReview;
         wxStaticText* rentalSummary;
         wxStaticText* reviewCreateLabel;
         wxStaticText* selectItemLabel;
@@ -159,14 +154,11 @@ class Main : public wxFrame
 
         enum
         {
-            ID_LATERENTALSBUTTON = 1075,
             ID_EDITITEMBUTTON = 1074,
             ID_EDITCUSTOMERBUTTON = 1073,
             ID_AVAILABLELABEL = 1072,
             ID_AVAILABILITYLABEL = 1071,
-            ID_CANCELNEWRENTALBUTTON = 1070,
             ID_RETURNRENTALBUTTON = 1069,
-            ID_RENTALREVIEW = 1068,
             ID_RENTALSLIST = 1066,
             ID_RENTALSUMMARY = 1062,
             ID_REVIEWCREATELABEL = 1061,
@@ -225,6 +217,7 @@ class Main : public wxFrame
         void CreateNewRentalTab();
         void CreateMenuBar();
         void LoadData();
+        void SetAvailabilityLabel(Availability);
 };
 
 #endif

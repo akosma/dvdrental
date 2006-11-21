@@ -54,7 +54,7 @@ void Persist::saveCustomers(Customers& customers)
     file.close();
 }
 
-void Persist::loadLibrary(Items& library)
+void Persist::loadItems(Items& library)
 {
     Item item;
     const char* fileName = Library::FILE_NAME.c_str();
@@ -77,7 +77,7 @@ void Persist::loadLibrary(Items& library)
     file.close();
 }
 
-void Persist::saveLibrary(Items& library)
+void Persist::saveItems(Items& library)
 {
     Items::iterator iterator;
     const char* fileName = Library::FILE_NAME.c_str();
@@ -108,7 +108,7 @@ void Persist::createDummyLibraryFile()
     library.addNewVHS("Thomas the Tank Engine");
     library.addNewVHS("Apollo 13");
     library.addNewVHS("Total Recall");
-    saveLibrary(library.getItems());
+    saveItems(library.getItems());
 }
 
 void Persist::createDummyCustomerFile()

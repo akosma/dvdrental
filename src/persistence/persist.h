@@ -16,10 +16,6 @@ using std::map;
 #include "../business/item.h"
 #endif
 
-#ifndef RENTAL_H
-#include "../business/rental.h"
-#endif
-
 #ifndef LIBRARY_H
 #include "../business/library.h"
 #endif
@@ -29,8 +25,8 @@ class Persist
 public:
     static Customers* loadCustomers();
     static void saveCustomers(Customers&);
-    static void loadLibrary(Items&);
-    static void saveLibrary(Items&);
+    static void loadItems(Items&);
+    static void saveItems(Items&);
 
 private:
     static void createDummyCustomerFile();

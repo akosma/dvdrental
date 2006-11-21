@@ -8,6 +8,9 @@
 #include <vector>
 using std::vector;
 
+#include <map>
+using std::map;
+
 #include <typeinfo>
 
 #include "../business/library.h"
@@ -65,15 +68,13 @@ namespace tests
         library.addNewVHS("Apollo 13");
         library.addNewVHS("Total Recall");
 
-        vector<Item> availableItems;
-
         int itemCount = library.getItems().size();
 
         CPPUNIT_ASSERT_EQUAL(8, itemCount);
 
         for (size_t i = 0; i < itemCount; i++) 
         {
-            Item item = library[i];
+            Item& item = library[i];
             
             if (typeid(item) == typeid(VHS))
             {
@@ -86,12 +87,11 @@ namespace tests
         }
 
         // Rent two items from the library
-        Date rentalDate;
-        //library[2].rentItem( 1, rentalDate );
-        //library[3].rentItem( 2, rentalDate );
-        //vector<Item> nowAvailable;
-        //library.getAvailableItems(nowAvailable);
+        library[2].setRentedByCustomerId(1);
+        library[3].setRentedByCustomerId(2);
+        std::map<int, Item> nowAvailable;
+        library.getAvailableItems(nowAvailable);
 
-        //CPPUNIT_ASSERT_EQUAL(size_t(6), nowAvailable.size());
+        CPPUNIT_ASSERT_EQUAL(size_t(6), nowAvailable.size());
     }
 }
