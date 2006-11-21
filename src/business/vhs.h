@@ -14,13 +14,11 @@
 class VHS : public Item
 {
 public:
-    VHS(const std::string&);
+    VHS(const int, const std::string&);
     virtual ~VHS();
 
-    //! Overridden accessors that return values for VHS recordings
-    virtual const int getRentalPeriod() const;
-    virtual const int getRentalCharge() const;
-    virtual const int getLateFee() const;
+private:
+    static const int ITEM_KIND;
 };
 
 #endif

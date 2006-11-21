@@ -11,6 +11,8 @@ class Date
 public:
     Date( );     // default constructor
     Date( int d, int m , int y );
+    Date(const Date&);
+    Date& operator=(const Date&);
 
     void print();               // Print date in d/m/y format
 

@@ -6,32 +6,13 @@
 
 #include "dvd.h"
 
-DVD::DVD(const std::string& title)
-: Item(title)
+const int DVD::ITEM_KIND = 1;
+
+DVD::DVD(const int id, const std::string& title)
+: Item(ITEM_KIND, id, title, 2, 3, 2)
 {
 }
 
 DVD::~DVD()
 {
 }
-
-const int DVD::getRentalPeriod( ) const
-{
-    return 2;
-}
-
-const int DVD::getRentalCharge( ) const
-{
-    return 3;
-}
-
-const int DVD::getLateFee( ) const
-{
-    return 2;
-}
-
-const string DVD::getClassName( ) const
-{
-	return "dvd.txt";
-}
-

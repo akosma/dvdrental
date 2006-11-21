@@ -17,6 +17,21 @@ Date::Date( )
 
 }
 
+Date::Date(const Date& rhs)
+: year  (rhs.year)
+, month (rhs.month)
+, day   (rhs.day)
+{
+}
+
+Date& Date::operator=(const Date& rhs)
+{
+    year = rhs.year;
+    month = rhs.month;
+    day = rhs.day;
+    return *this;
+}
+
 Date::Date( int d, int m, int y ) :
     year( y )
 {

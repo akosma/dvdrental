@@ -3,12 +3,11 @@
  *
  *
  */
+#ifndef RENTAL_H
+#define RENTAL_H
 
 #include <map>
 using std::map;
-
-#ifndef RENTAL_H
-#define RENTAL_H
 
 #ifndef DATE_H
 #include "date.h"
@@ -21,24 +20,25 @@ using std::map;
 class Rental : public BaseClass
 {
 public:
-    Rental( );
-    ~Rental( );
+    Rental();
+    Rental(const int, const int, const Date&);
+    Rental(const Rental&);
+    virtual ~Rental();
+    Rental& operator=(const Rental&);
 
     //! Accessors
-    int  getCustomerId( ) const;
-    Date getRentalDate( ) const;
-    Date getDueDate( ) const;
-
-    //! Mutators
-    void setCustomerId( int customerId );
-    void setRentalDate( const Date &rentalDate );
-    void setDueDate( const Date &dueDate );
+    const int  getCustomerId() const;
+    const int  getItemId() const;
+    const Date& getRentalDate() const;
+    const Date& getDueDate() const;
+    const bool isLate() const;
 
 public:
     static const std::string FILE_NAME;
     
 private:
     int  _customerId;   //! Links this rental to a customer
+    int  _itemId;       //! Links this rental to an item
     Date _rentalDate;   //! Date rental was taked out
     Date _dueDate;      //! Date recording due to be returned
 };

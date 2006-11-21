@@ -18,16 +18,11 @@
 class DVD : public Item
 {
 public:
-    DVD(const std::string&);
+    DVD(const int, const std::string&);
     virtual ~DVD();
-
-    //! Overridden accessors that return values for VHS recordings
-    virtual const int getRentalPeriod() const;
-    virtual const int getRentalCharge() const;
-    virtual const int getLateFee() const;
-
-    //! Clas name used for persistence
-	const virtual string getClassName( ) const; 
+    
+private:
+    static const int ITEM_KIND;
 };
 
 #endif

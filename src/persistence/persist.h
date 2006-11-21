@@ -20,14 +20,21 @@ using std::map;
 #include "../business/rental.h"
 #endif
 
+#ifndef LIBRARY_H
+#include "../business/library.h"
+#endif
+
 class Persist
 {
 public:
     static Customers* loadCustomers();
     static void saveCustomers(Customers&);
+    static void loadLibrary(Items&);
+    static void saveLibrary(Items&);
 
 private:
     static void createDummyCustomerFile();
+    static void createDummyLibraryFile();
 
 private:
     Persist();

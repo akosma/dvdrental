@@ -8,9 +8,26 @@
 
 #include "item.h"
 
-Item::Item(const std::string& title) 
-: _id     (-1)
-, _rented (false)
+Item::Item()
+: _id           (0)
+, _rentalPeriod (0)
+, _rentalCharge (0)
+, _lateFee      (0)
+, _kind         (-1)
+{
+}
+
+Item::Item(const int kind,
+           const int id, 
+           const std::string& title, 
+           const int rentalPeriod, 
+           const int rentalCharge, 
+           const int lateFee)
+: _id           (id)
+, _rentalPeriod (rentalPeriod)
+, _rentalCharge (rentalCharge)
+, _lateFee      (lateFee)
+, _kind         (kind)
 {
     setTitle(title);
 }
@@ -20,8 +37,11 @@ Item::~Item()
 }
 
 Item::Item(const Item& rhs)
-: _id     (rhs._id)
-, _rented (rhs._rented)
+: _id           (rhs._id)
+, _rentalPeriod (rhs._rentalPeriod)
+, _rentalCharge (rhs._rentalCharge)
+, _lateFee      (rhs._lateFee)
+, _kind         (rhs._kind)
 {
     setTitle(rhs._title);
 }
@@ -30,67 +50,43 @@ Item& Item::operator=(const Item& rhs)
 {
     _id     = rhs._id;
     setTitle(rhs._title);
-    _rented = rhs._rented;
+    _rentalPeriod = rhs._rentalPeriod;
+    _rentalCharge = rhs._rentalCharge;
+    _lateFee = rhs._lateFee;
+    _kind = rhs._kind;
     return *this;
 }
 
-bool Item::rentItem( int customerId, Date &rentalDate )
-{
-    // Only rent out if not already rented
-    if ( ! _rented ) {
-        _customerId = customerId;   // Customer who has the item rented out
-        _rentalDate = rentalDate;   // Date it was rented
-
-        // Set up the date that it is due back. This is done by adding the rental period
-        // from the derived class (DVD or VHS) to the rentalDate
-        _dueDate    = rentalDate;
-        _dueDate.addDays( getRentalPeriod( ) );
-
-        // Finally mark the item as being rented out.
-        _rented = true;
-
-        return true;    // Retun true to signify sucessful rental
-    }
-    else {
-        return false;   // Return false to signy rental failed
-    }
-}
-
-// Mark item as being returned.
-void Item::returnItem( )
-{
-    _rented     = false;
-    _customerId = 0;
-}
+//bool Item::rentItem( int customerId, Date &rentalDate )
+//{
+//    // Only rent out if not already rented
+//    if ( ! _rented ) {
+//        _customerId = customerId;   // Customer who has the item rented out
+//        _rentalDate = rentalDate;   // Date it was rented
+//
+//        // Set up the date that it is due back. This is done by adding the rental period
+//        // from the derived class (DVD or VHS) to the rentalDate
+//        _dueDate    = rentalDate;
+//        _dueDate.addDays( getRentalPeriod( ) );
+//
+//        // Finally mark the item as being rented out.
+//        _rented = true;
+//
+//        return true;    // Retun true to signify sucessful rental
+//    }
+//    else {
+//        return false;   // Return false to signy rental failed
+//    }
+//}
 
 const int Item::getId() const
 {
     return _id;
 }
 
-int  Item::getCustomerId( ) const
-{
-    return _customerId;
-}
-
-Date Item::getRentalDate( ) const
-{
-    return _rentalDate;
-}
-
-Date Item::getDueDate( ) const
-{
-    return _dueDate;
-}
-
 const std::string Item::getTitle() const
 {
     return _title;
-}
-
-void Item::setId(const int id)
-{
-    _id = id;
 }
 
 void Item::setTitle(const std::string& title)
@@ -100,23 +96,20 @@ void Item::setTitle(const std::string& title)
 
 const int Item::getRentalPeriod() const
 {
-    assert( false );
-    return 0;
+    return _rentalPeriod;
 }
 
 const int Item::getRentalCharge() const
 {
-    assert( false );
-    return 0;
+    return _rentalCharge;
 }
 
 const int Item::getLateFee() const
 {
-    assert( false );
-    return 0;
+    return _lateFee;
 }
 
-const bool Item::isRented() const
+const int Item::getItemKind() const
 {
-    return _rented;
+    return _kind;
 }

@@ -107,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				3A88B6BB0B0A6F3F004D2849 /* baseclass.h */,
+				3A3C241D0B12573400E3DA23 /* baseclass.cpp */,
 				3A8AB96D0B07C9B000D95203 /* library.cpp */,
 				3A8AB96E0B07C9B000D95203 /* library.h */,
 				3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */,
@@ -121,7 +122,6 @@
 				3A1B95D60B07AC0600D5CEA1 /* rental.h */,
 				3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */,
 				3A1B95D80B07AC0600D5CEA1 /* vhs.h */,
-				3A3C241D0B12573400E3DA23 /* baseclass.cpp */,
 			);
 			name = Business;
 			sourceTree = "<group>";

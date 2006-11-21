@@ -75,12 +75,12 @@ class Main : public wxFrame
         void OnNewRentalCustomerListSelected(wxListEvent& event);
         void OnNewRentalItemListSelected(wxListEvent& event);
 
-        void OnItemKindChoiceSelected(wxCommandEvent& event);
-        
         void OnMenuFileExitSelected(wxCommandEvent& event);
         void OnMenuHelpAboutSelected(wxCommandEvent& event);
         void OnMenuAddCustomerSelected(wxCommandEvent& event);
         void OnMenuDeleteCustomerSelected(wxCommandEvent& event);
+        void OnMenuAddItemSelected(wxCommandEvent& event);
+        void OnMenuDeleteItemSelected(wxCommandEvent& event);
 
     private:
         Controller controller;
@@ -99,6 +99,8 @@ class Main : public wxFrame
         wxBoxSizer* buttonsNewRentalPageSizer;
         wxBoxSizer* innerItemsPageSizer;
         wxBoxSizer* buttonsItemSizer;
+        wxBoxSizer* newRentalButtonSizer;
+        wxBoxSizer* newRentalInnerSizer;
 
         wxGridBagSizer* newRentalFieldsSizer;
         wxGridBagSizer* customerFieldsSizer;

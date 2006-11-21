@@ -1,5 +1,13 @@
 #include "baseclass.h"
 
+BaseClass::BaseClass()
+{
+}
+
+BaseClass::~BaseClass()
+{
+}
+
 void BaseClass::setStringField(const std::string& input, char* field)
 {
     const char *value = input.data();

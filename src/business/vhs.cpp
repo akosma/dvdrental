@@ -6,26 +6,13 @@
 
 #include "vhs.h"
 
-VHS::VHS(const std::string& title)
-: Item(title)
+const int VHS::ITEM_KIND = 0;
+
+VHS::VHS(const int id, const std::string& title)
+: Item(ITEM_KIND, id, title, 7, 2, 1)
 {
 }
 
 VHS::~VHS()
 {
-}
-
-const int VHS::getRentalPeriod( ) const
-{
-    return 7;
-}
-
-const int VHS::getRentalCharge( ) const
-{
-    return 2;
-}
-
-const int VHS::getLateFee( ) const
-{
-    return 1;
 }

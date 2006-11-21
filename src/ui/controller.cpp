@@ -8,6 +8,22 @@
 #include "../business/customer.h"
 #endif
 
+#ifndef LIBRARY_H
+#include "library.h"
+#endif
+
+#ifndef ITEM_H
+#include "item.h"
+#endif
+
+#ifndef VHS_H
+#include "vhs.h"
+#endif
+
+#ifndef DVD_H
+#include "dvd.h"
+#endif
+
 Controller::Controller()
 : _library        (Library())
 , _customers      (0)
@@ -17,6 +33,7 @@ Controller::Controller()
 , _currentRental  (0)
 {
     loadCustomers();
+    loadLibrary();
 }
 
 Controller::~Controller()
@@ -26,6 +43,7 @@ Controller::~Controller()
     
     // Do not delete _currentCustomer! It is owned by _customers.
     // See Controller::loadCustomer below for details.
+    // The same applies to _currentItem!
 }
 
 void Controller::fillRentalsList(wxListCtrl* list)
@@ -51,6 +69,8 @@ void Controller::fillCustomersList(wxListCtrl* list)
             customerIterator++)
     {
         Customer& currentCustomer = customerIterator->second;
+        wxString number;
+        number << currentCustomer.getId();
         wxString name;
         name << currentCustomer.getFirstName().c_str();
         name << " ";
@@ -58,14 +78,15 @@ void Controller::fillCustomersList(wxListCtrl* list)
         wxString phone;
         phone << currentCustomer.getPhone().c_str();
         wxListItem item;
-        item.SetText(name);
+        item.SetText(number);
         long id = (long)currentCustomer.getId();
         item.SetData(id);
         list->InsertItem(item);
-        if (list->GetColumnCount() > 1)
+        int itemId = item.GetId();
+        list->SetItem(itemId, 1, name);
+        if (list->GetColumnCount() > 2)
         {
-            int itemId = item.GetId();
-            list->SetItem(itemId, 1, phone);
+            list->SetItem(itemId, 2, phone);
         }
     }
 }
@@ -155,7 +176,12 @@ void Controller::saveCustomer(wxString& firstName, wxString& lastName, wxString&
     {
         int id = getMaximumCustomerId() + 1;
         _currentCustomer = new Customer(id);
+        
+        // Beware! Heavy pointer manipulation here!
+        // First assign the new customer to the std::map (this makes a copy)
         (*_customers)[id] = *_currentCustomer;
+        
+        // Then, point the current customer to the one we want
         _currentCustomer = &(*_customers)[id];
     }
     _currentCustomer->setFirstName(firstName.c_str());
@@ -180,4 +206,113 @@ int Controller::getMaximumCustomerId()
         }
     }
     return result;
+}
+
+void Controller::loadLibrary()
+{
+    Persist::loadLibrary(_library.getItems());
+}
+
+void Controller::saveLibrary()
+{
+    Persist::saveLibrary(_library.getItems());
+}
+
+void Controller::fillItemsList(wxListCtrl* list)
+{
+    list->DeleteAllItems();
+    Items::reverse_iterator iterator;
+    Items& items = _library.getItems();
+    for(iterator = items.rbegin(); iterator != items.rend(); iterator++)
+    {
+        Item& curItem = iterator->second;
+        wxString number;
+        number << curItem.getId();
+        wxString title;
+        title << curItem.getTitle().c_str();
+        wxListItem item;
+        item.SetText(number);
+        long id = (long)curItem.getId();
+        item.SetData(id);
+        list->InsertItem(item);
+        int itemId = item.GetId();
+        list->SetItem(itemId, 1, title);
+    }
+}
+
+void Controller::loadItem(int id)
+{
+    // This field points towards one item owned by the Library...
+    // That's why you should not delete _currentItem in the destructor!
+    _currentItem = &(_library[id]);
+}
+
+const wxString Controller::getCurrentItemTitle() const
+{
+    wxString result;
+    if (NULL == _currentItem)
+    {
+        result << "";
+    }
+    else
+    {
+        result << _currentItem->getTitle().c_str();
+    }
+    return result;
+}
+
+const int Controller::getCurrentItemKind() const
+{
+    int result = -1;
+    if (NULL != _currentItem)
+    {
+        result = _currentItem->getItemKind();
+    }
+    return result;
+}
+
+void Controller::deleteCurrentItem()
+{
+    if (NULL != _currentItem)
+    {
+        int id = _currentItem->getId();
+        _currentItem = NULL;
+        _library.erase(id);
+        saveLibrary();
+    }
+}
+
+void Controller::prepareForNewItem()
+{
+    _currentItem = NULL;
+}
+
+void Controller::saveItem(wxString& title, int kind)
+{
+    if (NULL == _currentItem)
+    {
+        int id = -1;
+        switch (kind)
+        {
+            case 0:
+                id = _library.addNewVHS(title.c_str());
+                break;
+                
+            case 1:
+                id = _library.addNewDVD(title.c_str());
+                break;
+            
+            default:
+                break;
+        }
+        if (-1 != id)
+        {
+            _currentItem = &(_library[id]);
+        }
+    }
+    else
+    {
+        _currentItem->setTitle(title.c_str());
+    }
+    saveLibrary();
 }

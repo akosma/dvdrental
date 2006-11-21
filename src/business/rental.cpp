@@ -8,42 +8,66 @@
 
 const std::string Rental::FILE_NAME = "rentals.dat";
 
-Rental::Rental( )
+Rental::Rental()
+: _customerId (-1)
+, _itemId     (-1)
+, _rentalDate (Date())
+, _dueDate    (Date())
+{
+}
+
+Rental::Rental(const int customerId, 
+               const int itemId, 
+               const Date& dueDate)
+: _customerId (customerId)
+, _itemId     (itemId)
+, _rentalDate (Date())
+, _dueDate    (dueDate)
 {
 
+}
+
+Rental::Rental(const Rental& rhs)
+: _customerId (rhs._customerId)
+, _itemId     (rhs._itemId)
+, _rentalDate (rhs._rentalDate)
+, _dueDate    (rhs._dueDate)
+{
+}
+
+Rental& Rental::operator=(const Rental& rhs)
+{
+    _customerId = rhs._customerId;
+    _itemId = rhs._itemId;
+    _rentalDate = rhs._rentalDate;
+    _dueDate = rhs._dueDate;
 }
 
 Rental::~Rental( )
 {
-
 }
 
-int  Rental::getCustomerId( ) const
+const int Rental::getItemId() const
+{
+    return _itemId;
+}
+
+const int Rental::getCustomerId( ) const
 {
     return _customerId;
 }
 
-Date Rental::getRentalDate( ) const
+const Date& Rental::getRentalDate( ) const
 {
     return _rentalDate;
 }
 
-Date Rental::getDueDate( ) const
+const Date& Rental::getDueDate( ) const
 {
     return _dueDate;
 }
 
-void Rental::setCustomerId( int customerId )
+const bool Rental::isLate() const
 {
-    _customerId = customerId;
-}
-
-void Rental::setRentalDate( const Date &rentalDate )
-{
-    _rentalDate = rentalDate;
-}
-
-void Rental::setDueDate( const Date &dueDate )
-{
-    _dueDate = dueDate;
+    return false;
 }

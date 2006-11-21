@@ -54,6 +54,63 @@ void Persist::saveCustomers(Customers& customers)
     file.close();
 }
 
+void Persist::loadLibrary(Items& library)
+{
+    Item item;
+    const char* fileName = Library::FILE_NAME.c_str();
+
+    // Test to see if the file exists...
+    std::ifstream test(fileName, std::ios::in);
+    if (!test)
+    {
+        createDummyLibraryFile();
+    }
+    test.close();
+    
+    std::ifstream file(fileName, std::ios::in);
+    file.read(reinterpret_cast<char*>(&item), sizeof(Item));
+    while (!file.eof())
+    {
+        library[item.getId()] = item;
+        file.read(reinterpret_cast<char*>(&item), sizeof(Item));
+    }
+    file.close();
+}
+
+void Persist::saveLibrary(Items& library)
+{
+    Items::iterator iterator;
+    const char* fileName = Library::FILE_NAME.c_str();
+
+    std::ofstream file(fileName, std::ios::out);
+    if (!file)
+    {
+        std::cerr << "Error while opening " << fileName << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    for (iterator = library.begin(); iterator != library.end(); ++iterator)
+    {
+        Item item = (*iterator).second;
+        file.write(reinterpret_cast<const char*>(&item), sizeof(Item));
+    }
+    file.close();
+}
+
+void Persist::createDummyLibraryFile()
+{
+    Library library;
+    library.addNewDVD("Brief Encounters of the Third Kind");
+    library.addNewDVD("Fellowship of the Ring");
+    library.addNewDVD("The Two Towers");
+    library.addNewDVD("Return of the King");
+    library.addNewDVD("Cronicles of Narnia");
+    library.addNewVHS("Thomas the Tank Engine");
+    library.addNewVHS("Apollo 13");
+    library.addNewVHS("Total Recall");
+    saveLibrary(library.getItems());
+}
+
 void Persist::createDummyCustomerFile()
 {
     // File not found, create dummy file

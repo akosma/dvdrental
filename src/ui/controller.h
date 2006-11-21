@@ -51,6 +51,16 @@ public:
     void prepareForNewCustomer();
     void saveCustomer(wxString& firstName, wxString& lastName, wxString& address, wxString& phone);
     
+    void loadLibrary();
+    void saveLibrary();
+    void fillItemsList(wxListCtrl* list);
+    void loadItem(int id);
+    const wxString getCurrentItemTitle() const;
+    const int getCurrentItemKind() const;
+    void deleteCurrentItem();
+    void prepareForNewItem();
+    void saveItem(wxString& title, int kind);
+    
 private:
     int getMaximumCustomerId();
 

@@ -13,6 +13,10 @@ using namespace std;
 
 class BaseClass
 {
+public:
+    BaseClass();
+    virtual ~BaseClass();
+    
 protected:
     void setStringField(const std::string&, char*);
 };
