@@ -4,6 +4,8 @@
  * \author Ahmed Madkour, Keith Miller, Adrian Kosmaczewski
  * \date November 22nd, 2006
  *
+ * \image html icon.jpg
+ *
  * The video library Video Fun lends videos and DVDs. They have contracted you
  * to develop a system to automate their business. The system will record details
  * about the customers who use the library, the materials that are available to
@@ -75,10 +77,6 @@ int DvdRental::OnExit()
 
 /*!
  * \page pageScreenshots Screenshots
- *
- * \section screen_icon Application Icon
- *
- * \image html icon.jpg
  *
  * \section screen_winxp Windows XP Professional SP2
  *
