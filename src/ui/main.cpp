@@ -193,12 +193,13 @@ void Main::CreateRentalsTab()
     rentalsNotebookPage->SetSizer(rentalsPageSizer);
     rentalsNotebookPage->SetAutoLayout(true);
 
-    rentalsList = new wxListCtrl(rentalsNotebookPage, ID_RENTALSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT);
+    rentalsList = new wxListCtrl(rentalsNotebookPage, ID_RENTALSLIST, wxPoint(5,8), wxSize(168,395), wxLC_REPORT + wxLC_SINGLE_SEL);
     rentalsList->InsertColumn(0, wxT("#"), wxLIST_FORMAT_LEFT, 30);
-    rentalsList->InsertColumn(1, wxT("Title"), wxLIST_FORMAT_LEFT, 200);
-    rentalsList->InsertColumn(2, wxT("Kind"), wxLIST_FORMAT_LEFT, 40);
-    rentalsList->InsertColumn(3, wxT("Customer"), wxLIST_FORMAT_LEFT, 200);
-    rentalsList->InsertColumn(4, wxT("Date Due"), wxLIST_FORMAT_LEFT, 150);
+    rentalsList->InsertColumn(1, wxT("Kind"), wxLIST_FORMAT_LEFT, 40);
+    rentalsList->InsertColumn(2, wxT("Cost"), wxLIST_FORMAT_LEFT, 50);
+    rentalsList->InsertColumn(3, wxT("Title"), wxLIST_FORMAT_LEFT, 190);
+    rentalsList->InsertColumn(4, wxT("Customer"), wxLIST_FORMAT_LEFT, 160);
+    rentalsList->InsertColumn(5, wxT("Date Due"), wxLIST_FORMAT_LEFT, 130);
     rentalsPageSizer->Add(rentalsList, 1, wxEXPAND | wxALL, 5);
 
     buttonsNewRentalPageSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -281,34 +282,26 @@ void Main::CreateNewRentalTab()
     newRentalFieldsSizer->Add(selectCustomerLabel, wxGBPosition(0, 0), wxDefaultSpan, wxGROW);
     selectItemLabel = new wxStaticText(newRentalNotebookPage, ID_SELECTITEMLABEL, wxT("2) Select one or more Items"), wxPoint(198,9), wxDefaultSize, 0, wxT("selectItemLabel"));
     newRentalFieldsSizer->Add(selectItemLabel, wxGBPosition(0, 1), wxDefaultSpan, wxGROW);
-    reviewCreateLabel = new wxStaticText(newRentalNotebookPage, ID_REVIEWCREATELABEL, wxT("3) Review and Create"), wxPoint(388,9), wxDefaultSize, 0, wxT("reviewCreateLabel"));
-    newRentalFieldsSizer->Add(reviewCreateLabel, wxGBPosition(0, 2), wxDefaultSpan, wxGROW);
 
     newRentalCustomerList = new wxListCtrl(newRentalNotebookPage, ID_NEWRENTALCUSTOMERLIST, wxPoint(8,29), wxSize(160,370), wxLC_REPORT + wxLC_SINGLE_SEL);
     newRentalCustomerList->InsertColumn(0, wxT("#"), wxLIST_FORMAT_LEFT, 30);
-    newRentalCustomerList->InsertColumn(1, wxT("Name"), wxLIST_FORMAT_LEFT, 160);
+    newRentalCustomerList->InsertColumn(1, wxT("Name"), wxLIST_FORMAT_LEFT, 220);
     newRentalFieldsSizer->Add(newRentalCustomerList, wxGBPosition(1, 0), wxDefaultSpan, wxGROW);
     newRentalItemList = new wxListCtrl(newRentalNotebookPage, ID_NEWRENTALITEMLIST, wxPoint(198,29), wxSize(160,370), wxLC_REPORT);
     newRentalItemList->InsertColumn(0, wxT("#"), wxLIST_FORMAT_LEFT, 30);
-    newRentalItemList->InsertColumn(1, wxT("Title"), wxLIST_FORMAT_LEFT, 130);
+    newRentalItemList->InsertColumn(1, wxT("Title"), wxLIST_FORMAT_LEFT, 220);
     newRentalItemList->InsertColumn(2, wxT("Kind"), wxLIST_FORMAT_LEFT, 40);
     newRentalFieldsSizer->Add(newRentalItemList, wxGBPosition(1, 1), wxDefaultSpan, wxGROW);
 
-    rentalSummary = new wxStaticText(newRentalNotebookPage, ID_RENTALSUMMARY, wxT(""), wxPoint(388,29), wxDefaultSize, 0, wxT("rentalSummary"));
-    newRentalInnerSizer = new wxBoxSizer(wxVERTICAL);
-    newRentalInnerSizer->Add(rentalSummary, 1, wxEXPAND | wxALL, 5);
-    newRentalFieldsSizer->Add(newRentalInnerSizer, wxGBPosition(1, 2), wxDefaultSpan, wxGROW);
+    reviewCreateLabel = new wxStaticText(newRentalNotebookPage, ID_REVIEWCREATELABEL, wxT("3) Review and Create"), wxPoint(388,9), wxDefaultSize, wxALIGN_RIGHT, wxT("reviewCreateLabel"));
+    newRentalFieldsSizer->Add(reviewCreateLabel, wxGBPosition(2, 0), wxDefaultSpan, wxGROW);
     
-    newRentalButtonSizer = new wxBoxSizer(wxHORIZONTAL);
-    newRentalInnerSizer->Add(newRentalButtonSizer, 0, wxALIGN_RIGHT | wxALL, 5);
-
     createRentalButton = new wxButton(newRentalNotebookPage, ID_CREATERENTALBUTTON, wxT("Create Rental"), wxPoint(388,349), wxSize(200,25), 0, wxDefaultValidator, wxT("createRentalButton"));
-    newRentalButtonSizer->Add(createRentalButton, 0, wxALIGN_RIGHT | wxALL, 5);
+    newRentalFieldsSizer->Add(createRentalButton, wxGBPosition(2, 1), wxDefaultSpan);
 
     newRentalFieldsSizer->AddGrowableRow(1);
     newRentalFieldsSizer->AddGrowableCol(0);
     newRentalFieldsSizer->AddGrowableCol(1);
-    newRentalFieldsSizer->AddGrowableCol(2);
 }
 
 void Main::LoadData()

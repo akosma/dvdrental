@@ -96,8 +96,6 @@ class Main : public wxFrame
         wxBoxSizer* buttonsNewRentalPageSizer;
         wxBoxSizer* innerItemsPageSizer;
         wxBoxSizer* buttonsItemSizer;
-        wxBoxSizer* newRentalButtonSizer;
-        wxBoxSizer* newRentalInnerSizer;
 
         wxGridBagSizer* newRentalFieldsSizer;
         wxGridBagSizer* customerFieldsSizer;
@@ -115,7 +113,6 @@ class Main : public wxFrame
 
         wxStaticText* availableLabel;
         wxStaticText* availabilityLabel;
-        wxStaticText* rentalSummary;
         wxStaticText* reviewCreateLabel;
         wxStaticText* selectItemLabel;
         wxStaticText* selectCustomerLabel;
@@ -160,7 +157,6 @@ class Main : public wxFrame
             ID_AVAILABILITYLABEL = 1071,
             ID_RETURNRENTALBUTTON = 1069,
             ID_RENTALSLIST = 1066,
-            ID_RENTALSUMMARY = 1062,
             ID_REVIEWCREATELABEL = 1061,
             ID_CREATERENTALBUTTON = 1060,
             ID_NEWRENTALITEMLIST = 1059,

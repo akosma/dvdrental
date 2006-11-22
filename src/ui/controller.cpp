@@ -285,25 +285,28 @@ void Controller::fillRentalsList(wxListCtrl* list)
         number << curItem.getId();
         wxString title;
         title << curItem.getTitle().c_str();
+        wxString kind;
+        kind << curItem.getItemKindString().c_str();
+        wxString customer;
+        customer << (*_customers)[curItem.getCustomerId()].getFirstName().c_str();
+        customer << " ";
+        customer << (*_customers)[curItem.getCustomerId()].getLastName().c_str();
+        wxString date;
+        date << curItem.getDueDate().getStandardString().c_str();
+        wxString cost;
+        cost << curItem.getRentalCharge();
+
         item.SetText(number);
         long id = (long)curItem.getId();
         item.SetData(id);
         list->InsertItem(item);
         int itemId = item.GetId();
-        list->SetItem(itemId, 1, title);
-        wxString kind;
-        kind << curItem.getItemKindString().c_str();
-        list->SetItem(itemId, 2, kind);
-        
-        wxString customer;
-        customer << (*_customers)[curItem.getCustomerId()].getFirstName().c_str();
-        customer << " ";
-        customer << (*_customers)[curItem.getCustomerId()].getLastName().c_str();
-        list->SetItem(itemId, 3, customer);
-        
-        wxString date;
-        date << curItem.getDueDate().getStandardString().c_str();
-        list->SetItem(itemId, 4, date);
+
+        list->SetItem(itemId, 1, kind);
+        list->SetItem(itemId, 2, cost);
+        list->SetItem(itemId, 3, title);
+        list->SetItem(itemId, 4, customer);
+        list->SetItem(itemId, 5, date);
     }
 }
 
