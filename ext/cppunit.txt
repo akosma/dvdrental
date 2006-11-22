@@ -1,0 +1,14 @@
+The DVDRental application depends on CppUnit 1.12.0 or later; it can be downloaded from
+http://downloads.sourceforge.net/cppunit/cppunit-1.12.0.tar.gz
+
+Installation instructions
+-------------------------
+
+For Windows, using Visual Studio.NET 2003 or later:
+
+1) Unzip the cppunit-1.12.0.tar.gz file to C:\cppunit-1.12.0
+2) Make sure that C:\cppunit-1.12.0\lib and C:\cppunit-1.12.0\include exist in the folder created above.
+3) Open the C:\cppunit-1.12.0\src\CppUnitLibraries.dsw file.
+4) Compile the solution (all of it) in "Debug" and "Release" modes.
+
+Now you should be able to open the DVDRental.sln file and compile it.

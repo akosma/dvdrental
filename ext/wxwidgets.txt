@@ -1,0 +1,14 @@
+The DVDRental application depends on wxWidgets 2.6.3 or later; it can be downloaded from
+http://downloads.sourceforge.net/wxwindows/wxWidgets-2.6.3.zip
+
+Installation instructions
+-------------------------
+
+For Windows, using Visual Studio.NET 2003 or later:
+
+1) Unzip the wxWidgets-2.6.3.zip file to C:\wxWidgets-2.6.3
+2) Make sure that C:\wxWidgets-2.6.3\lib and C:\wxWidgets-2.6.3\include exist in the folder created above.
+3) Open the C:\wxWidgets-2.6.3\src\wxWindows.dsw file.
+4) Compile the solution (all of it) in "Debug" and "Release" modes.
+
+Now you should be able to open the DVDRental.sln file and compile it.
