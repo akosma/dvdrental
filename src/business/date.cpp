@@ -17,9 +17,10 @@ using std::endl;
 
 // default constructor
 Date::Date( )
-: year  (0)
-, month (0)
-, day   (0)
+: year       (0)
+, month      (0)
+, day        (0)
+, julianDate (0)
 {
     // basic time manipulation taken from
     // http://www.informit.com/guides/content.asp?g=cplusplus&seqNum=65&rl=1
@@ -27,17 +28,20 @@ Date::Date( )
     std::tm local;
     time(&curr);
     local = *(std::localtime(&curr));
-    
+
     // now build the proper instance
     year = local.tm_year + 1900;
     month = local.tm_mon + 1;
     day = local.tm_mday;
+
+    convertToJulianDate();
 }
 
 Date::Date(const Date& rhs)
-: year  (rhs.year)
-, month (rhs.month)
-, day   (rhs.day)
+: year       (rhs.year)
+, month      (rhs.month)
+, day        (rhs.day)
+, julianDate (rhs.julianDate)
 {
 }
 
@@ -46,6 +50,7 @@ Date& Date::operator=(const Date& rhs)
     year = rhs.year;
     month = rhs.month;
     day = rhs.day;
+    julianDate = rhs.julianDate;
     return *this;
 }
 
@@ -76,6 +81,7 @@ Date::Date( int d, int m, int y ) :
                 " year " << year << endl;
         }
     }
+    convertToJulianDate();
 }
 
 // Output date as d/m/y
@@ -87,33 +93,20 @@ void Date::print()
 // Increment the date by one day, incrementing month and year when necessary
 void Date::nextDay()
 {
-    if ( day == daysInMonth() ) {
-    // We are on the last day of the month, go to next month
-        day = 1;
-
-        if ( month == 12) {
-        // We have reached the last month of the year, go to next year
-            month = 1;
-            ++year;
-        }
-        else {
-        // Not end of year so just increment the month
-            ++month;
-        }
-    }
-    else {
-    // Not end of month so just increment the day
-        ++day;
-    }
+    ++julianDate;
+    convertFromJulianDate();
 }
 
 // Add number of days to the date
-// For the DVDRental project we will only be adding 2 or 7 days to the date so we will use
-// a simple loop.
-void Date::addDays( int days )
+void Date::addDays(long days)
 {
-    while ( days-- > 0 )
-        nextDay( );
+    julianDate += days;
+    convertFromJulianDate();
+}
+
+const long Date::getJulianDate() const
+{
+    return julianDate;
 }
 
 // Return true if current year is a leap year
@@ -155,9 +148,9 @@ int  Date::daysInMonth()
 
 /*!
  * Equality operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator==(const Date& rhs) const
@@ -170,9 +163,9 @@ const bool Date::operator==(const Date& rhs) const
 
 /*!
  * Inequality operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator!=(const Date& rhs) const
@@ -183,9 +176,9 @@ const bool Date::operator!=(const Date& rhs) const
 
 /*!
  * Less-than operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator<(const Date& rhs) const
@@ -235,9 +228,9 @@ const bool Date::operator<(const Date& rhs) const
 
 /*!
  * Bigger-than operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator>(const Date& rhs) const
@@ -248,9 +241,9 @@ const bool Date::operator>(const Date& rhs) const
 
 /*!
  * Less-or-equal-than operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator<=(const Date& rhs) const
@@ -261,9 +254,9 @@ const bool Date::operator<=(const Date& rhs) const
 
 /*!
  * Bigger-or-equal-than operator.
- * 
+ *
  * \param rhs The instance to copy from.
- * 
+ *
  * \return A boolean.
  */
 const bool Date::operator>=(const Date& rhs) const
@@ -272,10 +265,27 @@ const bool Date::operator>=(const Date& rhs) const
     return result;
 }
 
+Date& Date::operator+(const long days)
+{
+    addDays(days);
+    return *this;
+}
+
+Date& Date::operator-(const long days)
+{
+    addDays(-days);
+    return *this;
+}
+
+const long Date::operator-(const Date& rhs)
+{
+    return julianDate - rhs.julianDate;
+}
+
 /*!
- * Returns an ISO 8601 standard string, representing the 
+ * Returns an ISO 8601 standard string, representing the
  * current instance.
- * 
+ *
  * \return A string.
  */
 const std::string Date::getStandardString() const
@@ -298,6 +308,50 @@ const std::string Date::getStandardString() const
         ss << "0";
     }
     ss << day;
-    
+
     return ss.str();
+}
+
+// Code for this method borrowed from
+// http://www.silverglass.org/code/Date.html
+void Date::convertToJulianDate()
+{
+    long lmonth = (long) month,
+    long lday = (long) day;
+    long lyear = (long) year;
+
+    // Adjust BC years
+    if ( lyear < 0 )
+    {
+        lyear++;
+    }
+
+    julianDate = lday - 32075L +
+        1461L * ( lyear + 4800L + ( lmonth - 14L ) / 12L ) / 4L +
+        367L * ( lmonth - 2L - ( lmonth - 14L ) / 12L * 12L ) / 12L -
+        3L * ( ( lyear + 4900L + ( lmonth - 14L ) / 12L ) / 100L ) / 4L;
+}
+
+// Code for this method borrowed from
+// http://www.silverglass.org/code/Date.html
+void Date::convertFromJulianDate()
+{
+    long t1, t2, yr, mo;
+
+    t1 = julianDate + 68569L;
+    t2 = 4L * t1 / 146097L;
+    t1 = t1 - ( 146097L * t2 + 3L ) / 4L;
+    yr = 4000L * ( t1 + 1L ) / 1461001L;
+    t1 = t1 - 1461L * yr / 4L + 31L;
+    mo = 80L * t1 / 2447L;
+    day = (int) ( t1 - 2447L * mo / 80L );
+    t1 = mo / 11L;
+    month = (int) ( mo + 2L - 12L * t1 );
+    year = (int) ( 100L * ( t2 - 49L ) + yr + t1 );
+
+    // Correct for BC years
+    if ( year <= 0 )
+    {
+        year -= 1;
+    }
 }

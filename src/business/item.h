@@ -49,6 +49,7 @@ public:
     void setTitle(const std::string&);
     
     void setRentedByCustomerId(const int);
+    void setRentedByCustomerId(const int, const Date&);
     const bool isRented() const;
     void setReturned();
     const bool isLate() const;

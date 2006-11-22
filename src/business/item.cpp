@@ -75,11 +75,17 @@ Item& Item::operator=(const Item& rhs)
 
 void Item::setRentedByCustomerId(const int customerId)
 {
+    Date today;
+    setRentedByCustomerId(customerId, today);
+}
+
+void Item::setRentedByCustomerId(const int customerId, const Date& rentalDate)
+{
     // Only rent out if not already rented
     if (!_rented) 
     {
         _customerId = customerId;   // Customer who has the item rented out
-        _rentalDate = Date();   // Date it was rented = today
+        _rentalDate = rentalDate;   // Date it was rented = today
 
         // Set up the date that it is due back. This is done by adding the rental period
         // from the derived class (DVD or VHS) to the rentalDate
@@ -113,7 +119,13 @@ const int Item::getRentalPeriod() const
 
 const int Item::getRentalCharge() const
 {
-    return _rentalCharge;
+    int cost = _rentalCharge;
+    if (isLate())
+    {
+        Date today;
+        cost += _lateFee * (today - _dueDate);
+    }
+    return cost;
 }
 
 const int Item::getLateFee() const
