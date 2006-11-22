@@ -133,6 +133,9 @@
 				RelativePath="..\src\business\date.cpp">
 			</File>
 			<File
+				RelativePath="..\src\test\datetest.cpp">
+			</File>
+			<File
 				RelativePath="..\src\business\dvd.cpp">
 			</File>
 			<File
@@ -163,6 +166,9 @@
 			</File>
 			<File
 				RelativePath="..\src\business\date.h">
+			</File>
+			<File
+				RelativePath="..\src\test\datetest.h">
 			</File>
 			<File
 				RelativePath="..\src\business\dvd.h">

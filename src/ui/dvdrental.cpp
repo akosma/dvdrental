@@ -224,6 +224,8 @@ int DvdRental::OnExit()
  * http://www.informit.com/guides/content.asp?g=cplusplus&seqNum=65&rl=1
  * \li The application icon was taken from
  * http://www.pef.org/stopworkplaceviolence/images/dvd-icon.jpg
+ * \li The Julian Date algorithms are taken from
+ * http://www.silverglass.org/code/Date.html
  *
  */
 

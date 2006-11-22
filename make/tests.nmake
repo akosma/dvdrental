@@ -45,6 +45,7 @@ CLEAN :
 	-@erase "$(INTDIR)\baseclass.obj"
 	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
+	-@erase "$(INTDIR)\datetest.obj"
 	-@erase "$(INTDIR)\dvd.obj"
 	-@erase "$(INTDIR)\item.obj"
 	-@erase "$(INTDIR)\library.obj"
@@ -99,6 +100,7 @@ LINK32_OBJS= \
 	"$(INTDIR)\baseclass.obj" \
 	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
+	"$(INTDIR)\datetest.obj" \
 	"$(INTDIR)\dvd.obj" \
 	"$(INTDIR)\librarytest.obj" \
 	"$(INTDIR)\item.obj" \
@@ -133,6 +135,7 @@ CLEAN :
 	-@erase "$(INTDIR)\baseclass.obj"
 	-@erase "$(INTDIR)\customer.obj"
 	-@erase "$(INTDIR)\date.obj"
+	-@erase "$(INTDIR)\datetest.obj"
 	-@erase "$(INTDIR)\dvd.obj"
 	-@erase "$(INTDIR)\item.obj"
 	-@erase "$(INTDIR)\library.obj"
@@ -190,6 +193,7 @@ LINK32_OBJS= \
 	"$(INTDIR)\baseclass.obj" \
 	"$(INTDIR)\customer.obj" \
 	"$(INTDIR)\date.obj" \
+	"$(INTDIR)\datetest.obj" \
 	"$(INTDIR)\dvd.obj" \
 	"$(INTDIR)\librarytest.obj" \
 	"$(INTDIR)\item.obj" \
@@ -222,6 +226,12 @@ SOURCE=..\src\business\baseclass.cpp
 SOURCE=..\src\business\date.cpp
 
 "$(INTDIR)\date.obj" : $(SOURCE) "$(INTDIR)"
+	$(CPP) $(CPP_PROJ) $(SOURCE)
+
+
+SOURCE=..\src\test\datetest.cpp
+
+"$(INTDIR)\datetest.obj" : $(SOURCE) "$(INTDIR)"
 	$(CPP) $(CPP_PROJ) $(SOURCE)
 
 
