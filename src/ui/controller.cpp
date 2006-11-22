@@ -148,15 +148,34 @@ const wxString Controller::getCurrentCustomerAddress() const
     return result;
 }
 
-void Controller::deleteCurrentCustomer()
+const bool Controller::deleteCurrentCustomer()
 {
+    bool ok = true;
     if (NULL != _currentCustomer)
     {
         int id = _currentCustomer->getId();
-        _currentCustomer = NULL;
-        _customers->erase(id);
-        saveCustomers();
+
+        // Check that the customer does not have rented items!
+        Items::reverse_iterator iterator;
+        Items& items = _library.getItems();
+        for(iterator = items.rbegin(); iterator != items.rend(); iterator++)
+        {
+            Item& curItem = iterator->second;
+            if (curItem.isRented() && curItem.getCustomerId() == id)
+            {
+                ok = false;
+                break;
+            }
+        }
+
+        if (ok)
+        {
+            _currentCustomer = NULL;
+            _customers->erase(id);
+            saveCustomers();
+        }
     }
+    return ok;
 }
 
 void Controller::prepareForNewCustomer()
@@ -348,15 +367,20 @@ const int Controller::getCurrentItemKind() const
     return result;
 }
 
-void Controller::deleteCurrentItem()
+const bool Controller::deleteCurrentItem()
 {
+    bool ok = false;
     if (NULL != _currentItem)
     {
         int id = _currentItem->getId();
         _currentItem = NULL;
-        _library.erase(id);
-        saveLibrary();
+        ok = _library.erase(id);
+        if (ok)
+        {
+            saveLibrary();
+        }
     }
+    return ok;
 }
 
 void Controller::prepareForNewItem()
@@ -451,8 +475,20 @@ void Controller::setCurrentRental(int itemId)
     _currentRentalId = itemId;
 }
 
-void Controller::returnCurrentRental()
+const wxString Controller::returnCurrentRental()
 {
-    _library[_currentRentalId].setReturned();
+    wxString receipt;
+    Item& item = _library[_currentRentalId];
+    if (item.isLate())
+    {
+        receipt << "Item returned late! Applicable fee: ";
+        receipt << item.getLateFee();
+    }
+    else
+    {
+        receipt << "Item returned in time; no additional fees!";
+    }
+    item.setReturned();
     saveLibrary();
+    return receipt;
 }

@@ -48,7 +48,7 @@ public:
     const wxString getCurrentCustomerLastName() const;
     const wxString getCurrentCustomerAddress() const;
     const wxString getCurrentCustomerPhoneNumber() const;
-    void deleteCurrentCustomer();
+    const bool deleteCurrentCustomer();
     void prepareForNewCustomer();
     void saveCustomer(wxString&, wxString&, wxString&, wxString&);
     
@@ -60,14 +60,14 @@ public:
     const wxString getCurrentItemTitle() const;
     const int getCurrentItemKind() const;
     const Availability getCurrentItemAvailability() const;
-    void deleteCurrentItem();
+    const bool deleteCurrentItem();
     void prepareForNewItem();
     void saveItem(wxString& title, int kind);
     
     void fillRentalsList(wxListCtrl* list);
     const bool createRental(wxListCtrl*, wxListCtrl*);
     void setCurrentRental(int);
-    void returnCurrentRental();
+    const wxString returnCurrentRental();
     
 private:
     int getMaximumCustomerId();

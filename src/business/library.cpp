@@ -82,9 +82,16 @@ const int Library::addNewVHS(const std::string& title)
     return addNewItem(vhs);
 }
 
-void Library::erase(const int id)
+const bool Library::erase(const int id)
 {
-    _items.erase(id);
+    Item& item = _items[id];
+    bool result = false;
+    if (!item.isRented())
+    {
+        result = true;
+        _items.erase(id);
+    }
+    return result;
 }
 
 const int Library::getMaximumItemId()

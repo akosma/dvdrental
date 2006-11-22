@@ -56,7 +56,7 @@ CLEAN :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/O2 /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /FD /EHsc /MD /GS /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /Zi /TP
+CPP_PROJ=/O2 /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /FD /EHsc /MD /GR /GS /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /Zi /TP
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<
@@ -147,7 +147,7 @@ CLEAN :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
 
 CPP=cl.exe
-CPP_PROJ=/Od /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /Gm /EHsc /RTC1 /MDd /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /ZI /TP
+CPP_PROJ=/Od /I "C:\cppunit-1.12.0\include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "CPPUNIT_DLL" /D "_MBCS" /Gm /GR /EHsc /RTC1 /MDd /Fo"$(OUTDIR)/" /Fd"$(OUTDIR)/vc70.pdb" /W3 /nologo /c /Wp64 /ZI /TP
 
 .c{$(INTDIR)}.obj::
    $(CPP) @<<

@@ -40,7 +40,7 @@ public:
     const int addNewVHS(const std::string&);
     
     //! Remove an item from the library
-    void erase(const int id);
+    const bool erase(const int id);
     
 public:
     static const std::string FILE_NAME;

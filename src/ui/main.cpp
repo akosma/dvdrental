@@ -456,12 +456,19 @@ void Main::OnMenuDeleteCustomerSelected(wxCommandEvent& event)
     int answer = wxMessageBox("Are you sure?", "Delete current customer", wxYES_NO);
     if (answer == wxYES)
     {
-        controller.deleteCurrentCustomer();
-        LoadData();
-        firstNameField->SetValue("");
-        lastNameField->SetValue("");
-        addressField->SetValue("");
-        phoneNumberField->SetValue("");
+        const bool ok = controller.deleteCurrentCustomer();
+        if (ok)
+        {
+            LoadData();
+            firstNameField->SetValue("");
+            lastNameField->SetValue("");
+            addressField->SetValue("");
+            phoneNumberField->SetValue("");
+        }
+        else
+        {
+            wxMessageBox(_T("The current customer has due rentals. You cannot delete it."), _T("Error"), wxOK | wxICON_ERROR, this);
+        }
     }
 }
 
@@ -531,11 +538,19 @@ void Main::OnMenuDeleteItemSelected(wxCommandEvent& event)
     int answer = wxMessageBox("Are you sure?", "Delete current item", wxYES_NO);
     if (answer == wxYES)
     {
-        controller.deleteCurrentItem();
-        LoadData();
-        itemTitleField->SetValue("");
-        itemKindChoice->SetSelection(-1);
-        SetAvailabilityLabel(UNKNOWN);
+        const bool ok = controller.deleteCurrentItem();
+        if (ok)
+        {
+            LoadData();
+            itemTitleField->SetValue("");
+            itemKindChoice->SetSelection(-1);
+            SetAvailabilityLabel(UNKNOWN);
+        }
+        else
+        {
+            wxMessageBox(_T("The item is currently rented. You cannot delete it."), 
+                         _T("Error"), wxOK | wxICON_ERROR, this);
+        }
     }
 }
 
@@ -562,7 +577,8 @@ void Main::OnRentalsListSelected(wxListEvent& event)
 
 void Main::OnRentalsReturnButtonClick(wxCommandEvent& event)
 {
-    controller.returnCurrentRental();
+    const wxString receipt = controller.returnCurrentRental();
+    wxMessageBox(receipt, _T("Rental Return"), wxOK | wxICON_INFORMATION, this);
     LoadData();
     returnRentalButton->Disable();
 }
