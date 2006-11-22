@@ -54,8 +54,8 @@ Date& Date::operator=(const Date& rhs)
     return *this;
 }
 
-Date::Date( int d, int m, int y ) :
-    year( y )
+Date::Date(const int y, const int m, const int d) 
+: year( y )
 {
     // Test month in range. If invalid set it to 1 and output a message
     if ( ( m >= 1 ) && ( m <= 12 ) ) {
@@ -85,7 +85,7 @@ Date::Date( int d, int m, int y ) :
 }
 
 // Output date as d/m/y
-void Date::print()
+void Date::print() const
 {
     cout << day << '/' << month << '/' << year;
 }
@@ -113,7 +113,7 @@ const long Date::getJulianDate() const
 // The year is a leap year if
 //   it is divisible by 4 and is not divisible by 100
 //   or, it is divisible by 400
-bool Date::isLeapYear()
+const bool Date::isLeapYear() const
 {
     if ( year % 4 != 0 ) {
         return false;
@@ -135,7 +135,7 @@ bool Date::isLeapYear()
 
 // This function returns the number of days in the current month,
 // taking into account leap years
-int  Date::daysInMonth()
+const int Date::daysInMonth() const
 {
     const short monthDays[ 2 ][ 12 ] =
         { { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
@@ -316,7 +316,7 @@ const std::string Date::getStandardString() const
 // http://www.silverglass.org/code/Date.html
 void Date::convertToJulianDate()
 {
-    long lmonth = (long) month,
+    long lmonth = (long) month;
     long lday = (long) day;
     long lyear = (long) year;
 
@@ -354,4 +354,218 @@ void Date::convertFromJulianDate()
     {
         year -= 1;
     }
+}
+
+/*!
+ * Calculates the weekday of the current string, using the
+ * Date::getCenturyCode() and Date::getMonthCode() methods.
+ */
+const std::string Date::getWeekday() const
+{
+    // Algorithm adapted from 
+    // http://en.wikipedia.org/wiki/Calculating_the_day_of_the_week
+    
+    int centuryCode = getCenturyCode();
+    int lastTwoDigits = year - (year / 100) * 100;
+    int division = lastTwoDigits / 4;
+    int monthCode = getMonthCode();
+    int sum = centuryCode + lastTwoDigits + division + monthCode + day;
+    int dayCode = sum % 7;
+    
+    std::string weekday;
+    
+    switch (dayCode)
+    {
+        case 0:
+            weekday = "Sunday";
+            break;
+            
+        case 1:
+            weekday = "Monday";
+            break;
+            
+        case 2:
+            weekday = "Tuesday";
+            break;
+            
+        case 3:
+            weekday = "Wednesday";
+            break;
+            
+        case 4:
+            weekday = "Thursday";
+            break;
+            
+        case 5:
+            weekday = "Friday";
+            break;
+            
+        case 6:
+            weekday = "Saturday";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return weekday;
+}
+
+/*!
+ * Used by Date::calculateWeekday().
+ * 
+ * \return An integer.
+ */
+const int Date::getCenturyCode() const
+{
+    /*
+     * 1752-1799     4
+     * 1800-1899     2
+     * 1900-1999     0
+     * 2000-2099     6
+     * 2100-2199     4
+     */
+    int result = 0;
+    if (year >= 1752 && year <= 1799)
+    {
+        result = 4;
+    }
+    if (year >= 1800 && year <= 1899)
+    {
+        result = 2;
+    }
+    if (year >= 1900 && year <= 1999)
+    {
+        result = 0;
+    }
+    if (year >= 2000 && year <= 2099)
+    {
+        result = 6;
+    }
+    if (year >= 2100 && year <= 2199)
+    {
+        result = 4;
+    }
+    return result;
+}
+
+/*!
+ * Used by Date::calculateWeekday().
+ * 
+ * \return An integer.
+ */
+const int Date::getMonthCode() const
+{
+    /*
+     * January      0 (in leap year 6)
+     * February     3 (in leap year 2)
+     * March        3     
+     * April        6     
+     * May          1     
+     * June         4     
+     * July         6     
+     * August       2
+     * September    5
+     * October      0
+     * November     3
+     * December     5
+     */
+    int result = 0;
+    const bool leapYear = isLeapYear();
+    switch (month)
+    {
+        case 1:
+            result = (leapYear) ? 6 : 0;
+            break;
+            
+        case 2:
+            result = (leapYear) ? 2 : 3;
+            break;
+            
+        case 3:
+            result = 3;
+            break;
+            
+        case 4:
+            result = 6;
+            break;
+            
+        case 5:
+            result = 1;
+            break;
+        
+        case 6:
+            result = 4;
+            break;
+            
+        case 7:
+            result = 6;
+            break;
+            
+        case 8:
+            result = 2;
+            break;
+            
+        case 9:
+            result = 5;
+            break;
+            
+        case 10:
+            result = 0;
+            break;
+            
+        case 11:
+            result = 3;
+            break;
+            
+        case 12:
+            result = 5;
+            break;
+            
+        default:
+            result = -1;
+            break;
+    }
+    return result;
+}
+
+/*!
+ * Validates the current instance (boundaries, leap years, etc)
+ */
+const bool Date::isValid() const
+{
+    bool validYearRange = (year >= 1752) && (year <= 2199);
+    bool validMonthRange = (month >= 1) && (month <= 12);
+    
+    // If validMonthRange = false, do not calculate validateDay()
+    // since there could be an "index out of bounds" exception
+    const bool validDay = validMonthRange && validateDay();
+
+    return validYearRange && validMonthRange && validDay;
+}
+
+/*!
+ * Validates the day of the current instance.
+ * 
+ * \return A boolean; true if the day is valid, false otherwise.
+ */
+const bool Date::validateDay() const
+{
+    // Adapted from Deitel's "C++ How To Program, Fifth Edition"
+    // ISBN 0-13-185757-6, page 537
+    static const int daysPerMonth[13] = 
+        {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    
+    bool result = false;
+    if (day > 0 && day <= daysPerMonth[month])
+    {
+        result = true;
+    }
+    
+    if (day == 29 && month == 2 && isLeapYear())
+    {
+        result = true;
+    }
+    
+    return result;
 }

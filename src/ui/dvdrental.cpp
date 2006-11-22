@@ -82,13 +82,29 @@ int DvdRental::OnExit()
  *
  * \image html windows.png
  *
- * \section screen_customers Customer Management
+ * \section screen_finder Mac OS X "Tiger" 10.4.8
  *
- * \image html customers.png
+ * \image html finder.png
  *
  * \section screen_items Item Management
  *
  * \image html items.png
+ *
+ * \section screen_create_rental Creating a New Rental
+ *
+ * \image html createrental.png
+ *
+ * \section screen_customers Customer Management
+ *
+ * \image html customers.png
+ *
+ * \section screen_rentals Rental Management
+ *
+ * \image html rentals.png
+ *
+ * \section screen_environment The Application on the Mac Desktop
+ *
+ * \image html environment.png
  *
  */
 
@@ -165,7 +181,7 @@ int DvdRental::OnExit()
  * \li wxWidgets 2.6.3 (http://www.wxwidgets.org/), directly downloadable from
  * http://prdownloads.sourceforge.net/wxwindows/wxWidgets-2.6.3.tar.bz2
  * \li Doxygen 1.4.7 (http://www.doxygen.org/)
- * \li Subversion 1.3 (http://subversion.tigris.org)
+ * \li Subversion 1.4 (http://subversion.tigris.org)
  *
  * \section tools_others Other Tools
  *

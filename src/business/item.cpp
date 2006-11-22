@@ -79,7 +79,7 @@ void Item::setRentedByCustomerId(const int customerId)
     setRentedByCustomerId(customerId, today);
 }
 
-void Item::setRentedByCustomerId(const int customerId, const Date& rentalDate)
+void Item::setRentedByCustomerId(const int customerId, Date& rentalDate)
 {
     // Only rent out if not already rented
     if (!_rented) 
@@ -89,8 +89,7 @@ void Item::setRentedByCustomerId(const int customerId, const Date& rentalDate)
 
         // Set up the date that it is due back. This is done by adding the rental period
         // from the derived class (DVD or VHS) to the rentalDate
-        _dueDate = Date();
-        _dueDate.addDays(_rentalPeriod);
+        _dueDate = rentalDate + _rentalPeriod;
 
         // Finally mark the item as being rented out.
         _rented = true;
@@ -179,7 +178,7 @@ const int Item::getCustomerId() const
     return _customerId;
 }
 
-const Date& Item::getDueDate() const
+Date& Item::getDueDate()
 {
     return _dueDate;
 }

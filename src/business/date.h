@@ -10,16 +10,14 @@ class Date
 {
 public:
     Date( );     // default constructor
-    Date( int d, int m , int y );
+    Date(const int y, const int m, const int d);
     Date(const Date&);
     Date& operator=(const Date&);
 
-    void print();               // Print date in d/m/y format
+    void print() const;               // Print date in d/m/y format
 
     void nextDay();             // Increment to next day
     void addDays( long days );   // Add number of days to the date
-
-    const long getJulianDate() const;
 
     /*!
      * Equality operator.
@@ -86,19 +84,28 @@ public:
      * \return A string.
      */
     const std::string getStandardString() const;
+    const std::string getWeekday() const;
+    const bool Date::isValid() const;
+    const bool isLeapYear() const;          // Returns true if a leap year
+    const long getJulianDate() const;
+    const int getDay() const { return day; }
+    const int getMonth() const { return month; }
+    const int getYear() const { return year; }
 
 private:
+    const int  daysInMonth() const;         // Returns the number of days in the month
     void convertToJulianDate();
     void convertFromJulianDate();
-
+    const int getMonthCode() const;
+    const int getCenturyCode() const;
+    const bool Date::validateDay() const;
+    
 private:
     int     month;              // Date values
     int     day;
     int     year;
     long    julianDate;
 
-    bool isLeapYear();          // Returns true if a leap year
-    int  daysInMonth();         // Returns the number of days in the month
 }; // end class Date
 
 #endif

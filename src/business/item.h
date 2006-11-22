@@ -44,12 +44,12 @@ public:
     const int getItemKind() const;
     const std::string getItemKindString() const;
     const int getCustomerId() const;
-    const Date& getDueDate() const;
+    Date& getDueDate();
 
     void setTitle(const std::string&);
     
     void setRentedByCustomerId(const int);
-    void setRentedByCustomerId(const int, const Date&);
+    void setRentedByCustomerId(const int, Date&);
     const bool isRented() const;
     void setReturned();
     const bool isLate() const;

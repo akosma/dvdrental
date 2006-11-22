@@ -187,8 +187,8 @@ void Main::CreateRentalsTab()
     rentalsList->InsertColumn(1, wxT("Kind"), wxLIST_FORMAT_LEFT, 40);
     rentalsList->InsertColumn(2, wxT("Cost"), wxLIST_FORMAT_LEFT, 50);
     rentalsList->InsertColumn(3, wxT("Title"), wxLIST_FORMAT_LEFT, 190);
-    rentalsList->InsertColumn(4, wxT("Customer"), wxLIST_FORMAT_LEFT, 160);
-    rentalsList->InsertColumn(5, wxT("Date Due"), wxLIST_FORMAT_LEFT, 130);
+    rentalsList->InsertColumn(4, wxT("Customer"), wxLIST_FORMAT_LEFT, 120);
+    rentalsList->InsertColumn(5, wxT("Date Due"), wxLIST_FORMAT_LEFT, 170);
     rentalsPageSizer->Add(rentalsList, 1, wxEXPAND | wxALL, 5);
 
     buttonsNewRentalPageSizer = new wxBoxSizer(wxHORIZONTAL);

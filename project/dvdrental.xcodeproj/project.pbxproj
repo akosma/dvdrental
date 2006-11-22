@@ -13,6 +13,7 @@
 		3A14ECB20B07C6BF007B6212 /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D30B07AC0600D5CEA1 /* item.cpp */; };
 		3A14ECB40B07C6C1007B6212 /* vhs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95D70B07AC0600D5CEA1 /* vhs.cpp */; };
 		3A14ECED0B07C87B007B6212 /* librarytest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A14ECA80B07C679007B6212 /* librarytest.cpp */; };
+		3A16EFEE0B14C5CA00B0A565 /* datetest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A16EFEC0B14C5CA00B0A565 /* datetest.cpp */; };
 		3A1B95CA0B07ABF600D5CEA1 /* dvdrental.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95C60B07ABF600D5CEA1 /* dvdrental.cpp */; };
 		3A1B95CB0B07ABF600D5CEA1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95C80B07ABF600D5CEA1 /* main.cpp */; };
 		3A1B95D90B07AC0600D5CEA1 /* customer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3A1B95CD0B07AC0600D5CEA1 /* customer.cpp */; };
@@ -40,6 +41,8 @@
 		3A14ECA70B07C679007B6212 /* librarytest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = librarytest.h; path = ../src/test/librarytest.h; sourceTree = SOURCE_ROOT; };
 		3A14ECA80B07C679007B6212 /* librarytest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = librarytest.cpp; path = ../src/test/librarytest.cpp; sourceTree = SOURCE_ROOT; };
 		3A14ECAD0B07C6A8007B6212 /* tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A16EFEC0B14C5CA00B0A565 /* datetest.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = datetest.cpp; path = ../src/test/datetest.cpp; sourceTree = SOURCE_ROOT; };
+		3A16EFED0B14C5CA00B0A565 /* datetest.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = datetest.h; path = ../src/test/datetest.h; sourceTree = SOURCE_ROOT; };
 		3A1B95C60B07ABF600D5CEA1 /* dvdrental.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = dvdrental.cpp; path = ../src/ui/dvdrental.cpp; sourceTree = SOURCE_ROOT; };
 		3A1B95C70B07ABF600D5CEA1 /* dvdrental.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = dvdrental.h; path = ../src/ui/dvdrental.h; sourceTree = SOURCE_ROOT; };
 		3A1B95C80B07ABF600D5CEA1 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../src/ui/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -93,6 +96,8 @@
 		3A14EC9A0B07C5E6007B6212 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				3A16EFEC0B14C5CA00B0A565 /* datetest.cpp */,
+				3A16EFED0B14C5CA00B0A565 /* datetest.h */,
 				3A8AB9630B07C97C00D95203 /* main.cpp */,
 				3A14ECA70B07C679007B6212 /* librarytest.h */,
 				3A14ECA80B07C679007B6212 /* librarytest.cpp */,
@@ -255,6 +260,7 @@
 				3A8AB9640B07C97C00D95203 /* main.cpp in Sources */,
 				3A8AB96F0B07C9B000D95203 /* library.cpp in Sources */,
 				3ABEFF2B0B1389250009D2E1 /* baseclass.cpp in Sources */,
+				3A16EFEE0B14C5CA00B0A565 /* datetest.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

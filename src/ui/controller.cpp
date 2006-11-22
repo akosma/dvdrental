@@ -292,6 +292,8 @@ void Controller::fillRentalsList(wxListCtrl* list)
         customer << " ";
         customer << (*_customers)[curItem.getCustomerId()].getLastName().c_str();
         wxString date;
+        date << curItem.getDueDate().getWeekday().c_str();
+        date << " ";
         date << curItem.getDueDate().getStandardString().c_str();
         wxString cost;
         cost << curItem.getRentalCharge();

@@ -24,6 +24,7 @@ namespace tests
     {
         CPPUNIT_TEST_SUITE(tests::LibraryTest);
         CPPUNIT_TEST(testCreateLibrary);
+        CPPUNIT_TEST(testRentItems);
         CPPUNIT_TEST_SUITE_END();
     
     public:
@@ -52,6 +53,8 @@ namespace tests
          * Tests the automatic creation of a library.
          */
         void testCreateLibrary();
+        
+        void testRentItems();
     };
 }
 
