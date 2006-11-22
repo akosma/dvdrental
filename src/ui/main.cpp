@@ -29,7 +29,7 @@ BEGIN_EVENT_TABLE(Main,wxFrame)
     EVT_LIST_ITEM_SELECTED(ID_ITEMSLIST,             Main::OnItemsListSelected)
     EVT_LIST_ITEM_SELECTED(ID_RENTALSLIST,           Main::OnRentalsListSelected)
     EVT_LIST_ITEM_SELECTED(ID_CUSTOMERSLIST,         Main::OnCustomersListSelected)
-    
+
     EVT_MENU(wxID_EXIT,             Main::OnMenuFileExitSelected)
     EVT_MENU(wxID_ABOUT,            Main::OnMenuHelpAboutSelected)
     EVT_MENU(ID_MNU_ADDCUSTOMER,    Main::OnMenuAddCustomerSelected)
@@ -58,12 +58,6 @@ void Main::CreateMenuBar()
     fileMenu->Append(wxID_EXIT, wxT("Quit\tCtrl-Q"), wxT(""), wxITEM_NORMAL);
     menuBar->Append(fileMenu, wxT("File"));
 
-    wxMenu *editMenu = new wxMenu(0);
-    editMenu->Append(wxID_CUT, wxT("Cut\tCtrl-X"), wxT(""), wxITEM_NORMAL);
-    editMenu->Append(wxID_COPY, wxT("Copy\tCtrl-C"), wxT(""), wxITEM_NORMAL);
-    editMenu->Append(wxID_PASTE, wxT("Paste\tCtrl-V"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(editMenu, wxT("Edit"));
-
     wxMenu *customerMenu = new wxMenu(0);
     customerMenu->Append(ID_MNU_ADDCUSTOMER, wxT("Add Customer\tCtrl-A"), wxT(""), wxITEM_NORMAL);
     customerMenu->Append(ID_MNU_DELETECUSTOMER, wxT("Delete Customer\tCtrl-D"), wxT(""), wxITEM_NORMAL);
@@ -73,11 +67,6 @@ void Main::CreateMenuBar()
     itemMenu->Append(ID_MNU_ADDITEM, wxT("Add Item\tCtrl-I"), wxT(""), wxITEM_NORMAL);
     itemMenu->Append(ID_MNU_DELETEITEM, wxT("Delete Item\tCtrl-Shift-I"), wxT(""), wxITEM_NORMAL);
     menuBar->Append(itemMenu, wxT("Item"));
-
-    wxMenu *rentalMenu = new wxMenu(0);
-    rentalMenu->Append(ID_MNU_CREATERENTAL, wxT("Create Rental"), wxT(""), wxITEM_NORMAL);
-    rentalMenu->Append(ID_MNU_SEELATERENTALS, wxT("See Late Rentals"), wxT(""), wxITEM_NORMAL);
-    menuBar->Append(rentalMenu, wxT("Rental"));
 
     wxMenu *helpMenu = new wxMenu(0);
     helpMenu->Append(wxID_ABOUT, wxT("About...\tF1"), wxT(""), wxITEM_NORMAL);
@@ -173,7 +162,7 @@ void Main::CreateCustomersTab()
 
     buttonsCustomerSizer = new wxBoxSizer(wxHORIZONTAL);
     innerCustomersPageSizer->Add(buttonsCustomerSizer, 0, wxALIGN_RIGHT | wxALL, 5);
-    
+
     editCustomerButton = new wxButton(customersNotebookPage, ID_EDITCUSTOMERBUTTON, wxT("Edit"), wxPoint(298,379), wxSize(75,25), 0, wxDefaultValidator, wxT("editCustomerButton"));
     editCustomerButton->Disable();
     buttonsCustomerSizer->Add(editCustomerButton, 0, wxALIGN_RIGHT | wxALL, 5);
@@ -295,7 +284,7 @@ void Main::CreateNewRentalTab()
 
     reviewCreateLabel = new wxStaticText(newRentalNotebookPage, ID_REVIEWCREATELABEL, wxT("3) Review and Create"), wxPoint(388,9), wxDefaultSize, wxALIGN_RIGHT, wxT("reviewCreateLabel"));
     newRentalFieldsSizer->Add(reviewCreateLabel, wxGBPosition(2, 0), wxDefaultSpan, wxGROW);
-    
+
     createRentalButton = new wxButton(newRentalNotebookPage, ID_CREATERENTALBUTTON, wxT("Create Rental"), wxPoint(388,349), wxSize(200,25), 0, wxDefaultValidator, wxT("createRentalButton"));
     newRentalFieldsSizer->Add(createRentalButton, wxGBPosition(2, 1), wxDefaultSpan);
 
@@ -348,7 +337,7 @@ void Main::OnLastNameFieldEnter(wxCommandEvent& event)
 
 void Main::OnAddressFieldEnter(wxCommandEvent& event)
 {
-    phoneNumberField->SetFocus();    
+    phoneNumberField->SetFocus();
 }
 
 void Main::OnPhoneNumberFieldEnter(wxCommandEvent& event)
@@ -541,7 +530,7 @@ void Main::OnMenuDeleteItemSelected(wxCommandEvent& event)
         }
         else
         {
-            wxMessageBox(_T("The item is currently rented. You cannot delete it."), 
+            wxMessageBox(_T("The item is currently rented. You cannot delete it."),
                          _T("Error"), wxOK | wxICON_ERROR, this);
         }
     }
@@ -599,19 +588,19 @@ void Main::SetAvailabilityLabel(Availability available)
             availableLabel->SetForegroundColour(wxColour(0,128,0));
             availableLabel->SetFont(wxFont(14, wxSWISS, wxNORMAL,wxBOLD, FALSE));
             break;
-            
+
         case NOT_AVAILABLE:
             availableLabel->SetLabel(wxT("Not Available"));
-            availableLabel->SetForegroundColour(wxColour(128,0,0));
+            availableLabel->SetForegroundColour(wxColour(255,0,0));
             availableLabel->SetFont(wxFont(14, wxSWISS, wxNORMAL,wxBOLD, FALSE));
             break;
-            
+
         case UNKNOWN:
             availableLabel->SetLabel(wxT(""));
-            availableLabel->SetForegroundColour(wxColour(128,0,0));
+            availableLabel->SetForegroundColour(wxColour(0,0,0));
             availableLabel->SetFont(wxFont(14, wxSWISS, wxNORMAL,wxBOLD, FALSE));
             break;
-            
+
         default:
             break;
     }

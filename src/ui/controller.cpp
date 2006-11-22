@@ -38,7 +38,7 @@ Controller::Controller()
 Controller::~Controller()
 {
     delete _customers;
-    
+
     // Do not delete _currentCustomer! It is owned by _customers.
     // See Controller::loadCustomer below for details.
     // The same applies to _currentItem!
@@ -189,11 +189,11 @@ void Controller::saveCustomer(wxString& firstName, wxString& lastName, wxString&
     {
         int id = getMaximumCustomerId() + 1;
         _currentCustomer = new Customer(id);
-        
+
         // Beware! Heavy pointer manipulation here!
         // First assign the new customer to the std::map (this makes a copy)
         (*_customers)[id] = *_currentCustomer;
-        
+
         // Then, point the current customer to the one we want
         _currentCustomer = &(*_customers)[id];
     }
@@ -242,7 +242,7 @@ void Controller::fillItemsList(wxListCtrl* list)
         wxListItem item;
         if (curItem.isRented())
         {
-            item.SetTextColour(wxColour(128,0,0));
+            item.SetTextColour(wxColour(255,0,0));
             if (curItem.isLate())
             {
                 item.SetBackgroundColour(wxColour(255, 255, 0));
@@ -401,11 +401,11 @@ void Controller::saveItem(wxString& title, int kind)
             case 0:
                 id = _library.addNewVHS(title.c_str());
                 break;
-                
+
             case 1:
                 id = _library.addNewDVD(title.c_str());
                 break;
-            
+
             default:
                 break;
         }
@@ -457,7 +457,7 @@ const bool Controller::createRental(wxListCtrl* customers, wxListCtrl* items)
                 break;
             }
         }
-        
+
         for (int j = 0; j < items->GetItemCount(); j++)
         {
             int state = items->GetItemState(j, wxLIST_STATE_SELECTED);
