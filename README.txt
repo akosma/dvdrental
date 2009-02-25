@@ -17,3 +17,4 @@ The deployment scripts in the /deploy subfolder use the build scripts in the /ma
 1) They have the ability to create final deliverables, for example ZIP or MSI files for Windows, DMG files for the Mac or tar.gz files for Linux.
 2) They test the source code, launching the unit tests automatically.
 3) They are usually scheduled for daily execution.
+
